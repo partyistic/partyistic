@@ -1,6 +1,6 @@
 # Project Name
 
-**Weddinista**
+**Eventify**
 
 &nbsp;
 
