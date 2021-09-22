@@ -1,6 +1,6 @@
 # Project Name
 
-**Eventify**
+**Partyistic**
 
 &nbsp;
 
