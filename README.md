@@ -22,7 +22,7 @@
 
 # Project Description
 
-
+The project aims to make party planning much faster and easier than the ordinary methods that take a lot of time and effort, by connecting the user with anything they need to hold the perfect party, such as venues, music bands, fashion, car rental companies, making invitation cards and more.
 
 &nbsp;
 
