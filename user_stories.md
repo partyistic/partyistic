@@ -12,7 +12,7 @@ As a User I want to have the ability to filter the services within my budget.
 
 ### Feature Tasks
 
-- User can see all services below a maximum price he put.
+- User can see all services below a maximum price.
 
 ### Acceptance Tests
 
@@ -30,18 +30,17 @@ As a User I want to have the ability to filter the services within my budget.
 
 ### User Story sentence
 
-As a user, I want to see some feedback before making my choices.
+As a user, I want to see some feedback before book a service.
 
 ### Feature Tasks
 
-- Every item have own rating.
-- Every feddback have with it a star rating.
+- Each service has feedback from users.
+- Users can add their feedbacks to services.
 
 
 ### Acceptance Tests
 
-- Make sure that only the person how are rating the item can delete it.
-- Make sure that the ratio is in order of the newest.
+- Make sure that the feedbacks displayed are related to the service.
 
 
 ----------------
@@ -51,19 +50,20 @@ As a user, I want to see some feedback before making my choices.
 
 ### Title
 
-**Create own events**
+**Create own party events**
 
 ### User Story sentence
 
-As a user, I want to have the ability to make my own event.
+As a user, I want to have the ability to make my own party.
 
 ### Feature Tasks
 
-- have the ability to make me event private and only invited friend can see it.
+- Users have the ability to make party events.
+- Each user has the ability to make the party public or private.
 
 ### Acceptance Tests
 
-- Ensure the event is public or private.
+- Ensure the event displayed after creation.
 
 
 ----------------
@@ -77,11 +77,11 @@ As a user, I want to have the ability to make my own event.
 
 ### User Story sentence
 
-As a user, I want to have the ability to invite my friend by more than way.
+As a user, I want to have the ability to invite friends to my party event.
 
 ### Feature Tasks
 
-- make the invitation shareable by whatsapp or email.
+- Make the invitation shareable by whatsapp or email.
 
 ### Acceptance Tests
 
@@ -95,16 +95,16 @@ As a user, I want to have the ability to invite my friend by more than way.
 
 ### Title
 
-**Can share my serves**
+**Can share my service**
 
 ### User Story sentence
 
-As a user, I want to have the ability to share my servese in a stylish way.
+As a user, I want to have the ability to share my services to users.
 
 ### Feature Tasks
 
-- can choose the style of the product/services.
+- Users can fill a form in order to create a new service.
 
 ### Acceptance Tests
 
-- Ensure that there is more than one choice of style.
+- Ensure that the service is displayed after creation.
