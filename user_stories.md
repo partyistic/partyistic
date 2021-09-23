@@ -4,20 +4,19 @@
 
 ### Title
 
-**Having the ability to choose something in my budget**
+**Having the ability to choose service within the budget**
 
 ### User Story sentence
 
-As a User I want to have the ability to see the options in my budget.
+As a User I want to have the ability to filter the services within my budget.
 
 ### Feature Tasks
 
-- User can see a full package in a budget that he have.
-- User can save the choices for future reference.
+- User can see all services below a maximum price he put.
 
 ### Acceptance Tests
 
-- Ensure that any budget have more than one choice.
+- Ensure that the services displayed below or equal the budget.
 
 
 ----------------
