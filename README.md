@@ -26,7 +26,6 @@ The project aims to make party planning much faster and easier than the ordinary
 
 &nbsp;
 
-
 ## Project Management Tool
 
 <https://trello.com/b/AjJxQRxS/partyistic>
@@ -35,19 +34,21 @@ The project aims to make party planning much faster and easier than the ordinary
 
 ## Wireframes
 
+<https://wireframepro.mockflow.com/space/M1SwZyI53h>
 
+![Wireframes](pictures/readme/Wireframes.png)
 
 &nbsp;
 
 ## Domain Modeling
 
-
+![Domain-Modeling](pictures/readme/Domain-Modeling.jpg)
 
 &nbsp;
 
 ## DataBase Modeling
 
-
+![DataBase-Modeling](pictures/readme/DataBase-Modeling.jpg)
 
 &nbsp;
 
@@ -60,3 +61,9 @@ The project aims to make party planning much faster and easier than the ordinary
 ### #3
 
 ### #4
+
+&nbsp;
+
+## Backend Repo
+
+<https://github.com/partyistic/partyistic-backend>
