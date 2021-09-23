@@ -44,13 +44,11 @@ Why should we care about your product?
 
 ## Functional Requirements
 
-- The users can make accounts.
+- The users can create accounts.
 
 - The users can add a favorite list.
 
 - The users can make party events.
-
-- The users can share their stories.
 
 ### Data Flow
 
