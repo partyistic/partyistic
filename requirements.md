@@ -4,11 +4,11 @@
 
 What is the vision of this product?
 
-**Planning and designing any party for the user.**
+**Help the users prepare and plan their parties, by connecting them with anything they need to hold the perfect party.**
 
 What pain point does this project solve?
 
-**Makes the party preparation more easy and reachable insted of contacting many companies and make several contracts for each feature in the user's party.**
+**Make party planning much faster and easier than the ordinary methods that take a lot of time and effort.**
 
 Why should we care about your product?
 
@@ -20,10 +20,10 @@ Why should we care about your product?
 
 ### IN - What will your product do
 
-- The app will provide insperation ideas for the users.
-- The app will provide several choices for the halles, fashion, photogaphers, travel agencies, renting cars agencies..etc.
-- The app will allow the user to have an account and choose what ever he/she likes within the app.
-- The app will allow the user to create invitation cards and invite people.
+- Provide inspirational ideas about parties for the users.
+- Provide several choices for the halls, fashion, photographers, travel agencies, renting cars agencies..etc.
+- Allow the users to have accounts and choose whatever they like within the app.
+- Allow the user to create invitation cards and invite people.
 
 ### OUT - What will your product not do
 
@@ -31,29 +31,30 @@ Why should we care about your product?
 
 ### Minimum Viable Product
 
-- Provide the available halles.
+- Provide the available halls.
 
 ### Stretch Goals
 
-- Make a store "page" for each agency that offers its services.
-- Make the app more international not in Jordan only.
-- Make an agenda for the user within his/her account.
+- Create a store "page" for each agency that offers its services.
+- Support the donation for parties.
+- Allow the party owners to go live in their party event.
+- Make an agenda for the users within their accounts.
 
 &nbsp;
 
 ## Functional Requirements
 
-- The user can make an account.
+- The users can make accounts.
 
-- The user can save his choices.
+- The users can add a favorite list.
 
-- The user can make a party event.
+- The users can make party events.
 
-- The user can share his/her story.
+- The users can share their stories.
 
 ### Data Flow
 
-- The user chooses one of the options, either make an account, save choices, make event, then the service will be done, the user has the ability to edit the save and browse his choises.
+- The user starts with creating an account, gets inspired, makes a favorite list, explores our services, and creates a party event. The user has the ability to edit his/her information.
 
 &nbsp;
 
@@ -70,4 +71,4 @@ Why should we care about your product?
 
 **What**: The degree to which a software artifact supports testing in a given test context. If the testability of the software artifact is high, then finding faults in the system (if it has any) by means of testing is easier.
 
-**Why**: Testing will help debugging and making the maintenance much easier.
+**Why**: Testing will help to debug and making the maintenance much easier.
