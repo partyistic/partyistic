@@ -45,6 +45,12 @@ The project aims to make party planning much faster and easier than the ordinary
 
 &nbsp;
 
+## DataBase Modeling
+
+
+
+&nbsp;
+
 ## How To Use
 
 ### #1
