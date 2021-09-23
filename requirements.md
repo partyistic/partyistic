@@ -4,15 +4,15 @@
 
 What is the vision of this product?
 
-**Planning and Designing any Event for the client.**
+**Planning and designing any party for the user.**
 
 What pain point does this project solve?
 
-**Makes the events planning more easy and reachable insted of contacting many companies and make several contracts for each feature in the clinet's events.**
+**Makes the party preparation more easy and reachable insted of contacting many companies and make several contracts for each feature in the user's party.**
 
 Why should we care about your product?
 
-**Because it will save the client's time and effort .**
+**Because it will save the user's time and effort.**
 
 &nbsp;
 
