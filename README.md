@@ -26,6 +26,13 @@ The project aims to make party planning much faster and easier than the ordinary
 
 &nbsp;
 
+
+## Project Management Tool
+
+<https://trello.com/b/AjJxQRxS/partyistic>
+
+&nbsp;
+
 ## Wireframes
 
 
