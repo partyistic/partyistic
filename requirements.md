@@ -20,14 +20,14 @@ Why should we care about your product?
 
 ### IN - What will your product do
 
-- The app will provide an insperation ideas for the client.
-- The app will provide several choices for the halles,served food, photogaphers, travel agencies, renting cars agencies..etc.
-- The app will allow the client to have an account and choose what ever he likes within our app.
-- The app will allow the client to create invitation cards and our app will invite the people that the client choosed.
+- The app will provide insperation ideas for the users.
+- The app will provide several choices for the halles, fashion, photogaphers, travel agencies, renting cars agencies..etc.
+- The app will allow the user to have an account and choose what ever he/she likes within the app.
+- The app will allow the user to create invitation cards and invite people.
 
 ### OUT - What will your product not do
 
-- The app will not be supported with several languages "only english".
+- The app will not be supported with several languages "only English".
 
 ### Minimum Viable Product
 
@@ -35,9 +35,9 @@ Why should we care about your product?
 
 ### Stretch Goals
 
-- make a store "page" on our app for each agency that offers its services on our app.
-- Make our app international not in Jordan only.
-- make an agenda for the client within his account.
+- Make a store "page" for each agency that offers its services.
+- Make the app more international not in Jordan only.
+- Make an agenda for the user within his/her account.
 
 &nbsp;
 
@@ -47,9 +47,9 @@ Why should we care about your product?
 
 - The user can save his choices.
 
-- The user can make an event.
+- The user can make a party event.
 
-- The user can share his story.
+- The user can share his/her story.
 
 ### Data Flow
 
