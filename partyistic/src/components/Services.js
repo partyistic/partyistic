@@ -4,8 +4,22 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import CreateService from './CreateService';
-export default function Services()  {
-      
+export default function Services(props)  {
+
+
+
+    let showModal=false;
+    
+    function createServiceModa(){
+        showModal=true;
+    }
+
+    function closeForm(){
+       showModal=false;
+    }
+    
+    console.log(closeForm(),"hello wordlsadashdjklashdjkwahjedh");
+
      return (
         <>
          
@@ -108,12 +122,14 @@ export default function Services()  {
                     </Nav>
                 </Container>
             </Navbar>
-            <button type="button" class="btn btn-primary btn-lg btn-block"   >Create a Service</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block"   onClick={createServiceModa()} >Create a Service</button>
             
-            <CreateService
+            {showModal && <CreateService
+                
 
-           
-            />
+                closeForm={closeForm}
+                
+                />}
         </>
       );
     
