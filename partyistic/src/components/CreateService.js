@@ -6,26 +6,28 @@ import Row from 'react-bootstrap/Row'
 import { Col, Card } from 'react-bootstrap'
 import ImageBrowserForm from './ImageBrowserForm'
 import Services from './Services'
-
+import { useEffect, useState } from 'react'
 
 export default function CreateService(props) {
 
   
 
 
-  let browserForm=false;
-
-  function showImageForm(){
-    browserForm=true;
-  }
-
-
-
-
-
+  // let browserForm=false;
+  
+  // function showImageForm(){
+    //   browserForm=true;
+    // }
+    
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    console.log("🚀 ~ file: CreateService.js ~ line 64 ~ CreateService ~ handleShow", handleShow)
+    
+    
     return (
-        <>
- 
+      <>
+      <Modal show = {props.show} onHide={props.handleClose}>
       <Modal.Dialog>
         <Modal.Header closeButton>
           <Modal.Title>Create a service</Modal.Title>
@@ -58,10 +60,12 @@ export default function CreateService(props) {
           
             <Form.Group as={Row} className="mb-3" >
               <Col sm={{ span: 10, offset: 2 }}>
-                <Button onClick={showImageForm()}>Add an image</Button>
+                <button onClick={handleShow}>Add an image</button>
               </Col>
             </Form.Group>
+                
             
+          
               
             <div className="row row-cols-3 ">
               <div className="col">
@@ -115,23 +119,29 @@ export default function CreateService(props) {
             </Form.Group>
             </div>
             </div>
+      
 
             </Form>
         
           </Modal.Body>
         
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.closeForm()}>Close</Button>
+          <Button variant="secondary" onClick={props.handleClose}>Close</Button>
           <Button variant="primary" type="submit">
             Submit
           </Button>
         </Modal.Footer>
       </Modal.Dialog>
-      <div>
-      {browserForm && <ImageBrowserForm/>}
-      </div>
+      
+      
+     <ImageBrowserForm
+      show = {show}
+      handleClose={handleClose}
+      />
+      
+      </Modal>
       </>
       );
-
+      
 }
 

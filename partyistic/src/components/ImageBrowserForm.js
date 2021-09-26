@@ -7,10 +7,10 @@ import Form from 'react-bootstrap/Form'
 // import ImageBrowserForm from './ImageBrowserForm'
 
 
-export default function ImageBrowserForm() {
+export default function ImageBrowserForm(props) {
     return (
         <>
- 
+      <Modal show = {props.show} onHide={props.handleClose} >
       <Modal.Dialog>
         <Modal.Header closeButton>
           <Modal.Title>Create a service</Modal.Title>
@@ -47,12 +47,13 @@ export default function ImageBrowserForm() {
          
           </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary" type="submit">
+          <button variant="secondary" onClick={props.handleClose} >Close</button>
+          <button variant="primary" type="submit">
             Submit
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal.Dialog>
+      </Modal>
 
     </>
       );

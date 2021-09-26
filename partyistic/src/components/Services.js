@@ -4,22 +4,26 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import CreateService from './CreateService';
+import {useState} from 'react';
 export default function Services(props)  {
 
 
 
-    let showModal=false;
+    // let showModal=false;
     
-    function createServiceModa(){
-        showModal=true;
-    }
+    // function createServiceModa(){
+    //     showModal=true;
+    // }
 
-    function closeForm(){
-       showModal=false;
-    }
+    // function closeForm(){
+    //    showModal=false;
+    // }
     
-    console.log(closeForm(),"hello wordlsadashdjklashdjkwahjedh");
+    // console.log(closeForm(),"hello wordlsadashdjklashdjkwahjedh");
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
      return (
         <>
          
@@ -122,14 +126,14 @@ export default function Services(props)  {
                     </Nav>
                 </Container>
             </Navbar>
-            <button type="button" class="btn btn-primary btn-lg btn-block"   onClick={createServiceModa()} >Create a Service</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block"   onClick={handleShow} >Create a Service</button>
             
-            {showModal && <CreateService
+            <CreateService
                 
-
-                closeForm={closeForm}
+                show = {show}
+                handleClose={handleClose}
                 
-                />}
+                />
         </>
       );
     
