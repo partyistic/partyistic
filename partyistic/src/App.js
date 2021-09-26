@@ -9,7 +9,10 @@ import Profile from './components/Profile';
 import Services from './components/Services';
 import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import InspireParty from './components/InspireParty';
+import WeddingParty from './components/WeddingParty';
+import BirthdayParty from './components/BirhdayParty';
+import SpecialParty from './components/SpecialParty';
+import GradParty from './components/GradParty';
 
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -41,8 +44,17 @@ export default function App() {
           <Route path="/About" exact>
             <About />
           </Route>
-          <Route path="/inspiration/parties" exact>
-            <InspireParty/>
+          <Route path="/inspiration/weddingparties" exact>
+            <WeddingParty/>
+          </Route>
+          <Route path="/inspiration/birthdayparties" exact>
+            <BirthdayParty/>
+          </Route>
+          <Route path="/inspiration/specialparties" exact>
+            <SpecialParty/>
+          </Route>
+          <Route path="/inspiration/gradparties" exact>
+            <GradParty/>
           </Route>
         </Switch>
         <Footer />
