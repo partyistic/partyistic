@@ -12,19 +12,23 @@ export default function Fashion() {
       <div className="col"></div>
 
         <div className="col">
-          <Card.Img variant="" alt="First image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+          <a href="/Services/fashion"><Card.Img variant="" alt="First image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        </a>
+          </div>
+
+        <div className="col">
+        <a href="/Services/fashion"><Card.Img alt="Second image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        </a>
         </div>
 
         <div className="col">
-          <Card.Img alt="Second image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        <a href="/Services/fashion"><Card.Img variant="" alt="Third image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        </a>
         </div>
 
         <div className="col">
-          <Card.Img variant="" alt="Third image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
-        </div>
-
-        <div className="col">
-          <Card.Img alt="Second image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        <a href="/Services/fashion"><Card.Img alt="Second image" src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/08/30/10/onlineshoppingclothing.jpg?width=990&auto=webp&quality=75&crop=968%3A645%2Csmart" />
+        </a>
         </div>
 
 

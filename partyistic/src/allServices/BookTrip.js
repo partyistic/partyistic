@@ -12,19 +12,22 @@ export default function BookTrip() {
       <div className="col"></div>
 
         <div className="col">
-          <Card.Img variant="" alt="First image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+          <a href="/Services/trip"><Card.Img variant="" alt="First image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+        </a>
+          </div>
+
+        <div className="col">
+        <a href="/Services/trip"><Card.Img alt="Second image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+        </a>
         </div>
 
         <div className="col">
-          <Card.Img alt="Second image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
-        </div>
+        <a href="/Services/trip"><Card.Img variant="" alt="Third image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+        </a></div>
 
         <div className="col">
-          <Card.Img variant="" alt="Third image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
-        </div>
-
-        <div className="col">
-          <Card.Img alt="Second image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+        <a href="/Services/trip"><Card.Img alt="Second image" src="https://ei.marketwatch.com/Multimedia/2019/02/25/Photos/ZH/MW-HE536_airpla_20190225131547_ZH.jpg?uuid=5fa81d1a-3929-11e9-9462-ac162d7bc1f7" />
+        </a>
         </div>
         <div className="col"></div>
       </div>
