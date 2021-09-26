@@ -9,6 +9,8 @@ import Profile from './components/Profile';
 import Services from './components/Services';
 import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import InspireParty from './components/InspireParty';
+
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -38,6 +40,9 @@ export default function App() {
           </Route>
           <Route path="/About" exact>
             <About />
+          </Route>
+          <Route path="/inspiration/parties" exact>
+            <InspireParty/>
           </Route>
         </Switch>
         <Footer />
