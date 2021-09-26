@@ -5,12 +5,12 @@ import Nav from 'react-bootstrap/Nav'
 import Inspiration from './Inspiration';
 
 
-export default function InspireParty(props){
+export default function BirthdayParty(props){
     
      return (
         <>
-{        
-}        </>
+
+      </>
       );
     
   }

@@ -126,56 +126,50 @@ export default function Inspiration(props) {
             </Carousel>
             
             <h1 > Wedding parties </h1>
-            {/* render the img in card  */}
+    
            
             {wedding && wedding.map((wedding, key) => (
-                key < 3 ?
+                key < 3 &&
                     <Nav>
-                        <Nav.Link href="/inspiration/parties">  <Card style={{ width: '18rem' }}>
+                        <Nav.Link href="/inspiration/weddingparties">  <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={wedding.src} />
                         </Card></Nav.Link>
                     </Nav>
-                    :
-                    <>  </>
+   
             ))}
     
             <h1 > Graduation Parties </h1>
             {/* render the img in card  */}
             {grad && grad.map((grad, key) => (
-                key < 3 ?
+                key < 3 &&
                     <Nav>
-                        <Nav.Link href="/inspiration/parties">  <Card style={{ width: '18rem' }}>
+                        <Nav.Link href="/inspiration/gradparties" >  <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={grad.src} />
                         </Card></Nav.Link>
                     </Nav>
-                    :
-                    <>  </>
+
             ))}
             <h1 > Birthday Parties </h1>
             {/* render the img in card  */}
             {birthday && birthday.map((birthday, key) => (
-                key < 3 ?
+                key < 3 &&
                     <Nav>
-                        <Nav.Link href="/inspiration/parties">  <Card style={{ width: '18rem' }}>
+                        <Nav.Link href="/inspiration/birthdayparties" >  <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={birthday.src} />
                         </Card></Nav.Link>
                     </Nav>
-                    :
-                    <>  </>
+ 
             ))}
             <h1 > Special Parties</h1>
             {/* render the img in card  */}
             {special && special.map((special, key) => (
-                key < 3 ?
+                key < 3 &&
                     <Nav>
-                        <Nav.Link href="/inspiration/parties">  <Card style={{ width: '18rem' }}>
+                        <Nav.Link href="/inspiration/specialparties">  <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={special.src} />
                         </Card></Nav.Link>
                     </Nav>
 
-
-                    :
-                    <>  </>
             ))}
 
 
