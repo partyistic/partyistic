@@ -4,8 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { useAuth } from '../Auth';
 export default function Header(props) {
-const { user, login, logout } = useAuth();
-   
+
+    const { user, logout } = useAuth();
     return (
         <>
             <Navbar bg="primary" variant="dark">
@@ -19,7 +19,13 @@ const { user, login, logout } = useAuth();
                         <Nav.Link href="/About">About Us</Nav.Link>
                     </Nav>
                 </Container>
+                {user && (
+                    <>
+                        <button onClick={logout} className="w-20 h-6 text-center bg-green-700 rounded ">Logout</button>
+                    </>
+                )}
             </Navbar>
+
         </>
     );
 }

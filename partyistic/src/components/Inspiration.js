@@ -2,12 +2,12 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
-import ueseInspiration from '../hook/ueseInspiration'
+import useResource from '../hook/ueseInspiration'
 import { useAuth } from '../Auth';
 
 export default function Inspiration(props) {
-    const { resources, loading } = ueseInspiration();
-    const { user, login, logout } = useAuth();
+    const { resources, loading } = useResource();
+    const { user } = useAuth();
 
     console.log(resources)
     console.log('user' , user)

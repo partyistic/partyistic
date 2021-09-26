@@ -15,18 +15,20 @@ import SpecialParty from './components/SpecialParty';
 import GradParty from './components/GradParty';
 import LoginForm from './components/LoginForm';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { useAuth } from './Auth';
 export default function App() {
-  
+const { user } = useAuth();
+
   return (
     <>
-     
+      {user ?
+
+        <>
+
           <div style={{ height: '100%' }}>
             <Router>
-              <Header  />
-
+              <Header />
               <Switch>
-
                 <Route path="/" exact>
                   <Home />
                 </Route>
@@ -35,9 +37,7 @@ export default function App() {
                 </Route>
                 <Route path="/Services" exact>
                   <Services />
-
                 </Route>
-
                 <Route path="/Parties" exact>
                   <Parties />
                 </Route>
@@ -63,8 +63,10 @@ export default function App() {
               <Footer />
             </Router>
           </div>
-       
-     
+        </>
+        :
+        <LoginForm />
+      }
 
     </>
   )
