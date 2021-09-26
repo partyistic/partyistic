@@ -2,10 +2,12 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
 
-export default function Home() {
-
+export default function Home(props) {
+   
     return (
         <>
+             <button onClick={props.onLogout} className="px-2 py-1 text-gray-800 bg-gray-100 rounded-lg">Log out</button>
+
             <h1>  Partystic </h1>
             <div>
 

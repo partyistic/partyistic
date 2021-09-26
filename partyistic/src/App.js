@@ -13,52 +13,60 @@ import WeddingParty from './components/WeddingParty';
 import BirthdayParty from './components/BirhdayParty';
 import SpecialParty from './components/SpecialParty';
 import GradParty from './components/GradParty';
-
-
+import LoginForm from './components/LoginForm';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
 export default function App() {
+  
   return (
-    <div style={{ height: '100%' }}>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/Inspiration" exact>
-            <Inspiration />
-          </Route>
-          <Route path="/Services" exact>
-            <Services />
+    <>
+     
+          <div style={{ height: '100%' }}>
+            <Router>
+              <Header  />
 
-          </Route>
+              <Switch>
 
-          <Route path="/Parties" exact>
-            <Parties />
-          </Route>
-          <Route path="/Profile" exact>
-            <Profile />
-          </Route>
-          <Route path="/About" exact>
-            <About />
-          </Route>
-          <Route path="/inspiration/weddingparties" exact>
-            <WeddingParty/>
-          </Route>
-          <Route path="/inspiration/birthdayparties" exact>
-            <BirthdayParty/>
-          </Route>
-          <Route path="/inspiration/specialparties" exact>
-            <SpecialParty/>
-          </Route>
-          <Route path="/inspiration/gradparties" exact>
-            <GradParty/>
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/Inspiration" exact>
+                  <Inspiration />
+                </Route>
+                <Route path="/Services" exact>
+                  <Services />
+
+                </Route>
+
+                <Route path="/Parties" exact>
+                  <Parties />
+                </Route>
+                <Route path="/Profile" exact>
+                  <Profile />
+                </Route>
+                <Route path="/About" exact>
+                  <About />
+                </Route>
+                <Route path="/inspiration/weddingparties" exact>
+                  <WeddingParty />
+                </Route>
+                <Route path="/inspiration/birthdayparties" exact>
+                  <BirthdayParty />
+                </Route>
+                <Route path="/inspiration/specialparties" exact>
+                  <SpecialParty />
+                </Route>
+                <Route path="/inspiration/gradparties" exact>
+                  <GradParty />
+                </Route>
+              </Switch>
+              <Footer />
+            </Router>
+          </div>
+       
+     
+
+    </>
+  )
 }
+

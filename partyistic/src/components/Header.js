@@ -2,7 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-export default function Header() {
+import { useAuth } from '../Auth';
+export default function Header(props) {
+const { user, login, logout } = useAuth();
+   
     return (
         <>
             <Navbar bg="primary" variant="dark">
