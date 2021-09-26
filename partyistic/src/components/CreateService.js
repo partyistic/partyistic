@@ -60,7 +60,7 @@ export default function CreateService(props) {
           
             <Form.Group as={Row} className="mb-3" >
               <Col sm={{ span: 10, offset: 2 }}>
-                <button onClick={handleShow}>Add an image</button>
+                <input type="button"  value="Add a Photo" onClick={handleShow}/>
               </Col>
             </Form.Group>
                 
