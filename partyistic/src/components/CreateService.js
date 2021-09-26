@@ -10,21 +10,68 @@ import { useEffect, useState } from 'react'
 
 export default function CreateService(props) {
 
-  
-
-
-  // let browserForm=false;
-  
-  // function showImageForm(){
-    //   browserForm=true;
-    // }
-    
+ 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    console.log("🚀 ~ file: CreateService.js ~ line 64 ~ CreateService ~ handleShow", handleShow)
     
-    
+
+    // SERVICE NAME
+    const [serviceNameChange, setServiceNameChange] = useState('')
+    const getServiceNameChange=(event)=>{
+    setServiceNameChange(event.target.value);  
+  }
+  console.log(serviceNameChange);
+
+
+  // DESCRIPTION
+  const [descriptionChange, setDescriptionChange] = useState('')
+  const getDescriptionChange=(event)=>{
+    setDescriptionChange(event.target.value);  
+}
+console.log(descriptionChange)
+
+  // LOCATION
+  const [locationChange, setLocationChange] = useState('')
+  const getLocationChange=(event)=>{
+    setLocationChange(event.target.value);  
+}
+console.log(locationChange)
+
+
+  // EMAIL
+  const [emailChange, setEmailChange] = useState('')
+  const getEmailChange=(event)=>{
+    setEmailChange(event.target.value);
+}
+console.log(emailChange)
+
+
+
+  // PHONE NUMBER
+  const [phoneNumberChange, setPhoneNumberChange] = useState('')
+  const getPhoneNumberChange=(event)=>{
+    setPhoneNumberChange(event.target.value);  
+}
+console.log(phoneNumberChange)
+
+
+
+
+  // PRICE
+  const [priceChange, setPriceChange] = useState('')
+  const getPriceChange=(event)=>{
+    setPriceChange(event.target.value);  
+}
+console.log(priceChange)
+
+
+
+
+
+
+
+
     return (
       <>
       <Modal show = {props.show} onHide={props.handleClose}>
@@ -39,7 +86,7 @@ export default function CreateService(props) {
 
             <div className="mb-3 col">
             <Form.Group  controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Service Name" />
+              <Form.Control type="text" onChange={getServiceNameChange} placeholder="Service Name"  />
             </Form.Group>
             </div>
             
@@ -55,7 +102,7 @@ export default function CreateService(props) {
             <br></br>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Description" />
+              <Form.Control type="text" onChange={getDescriptionChange} placeholder="Description" />
             </Form.Group>
           
             <Form.Group as={Row} className="mb-3" >
@@ -84,7 +131,7 @@ export default function CreateService(props) {
             <div className="row row-cols-2">
             <div className="mb-3 col">
             <Form.Group  controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Location Link" />
+              <Form.Control type="text" onChange={getLocationChange} placeholder="Location Link" />
             </Form.Group>
             </div>
             
@@ -103,19 +150,19 @@ export default function CreateService(props) {
             <div className="row row-cols-3">
             <div className="mb-3 col">
             <Form.Group  controlId="formBasicEmail">
-              <Form.Control type="email" placeholder="Email" />
+              <Form.Control type="email" onChange={getEmailChange} placeholder="Email" />
             </Form.Group>
             </div>
 
             <div className="mb-3 col">
             <Form.Group  controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Phone Number" />
+              <Form.Control type="text" onChange={getPhoneNumberChange} placeholder="Phone Number" />
             </Form.Group>
             </div>
             
             <div className="mb-3 col">
             <Form.Group  controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Price" />
+              <Form.Control type="text" onChange={getPriceChange} placeholder="Price" />
             </Form.Group>
             </div>
             </div>
