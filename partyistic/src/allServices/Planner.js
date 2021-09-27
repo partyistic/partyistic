@@ -12,19 +12,25 @@ export default function Planner() {
       <div className="col"></div>
 
         <div className="col">
-          <Card.Img variant="" alt="First image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+
+          <a href="/Services/planner"><Card.Img variant="" alt="First image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+        </a>
+          </div>
+
+        <div className="col">
+        <a href="/Services/planner"><Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+        </a>
         </div>
 
         <div className="col">
-          <Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+        <a href="/Services/planner"><Card.Img variant="" alt="Third image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+        </a>
         </div>
 
         <div className="col">
-          <Card.Img variant="" alt="Third image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
-        </div>
+        <a href="/Services/planner"><Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
+        </a>
 
-        <div className="col">
-          <Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
         </div>
         
         <div className="col"></div>

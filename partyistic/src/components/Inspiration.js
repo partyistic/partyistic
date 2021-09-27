@@ -2,9 +2,15 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
+import useResource from '../hook/ueseInspiration'
+import { useAuth } from '../Auth';
 
 export default function Inspiration(props) {
-   
+    const { resources, loading } = useResource();
+    const { user } = useAuth();
+
+    console.log(resources)
+    console.log('user' , user)
     const wedding = [
         { id: 1, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', title: 'foo', description: 'bar' },
         { id: 2, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', title: 'foo', description: 'bar' },

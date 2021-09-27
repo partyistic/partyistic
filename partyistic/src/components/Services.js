@@ -130,7 +130,9 @@ export default function Services(props) {
             <button type="button" class="btn btn-primary btn-lg btn-block" onClick={handleShow} >Create a Service</button>
 
 
+
             <div className= "reserve_a_place"> <Place /> </div>
+
             <br></br><br></br>
 
             <div> <Planner /> </div>
@@ -148,7 +150,9 @@ export default function Services(props) {
             <div> <RentCar /> </div>
             <br></br><br></br>
 
+
             <div name="book_trip" > <BookTrip /> </div>
+
             <br></br><br></br>
 
 

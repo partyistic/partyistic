@@ -9,31 +9,81 @@ import Profile from './components/Profile';
 import Services from './components/Services';
 import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ReservePlace from './service_pages/ReservePlace';
+import HirePlanner from './service_pages/HirePlanner';
+import ChooseBand from './service_pages/ChooseBand';
+import BookPhotoSession from './service_pages/BookPhotoSession';
+import GetFashion from './service_pages/GetFashion';
+import RentACar from './service_pages/RentACar';
+import BookATrip from './service_pages/BookATrip';
+
+
 import WeddingParty from './components/WeddingParty';
 import BirthdayParty from './components/BirhdayParty';
 import SpecialParty from './components/SpecialParty';
 import GradParty from './components/GradParty';
-
-
+import LoginForm from './components/LoginForm';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { useAuth } from './Auth';
 
 export default function App() {
-  return (
-    <div style={{ height: '100%' }}>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/Inspiration" exact>
-            <Inspiration />
-          </Route>
-          <Route path="/Services" exact>
-            <Services />
+const { user } = useAuth();
 
-          </Route>
+  return (
+    <>
+      {user ?
+
+        <>
+
+          <div style={{ height: '100%' }}>
+            <Router>
+              <Header />
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/Inspiration" exact>
+                  <Inspiration />
+                </Route>
+                <Route path="/Services" exact>
+                  <Services />
+                </Route>
+                <Route path="/Parties" exact>
+                  <Parties />
+                </Route>
+                <Route path="/Profile" exact>
+                  <Profile />
+                </Route>
+                <Route path="/About" exact>
+                  <About />
+                </Route>
+                <Route path="/inspiration/weddingparties" exact>
+                  <WeddingParty />
+                </Route>
+                <Route path="/inspiration/birthdayparties" exact>
+                  <BirthdayParty />
+                </Route>
+                <Route path="/inspiration/specialparties" exact>
+                  <SpecialParty />
+                </Route>
+                <Route path="/inspiration/gradparties" exact>
+                  <GradParty />
+                </Route>
+              </Switch>
+              <Footer />
+            </Router>
+          </div>
+        </>
+        :
+        <LoginForm />
+      }
+
+    </>
+  )
+}
+
 
           <Route path="/Parties" exact>
             <Parties />
@@ -44,21 +94,40 @@ export default function App() {
           <Route path="/About" exact>
             <About />
           </Route>
-          <Route path="/inspiration/weddingparties" exact>
-            <WeddingParty/>
+          <Route path="/Services/places" exact>
+            <ReservePlace />
           </Route>
-          <Route path="/inspiration/birthdayparties" exact>
-            <BirthdayParty/>
+
+          <Route path="/Services/planner" exact>
+            <HirePlanner />
           </Route>
-          <Route path="/inspiration/specialparties" exact>
-            <SpecialParty/>
+
+          <Route path="/Services/musicBand" exact>
+            <ChooseBand />
           </Route>
-          <Route path="/inspiration/gradparties" exact>
-            <GradParty/>
+
+          <Route path="/Services/photoSession" exact>
+            <BookPhotoSession />
           </Route>
+
+          <Route path="/Services/fashion" exact>
+            <GetFashion />
+          </Route>
+
+          <Route path="/Services/cars" exact>
+            <RentACar />
+          </Route>
+
+          <Route path="/Services/trip" exact>
+          <BookATrip />
+        </Route>
+          
+
         </Switch>
         <Footer />
       </Router>
     </div>
   );
 }
+
+

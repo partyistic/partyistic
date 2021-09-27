@@ -35,13 +35,13 @@ export default function BirthdayParty(props) {
             </Modal.Header>
             <Modal.Body>{bd.description}
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={bd.src1} />
+                <Card.Img variant="top" src={bd.src} />
               </Card>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={bd.src2} />
+                <Card.Img variant="top" src={bd.src} />
               </Card>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={bd.src3} />
+                <Card.Img variant="top" src={bd.src} />
               </Card>
             </Modal.Body>
             <Modal.Footer>

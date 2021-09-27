@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
-
-export default function Home() {
-
+export default function Home(props) {
+   
     return (
         <>
+      
             <h1>  Partystic </h1>
             <div>
 
@@ -30,6 +30,7 @@ export default function Home() {
                 </Nav>
 
             </div>
+       
 
         </>
     );
