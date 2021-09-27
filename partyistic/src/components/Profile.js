@@ -4,9 +4,9 @@ import {  Card } from 'react-bootstrap'
 import updateServiceForm from "./updateServiceForm"
 import { useState } from 'react';
 export default function Profile()  {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
      return (
         <>
         <h1>Personal Profile</h1>
@@ -22,22 +22,22 @@ export default function Profile()  {
 
                   <div className="col">
 
-                     <Card.Img variant="" href={handleShow} alt="First image" src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
+                     <Card.Img variant="" onClick={} alt="First image" src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
                     
                     </div>
 
                   <div className="col">
-                   <Card.Img alt="Second image" href={handleShow} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
+                   <Card.Img alt="Second image" onClick={} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
                   
                   </div>
 
                   <div className="col">
-                   <Card.Img variant="" alt="Third image" href={handleShow} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
+                   <Card.Img variant="" alt="Third image" onClick={} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
                   
                   </div>
 
                   <div className="col">
-                   <Card.Img alt="Second image" href={handleShow} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
+                   <Card.Img alt="Second image" onClick={} src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" />
                   
 
                   </div>
