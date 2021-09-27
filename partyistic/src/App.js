@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,6 +9,13 @@ import Profile from './components/Profile';
 import Services from './components/Services';
 import About from './components/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Register from './components/Regester';
+import Login from './components/login';
+import Logout from './components/logout';
+
+import Posts from './components/posts';
+import PostLoadingComponent from './components/postLoading';
+import axiosInstance from './axios';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReservePlace from './service_pages/ReservePlace';
@@ -19,62 +26,47 @@ import GetFashion from './service_pages/GetFashion';
 import RentACar from './service_pages/RentACar';
 import BookATrip from './service_pages/BookATrip';
 
-
-import WeddingParty from './components/WeddingParty';
-import BirthdayParty from './components/BirhdayParty';
-import SpecialParty from './components/SpecialParty';
-import GradParty from './components/GradParty';
-import LoginForm from './components/LoginForm';
+import WeddingParty from './components/InspirationWedding';
+import BirthdayParty from './components/InspirationBirthday';
+import SpecialParty from './components/InspirationSpecial';
+import GradParty from './components/InspirationGraduation';
 import { useAuth } from './Auth';
 
 export default function App() {
-const { user } = useAuth();
+  // const { user } = useAuth();
+
+  const PostLoading = PostLoadingComponent(Posts);
+  const [appState, setAppState] = useState({
+    loading: true,
+    posts: null,
+  });
+
+  useEffect(() => {
+    axiosInstance.get().then((res) => {
+      const allPosts = res.data;
+      setAppState({ loading: false, posts: allPosts });
+      console.log(res.data);
+    });
+  }, [setAppState]);
 
   return (
-    <>
-      {/* {user ? */}
+    <div style={{ height: '100%' }}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
 
-        <>
-
-          <div style={{ height: '100%' }}>
-            <Router>
-              <Header />
-              <Switch>
-                <Route path="/" exact>
-                  <Home />
-                </Route>
-                <Route path="/Inspiration" exact>
-                  <Inspiration />
-                </Route>
-                <Route path="/Services" exact>
-                  <Services />
-                </Route>
-                <Route path="/Parties" exact>
-                  <Parties />
-                </Route>
-                <Route path="/Profile" exact>
-                  <Profile />
-                </Route>
-                <Route path="/About" exact>
-                  <About />
-                </Route>
-                <Route path="/inspiration/weddingparties" exact>
-                  <WeddingParty />
-                </Route>
-                <Route path="/inspiration/birthdayparties" exact>
-                  <BirthdayParty />
-                </Route>
-                <Route path="/inspiration/specialparties" exact>
-                  <SpecialParty />
-                </Route>
-                <Route path="/inspiration/gradparties" exact>
-                  <GradParty />
-                </Route>
-
-          <Route path="/Services/places" exact>
-            <ReservePlace />
+          <Route path="/" exact>
+            <Home />
           </Route>
-
+          <Route path="/Inspiration" exact>
+            <Inspiration />
+          </Route>
+          <Route path="/Services" exact>
+            <Services />
+          </Route>
           <Route path="/Services/planner" exact>
             <HirePlanner />
           </Route>
@@ -96,24 +88,36 @@ const { user } = useAuth();
           </Route>
 
           <Route path="/Services/trip" exact>
-          <BookATrip />
-        </Route>
-          
-              </Switch>
-              <Footer />
-            </Router>
-          </div>
-        </>
-      {/* //   :
-      //   <LoginForm />
-      // } */}
+            <BookATrip />
+          </Route>
+          <Route path="/Parties" exact>
+            <Parties />
+          </Route>
+          <Route path="/Profile" exact>
+            <Profile />
+          </Route>
+          <Route path="/About" exact>
+            <About />
+          </Route>
+          <Route path="/inspiration/weddingparties" exact>
+            <WeddingParty />
+          </Route>
+          <Route path="/inspiration/birthdayparties" exact>
+            <BirthdayParty />
+          </Route>
+          <Route path="/inspiration/specialparties" exact>
+            <SpecialParty />
+          </Route>
+          <Route path="/inspiration/gradparties" exact>
+            <GradParty />
+          </Route>
 
-    </>
-  )
+          <Route path="/Services/places" exact>
+            <ReservePlace />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </div>
+  );
 }
-
-
-         
-
-
-
