@@ -2,8 +2,8 @@ import axios from 'axios'
 import useSWR from 'swr'
 import { useAuth } from '../Auth'
 
-export const apiUrl ="http://0.0.0.0:8000/api/v1/partyistic/inspiration"
-//  "https://partyistic.herokuapp.com/api/v1/partyistic/inspiration/"
+// export const apiUrl ="http://0.0.0.0:8000/api/v1/partyistic/inspiration"
+ export const apiUrl ="https://partyistic.herokuapp.com/api/v1/partyistic/inspiration/"
 // process.env.NEXT_PUBLIC_INSPIRATION_URL;
 
 export default function useResource() {

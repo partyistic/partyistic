@@ -1,8 +1,8 @@
 import { createContext , useContext ,useState } from "react";
 import jwt from 'jsonwebtoken';
 import axios from "axios"
-const baseUrl= "http://0.0.0.0:8000"
-// "https://partyistic.herokuapp.com"
+// const baseUrl= "http://0.0.0.0:8000"
+const baseUrl= "https://partyistic.herokuapp.com"
 
 
 
