@@ -2,7 +2,11 @@ import React from 'react';
 
 import { Col, Card, Form, Nav } from 'react-bootstrap'
 
+import useCars from '../hook/useServicesCars';
+
 export default function RentACar() {
+    
+    const cars = useCars().resources
 
     return (
         <>
@@ -43,85 +47,59 @@ export default function RentACar() {
             <br></br><br></br><br></br>
             <h1>Rent a Car</h1>
             <br></br><br></br>
+
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {cars && cars.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <a href="/Services/places"> <Card.Img variant="" alt="First image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                    </a>
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
 
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {cars && cars.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <Card.Img variant="" alt="First image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
 
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {cars && cars.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <a href="/Services/places"> <Card.Img variant="" alt="First image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                    </a>
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
         </>
     );

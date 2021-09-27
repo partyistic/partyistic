@@ -2,7 +2,14 @@ import React from 'react';
 
 import { Col, Card, Form, Nav } from 'react-bootstrap'
 
-export default function ReservePlace() {
+
+import usePlaces from '../hook/useServicesPlaces';
+
+
+
+export default function ReservePlace(props) {
+
+    const places = usePlaces().resources    
 
     return (
         <>
@@ -36,9 +43,6 @@ export default function ReservePlace() {
                     </Nav>
                 </div>
 
-
-
-
                 <div className="col">
                     <Form.Select className="col " aria-label="Default select example">
                         <option>City</option>
@@ -59,7 +63,6 @@ export default function ReservePlace() {
                     </Form.Select>
                 </div>
 
-
                 <div className="col">
                 <input type="text" placeholder="Maximum Price"></input>
                 </div>
@@ -69,85 +72,60 @@ export default function ReservePlace() {
             <br></br><br></br><br></br>
             <h1>Reserve A Place</h1>
             <br></br><br></br>
+
+            
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {places && places.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <a href="/Services/places"> <Card.Img variant="" alt="First image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                    </a>
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
 
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {places && places.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <Card.Img variant="" alt="First image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
 
             <div className="row row-cols-6">
 
-                <div className="col"></div>
-
+            <div className="col"></div>
+      
+              {places && places.map((item,key)=>key<4 && (
+      
                 <div className="col">
-                    <a href="/Services/places"> <Card.Img variant="" alt="First image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                    </a>
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img variant="" alt="Third image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-                <div className="col">
-                    <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-                </div>
-
-
-                <div className="col"></div>
-
-            </div>
+        
+                   <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+                  
+                  </div>
+                  )
+              )}
+                
+              <div className="col"></div>
+              </div>
             <br></br><br></br>
         </>
     );

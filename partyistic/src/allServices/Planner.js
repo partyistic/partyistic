@@ -2,42 +2,26 @@
 import React from 'react';
 import { Col, Card, Form } from 'react-bootstrap'
 
-export default function Planner() {
-
+export default function Planner(props) {
   return (
     <>
-        <h2>Hire a planner</h2>
+    <h2 className="align-middle">Hire a Planner</h2>
       <div className="row row-cols-6">
 
       <div className="col"></div>
 
-        <div className="col">
+        {props.planners && props.planners.map((item,key)=>key<4 && (
 
-          <a href="/Services/planner"><Card.Img variant="" alt="First image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
-        </a>
-          </div>
-
-        <div className="col">
-        <a href="/Services/planner"><Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/planner"><Card.Img variant="" alt="Third image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/planner"><Card.Img alt="Second image" src="https://afweddingdesigns.com/wp-content/uploads/2020/05/Job-of-a-Wedding-Planne-300x167.jpg" />
-        </a>
-
-        </div>
-        
+          <div className="col">
+  
+            <a href="/Services/planners"> <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+            </a>
+            </div>
+            )
+        )}
+          
         <div className="col"></div>
-
         </div>
-
-
 
     </>
   );

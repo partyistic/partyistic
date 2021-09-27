@@ -2,8 +2,7 @@
 import React from 'react';
 import { Col, Card, Form } from 'react-bootstrap'
 
-export default function Place() {
-
+export default function Place(props) {
 
   return (
     <>
@@ -12,34 +11,18 @@ export default function Place() {
 
       <div className="col"></div>
 
-        <div className="col">
+        {props.places && props.places.map((item,key)=>key<4 && (
 
-          <a href="/Services/places"> <Card.Img variant=""  alt="First image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-          </a>
-          </div>
-
-        <div className="col">
-        <a href="/Services/places"> <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/places"> <Card.Img variant="" alt="Third image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/places"> <Card.Img alt="Second image" src="https://www.arabiaweddings.com/sites/default/files/styles/max750/public/articles/2019/11/amman_wedding_venues_4.jpg?itok=J6kPkSfQ" />
-        </a>
-
-        </div>
-
-
+          <div className="col">
+  
+            <a href="/Services/places"> <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+            </a>
+            </div>
+            )
+        )}
+          
         <div className="col"></div>
-
         </div>
-
-
 
     </>
   );

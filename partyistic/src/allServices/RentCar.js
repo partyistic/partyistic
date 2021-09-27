@@ -2,37 +2,27 @@
 import React from 'react';
 import { Col, Card, Form } from 'react-bootstrap'
 
-export default function RentCar() {
+export default function RentCar(props) {
 
   return (
     <>
-        <h2>Rent a Car</h2>
+    <h2 className="align-middle">Rent a Car</h2>
       <div className="row row-cols-6">
+
       <div className="col"></div>
-        <div className="col">
 
-          <a href="/Services/cars"><Card.Img variant="" alt="First image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg"/>
-        </a>
-          </div>
+        {props.cars && props.cars.map((item,key)=>key<4 && (
 
-        <div className="col">
-        <a href="/Services/cars"><Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg"/>
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/cars"><Card.Img variant="" alt="Third image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg"/>
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/cars"><Card.Img alt="Second image" src="https://olympic-rentacar.gr/wp-content/uploads/2019/03/slide1.jpg"/>
-        </a>
-
-        </div>
+          <div className="col">
+  
+            <a href="/Services/cars"> <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+            </a>
+            </div>
+            )
+        )}
+          
         <div className="col"></div>
         </div>
-
 
     </>
   );
