@@ -20,10 +20,10 @@ import RentACar from './service_pages/RentACar';
 import BookATrip from './service_pages/BookATrip';
 
 
-import WeddingParty from './components/WeddingParty';
-import BirthdayParty from './components/BirhdayParty';
-import SpecialParty from './components/SpecialParty';
-import GradParty from './components/GradParty';
+import WeddingParty from './components/InspirationWedding';
+import BirthdayParty from './components/InspirationBirthday';
+import SpecialParty from './components/InspirationSpecial';
+import GradParty from './components/InspirationGraduation';
 import LoginForm from './components/LoginForm';
 import { useAuth } from './Auth';
 
