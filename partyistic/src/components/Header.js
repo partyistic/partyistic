@@ -2,7 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-export default function Header() {
+import { useAuth } from '../Auth';
+export default function Header(props) {
+
+    const { user, logout } = useAuth();
     return (
         <>
             <Navbar bg="primary" variant="dark">
@@ -16,7 +19,13 @@ export default function Header() {
                         <Nav.Link href="/About">About Us</Nav.Link>
                     </Nav>
                 </Container>
+                {user && (
+                    <>
+                        <button onClick={logout} className="w-20 h-6 text-center bg-green-700 rounded ">Logout</button>
+                    </>
+                )}
             </Navbar>
+
         </>
     );
 }
