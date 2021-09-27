@@ -1,25 +1,24 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import useResource from '../hook/ueseInspiration'
-import Carousel from 'react-bootstrap/Carousel'
+import Card from 'react-bootstrap/Card';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import useResource from '../hook/useInspiration';
+import Carousel from 'react-bootstrap/Carousel';
 
 import { useState } from 'react';
 
 export default function SpecialParty(props) {
   const { resources, loading } = useResource();
 
-  let special = []
+  let special = [];
 
-  resources && resources.map(item => {
-    item.type == 'Special' &&
-      special.push(item)
+  resources &&
+    resources.map((item) => {
+      item.type == 'Special' && special.push(item);
+    });
 
-  })
-
-  special = special.reverse()
-  console.log(special)
+  special = special.reverse();
+  console.log(special);
 
   const [showSpe, setShowSpe] = useState(false);
   const [spe, setSpe] = useState(false);
@@ -28,8 +27,7 @@ export default function SpecialParty(props) {
   const handleShow = (spe) => {
     setSpe(spe);
     setShowSpe(true);
-  }
-
+  };
 
   const modalshow = () => {
     if (showSpe) {
@@ -39,22 +37,22 @@ export default function SpecialParty(props) {
             <Modal.Header closeButton>
               <Modal.Title>{spe.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>{spe.description}
-              {spe.images &&
-
-                <Carousel  >
-                  {spe.images.images && spe.images.images.map(item => {
-                    return (item &&
-                      <Carousel.Item interval={3000}>
-                        <img
-                          src={item}
-                          alt={item}
-                        />
-                      </Carousel.Item>
-                    )
-                  })}
+            <Modal.Body>
+              {spe.description}
+              {spe.images && (
+                <Carousel>
+                  {spe.images.images &&
+                    spe.images.images.map((item) => {
+                      return (
+                        item && (
+                          <Carousel.Item interval={3000}>
+                            <img src={item} alt={item} />
+                          </Carousel.Item>
+                        )
+                      );
+                    })}
                 </Carousel>
-              }
+              )}
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
@@ -63,25 +61,27 @@ export default function SpecialParty(props) {
             </Modal.Footer>
           </Modal>
         </>
-      )
+      );
+    } else {
+      return <> </>;
     }
-    else {
-      return <> </>
-    }
-  }
+  };
   return (
     <>
-      {special && special.map((spe, key) => (
-        <>
-
-          <Card style={{ width: '18rem' }} onClick={() => { handleShow(spe) }}>
-            <Card.Img variant="top" src={spe.images.images[0]} />
-          </Card>
-
-        </>
-      ))}
+      {special &&
+        special.map((spe, key) => (
+          <>
+            <Card
+              style={{ width: '18rem' }}
+              onClick={() => {
+                handleShow(spe);
+              }}
+            >
+              <Card.Img variant="top" src={spe.images.images[0]} />
+            </Card>
+          </>
+        ))}
       {modalshow()}
     </>
   );
-
 }

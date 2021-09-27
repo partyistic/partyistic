@@ -6,7 +6,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import useResource from '../hook/useParties';
+import useResource from '../hook/uesParties';
 import { useAuth } from '../Auth';
 
 export default function Parties() {
