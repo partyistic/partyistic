@@ -1,7 +1,8 @@
 import { createContext , useContext ,useState } from "react";
 import jwt from 'jsonwebtoken';
 import axios from "axios"
-const baseUrl= "https://partyistic.herokuapp.com"
+const baseUrl= "http://0.0.0.0:8000"
+// "https://partyistic.herokuapp.com"
 
 
 
@@ -24,9 +25,9 @@ export function AuthProvider(props) {
         logout,
     });
 
-    async function login(username, password) {
+    async function login(email, password) {
 
-        const response = await axios.post(tokenUrl, { username, password });
+        const response = await axios.post(tokenUrl, { email, password });
         console.log(response,'responce')
         const decodedAccess = jwt.decode(response.data.access);
         console.log(decodedAccess,'decodedacses')
@@ -34,7 +35,7 @@ export function AuthProvider(props) {
         const newState = {
             tokens: response.data,
             user: {
-                username: decodedAccess.username,
+                user_name: decodedAccess.user_name,
                 email: decodedAccess.email,
                 id: decodedAccess.user_id
             },
