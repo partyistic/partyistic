@@ -25,7 +25,6 @@ import BirthdayParty from './components/BirhdayParty';
 import SpecialParty from './components/SpecialParty';
 import GradParty from './components/GradParty';
 import LoginForm from './components/LoginForm';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useAuth } from './Auth';
 
 export default function App() {
@@ -33,7 +32,7 @@ const { user } = useAuth();
 
   return (
     <>
-      {user ?
+      {/* {user ? */}
 
         <>
 
@@ -71,29 +70,7 @@ const { user } = useAuth();
                 <Route path="/inspiration/gradparties" exact>
                   <GradParty />
                 </Route>
-              </Switch>
-              <Footer />
-            </Router>
-          </div>
-        </>
-        :
-        <LoginForm />
-      }
 
-    </>
-  )
-}
-
-
-          <Route path="/Parties" exact>
-            <Parties />
-          </Route>
-          <Route path="/Profile" exact>
-            <Profile />
-          </Route>
-          <Route path="/About" exact>
-            <About />
-          </Route>
           <Route path="/Services/places" exact>
             <ReservePlace />
           </Route>
@@ -122,12 +99,21 @@ const { user } = useAuth();
           <BookATrip />
         </Route>
           
+              </Switch>
+              <Footer />
+            </Router>
+          </div>
+        </>
+      {/* //   :
+      //   <LoginForm />
+      // } */}
 
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
+    </>
+  )
 }
+
+
+         
+
 
 
