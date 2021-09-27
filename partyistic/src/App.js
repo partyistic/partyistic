@@ -32,7 +32,7 @@ const { user } = useAuth();
 
   return (
     <>
-      {/* {user ? */}
+      {user ?
 
         <>
 
@@ -104,9 +104,9 @@ const { user } = useAuth();
             </Router>
           </div>
         </>
-      {/* //   :
-      //   <LoginForm />
-      // } */}
+       :
+         <LoginForm />
+      }
 
     </>
   )
