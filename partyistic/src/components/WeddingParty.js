@@ -2,17 +2,24 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import useResource from '../hook/ueseInspiration'
+import Carousel from 'react-bootstrap/Carousel'
 
 import { useState } from 'react';
 
 export default function WeddingParty(props) {
-  const wedding = [
-    { id: 1, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', src1: '', src2: '', src3: '', title: '1', description: 'abc' },
-    { id: 2, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', src1: '', src2: '', src3: '', title: '2', description: 'cdf' },
-    { id: 3, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', src1: '', src2: '', src3: '', title: '3', description: 'rty' },
-    { id: 4, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', src1: '', src2: '', src3: '', title: '4', description: 'jkl' },
-    { id: 5, src: 'https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png', src1: '', src2: '', src3: '', title: '5', description: 'qws' },
-  ];
+  const { resources, loading } = useResource();
+
+  let wedding = []
+
+  resources && resources.map(item => {
+    item.type == 'Wedding' &&
+      wedding.push(item)
+
+  })
+
+  wedding = wedding.reverse()
+  console.log(wedding)
 
   const [showWed, setShowWed] = useState(false);
   const [wed, setWed] = useState(false);
@@ -30,18 +37,25 @@ export default function WeddingParty(props) {
         <>
           <Modal show={showWed} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{wed.title}</Modal.Title>
+              <Modal.Title>{wed.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>{wed.description}
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={wed.src1} />
-              </Card>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={wed.src2} />
-              </Card>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={wed.src3} />
-              </Card>
+              {wed.images &&
+
+                <Carousel  >
+                  {wed.images.images && wed.images.images.map(item => {
+                    return (item &&
+                      <Carousel.Item interval={3000}>
+                        <img
+                          src={item}
+                          alt={item}
+                        />
+                      </Carousel.Item>
+                    )
+                  })}
+                </Carousel>
+              }
+
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
@@ -58,17 +72,16 @@ export default function WeddingParty(props) {
   }
   return (
     <>
-      {wedding && wedding.map((wed, key) => (
+      {wedding && wedding.map((item, key) => (
         <>
 
-          {console.log(wed, key)}
-          <Card style={{ width: '18rem' }} onClick={() => { handleShow(wed) }}>
-            <Card.Img variant="top" src={wed.src} />
+          <Card style={{ width: '18rem' }} onClick={() => { handleShow(item) }}>
+            <Card.Img variant="top" src={item.images.images[0]} />
           </Card>
 
         </>
       ))}
-      {modalshow() }
+      {modalshow()}
     </>
   );
 
