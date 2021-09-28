@@ -1,15 +1,33 @@
 /** @format */
-
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
-import { Card, Form } from 'react-bootstrap';
-import useTrips from '../hook/useServicesTrips';
-import { useState } from 'react';
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+import { Card, Form } from "react-bootstrap";
+import useTrips from "../hook/useServicesTrips";
+import { useState, useEffect } from "react";
 
 export default function BookATrip() {
-  const trips = useTrips().resources;
+  const originalTrips = useTrips().resources;
+
+  const [trips, setTrips] = useState(originalTrips);
+  const App = () => {
+    setTrips(useTrips().resources);
+  };
+
+  function filtering() {
+    let lister = [];
+
+    originalTrips.map((item) => {
+      if (item.price <= price) {
+        lister.push(item);
+        console.log(lister, "trippeieirer");
+        setTrips(lister);
+      } else {
+        setTrips(lister);
+      }
+    });
+  }
 
   const [showtrip, setShowtrip] = useState(false);
   const [trip, setBd] = useState(false);
@@ -17,6 +35,11 @@ export default function BookATrip() {
   const handleShow = (trip) => {
     setBd(trip);
     setShowtrip(true);
+  };
+
+  const [price, setPrice] = useState(200000000);
+  const getPrice = (event) => {
+    setPrice(event.target.value);
   };
 
   const modalshow = () => {
@@ -28,7 +51,7 @@ export default function BookATrip() {
               <Modal.Title>{trip.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: "18rem" }}>
                 <Card.Body>
                   {trip.description}
                   {trip.images && (
@@ -65,13 +88,34 @@ export default function BookATrip() {
       return <> </>;
     }
   };
+
+  const [renderer, setRenderer] = useState(false);
+  const pricerRender = () => {
+    setRenderer(true);
+  };
+
   return (
     <>
-      <div className='row row-cols-4'>
-        <div className='col '></div>
+      <div className='row row-cols-5'>
+        <div className='col'></div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            AVAILABLE TRIPS
+          </Button>
+        </div>
 
         <div className='col'>
-          <input type='text' placeholder='Maximum Price'></input>
+          <input
+            type='text'
+            onChange={getPrice}
+            placeholder='Maximum Price'></input>
+        </div>
+        <div>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SEARCH TRIPS
+          </Button>
         </div>
       </div>
 
@@ -82,7 +126,7 @@ export default function BookATrip() {
           trips.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: '18rem' }}
+                style={{ width: "18rem" }}
                 onClick={() => {
                   handleShow(item);
                 }}>
