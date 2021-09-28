@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Regester';
 import Login from './components/login';
 import Logout from './components/logout';
-
+import AuthContext from './components/login'
 import Posts from './components/posts';
 import PostLoadingComponent from './components/postLoading';
 import axiosInstance from './axios';
@@ -31,16 +31,20 @@ import BirthdayParty from './components/InspirationBirthday';
 import SpecialParty from './components/InspirationSpecial';
 import GradParty from './components/InspirationGraduation';
 import { useAuth } from './Auth';
+// import SignIn from './components/login'
+import { useContext } from "react";
+
+
 
 export default function App() {
-  // const { user } = useAuth();
+  const authCtx = useContext(AuthContext);
+  const { user } = useAuth();
 
   const PostLoading = PostLoadingComponent(Posts);
   const [appState, setAppState] = useState({
     loading: true,
     posts: null,
   });
-
   useEffect(() => {
     axiosInstance.get().then((res) => {
       const allPosts = res.data;
@@ -50,14 +54,18 @@ export default function App() {
   }, [setAppState]);
 
   return (
+
     <div style={{ height: '100%' }}>
+
+
+
       <Router>
         <Header />
         <Switch>
+
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
-
           <Route path="/" exact>
             <Home />
           </Route>
@@ -67,18 +75,19 @@ export default function App() {
           <Route path="/Services" exact>
             <Services />
           </Route>
-          <Route path="/Services/planner" exact>
+          <Route path="/Services/planners" exact>
             <HirePlanner />
           </Route>
 
-          <Route path="/Services/musicBand" exact>
+
+          <Route path="/Services/musicbands" exact>
             <ChooseBand />
           </Route>
 
-          <Route path="/Services/photoSession" exact>
+          <Route path="/Services/photosessions" exact>
+
             <BookPhotoSession />
           </Route>
-
           <Route path="/Services/fashion" exact>
             <GetFashion />
           </Route>
@@ -87,7 +96,7 @@ export default function App() {
             <RentACar />
           </Route>
 
-          <Route path="/Services/trip" exact>
+          <Route path="/Services/trips" exact>
             <BookATrip />
           </Route>
           <Route path="/Parties" exact>
@@ -111,13 +120,20 @@ export default function App() {
           <Route path="/inspiration/gradparties" exact>
             <GradParty />
           </Route>
-
           <Route path="/Services/places" exact>
-            <ReservePlace />
+            <ReservePlace 
+            />
           </Route>
         </Switch>
         <Footer />
       </Router>
+
+
+
+
+
+
+
     </div>
   );
 }

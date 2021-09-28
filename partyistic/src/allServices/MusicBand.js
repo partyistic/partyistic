@@ -2,39 +2,27 @@
 import React from 'react';
 import { Col, Card, Form } from 'react-bootstrap'
 
-export default function MusicBand() {
+export default function MusicBand(props) {
 
   return (
     <>
-        <h2>Choose a Music Band</h2>
+    <h2 className="align-middle">Choose a Music Band</h2>
       <div className="row row-cols-6">
 
       <div className="col"></div>
-        <div className="col">
 
-          <a href="/Services/musicBand"><Card.Img variant="" alt="First image" src="https://media-api.theknot.com/images/eea9b5a5-6400-44e1-bd70-5d1a83748b96~rs_768.h" />
-        </a>
-          </div>
+        {props.musicbands && props.musicbands.map((item,key)=>key<4 && (
 
-        <div className="col">
-        <a href="/Services/musicBand"><Card.Img alt="Second image" src="https://media-api.theknot.com/images/eea9b5a5-6400-44e1-bd70-5d1a83748b96~rs_768.h" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/musicBand"><Card.Img variant="" alt="Third image" src="https://media-api.theknot.com/images/eea9b5a5-6400-44e1-bd70-5d1a83748b96~rs_768.h" />
-        </a>
-        </div>
-
-        <div className="col">
-        <a href="/Services/musicBand"><Card.Img alt="Second image" src="https://media-api.theknot.com/images/eea9b5a5-6400-44e1-bd70-5d1a83748b96~rs_768.h" />
-        </a>
-
-        </div>
+          <div className="col">
+  
+            <a href="/Services/musicbands"> <Card.Img variant=""  alt={item.images.images[0]} src={item.images.images[0]} />
+            </a>
+            </div>
+            )
+        )}
+          
         <div className="col"></div>
-      </div>
-
-
+        </div>
 
     </>
   );
