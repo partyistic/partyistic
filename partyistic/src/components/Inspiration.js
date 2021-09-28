@@ -1,16 +1,19 @@
-/** @format */
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import useResource from '../hook/useInspiration';
-import { useAuth } from '../Auth';
+import { useHistory } from 'react-router-dom';
 
 export default function Inspiration(props) {
-  const { resources, loading } = useResource();
-  const { user } = useAuth();
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
 
+    if (!get) { history.push('/login') }
+  },[])
+
+  const { resources } = useResource();
   let wedding = [];
   let grad = [];
   let birthday = [];
