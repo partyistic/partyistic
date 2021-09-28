@@ -145,7 +145,7 @@ export default function Services(props) {
         Create a Service
       </button>
 
-      <div className="reserve_a_place">
+      <div id="reserve_a_place">
         {' '}
         <Place 
         places={places}
@@ -155,7 +155,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div>
+      <div id="hire_a_planner">
         {' '}
         <Planner 
         planners={planners}
@@ -164,7 +164,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div>
+      <div id="choose_a_music_band">
         {' '}
         <MusicBand 
         musicbands={musicbands}
@@ -173,7 +173,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div>
+      <div id="photo_session">
         {' '}
         <PhotoSession 
         photosessions={photosessions}
@@ -182,7 +182,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div>
+      <div id="get_fashion">
         {' '}
         <Fashion 
         fashion={fashion}
@@ -191,7 +191,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div>
+      <div id="rent_car">
         {' '}
         <RentCar 
         cars={cars}
@@ -200,7 +200,7 @@ export default function Services(props) {
       <br></br>
       <br></br>
 
-      <div name="book_trip">
+      <div name="book_trip" id="book_trip">
         {' '}
         <BookTrip 
         trips={trips}
