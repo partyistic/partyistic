@@ -15,31 +15,45 @@ export default function RentACar() {
     setCars(useCars().resources);
   };
 
-  const [price, setPrice] = useState(2000000000);
+  const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
 
+
+  
+  let date = document.getElementById("date");
+  const [selectedDate, setDate] = useState("Available Date")
+  const getDateValue = () => {
+    // let selectedCity = city.options[city.selectedIndex];
+    setDate(date.options[date.selectedIndex].value)
+  };
+  console.log(selectedDate);
+
+
   let city = document.getElementById("city");
   const [selectedCity, setCity] = useState("City")
   const getCityValue = () => {
-    // let selectedCity = city.options[city.selectedIndex];
     setCity(city.options[city.selectedIndex].value)
   };
   console.log(selectedCity);
-
+  
   function filtering() {
     let lister = [];
 
     originalCars.map((item) => {
-      if ( ((item.price) <= price && (item.city == selectedCity || selectedCity == "City")) ) {
+      // console.log(item)
+      if ((item.price <= price || item.price == '') && (item.city == selectedCity || selectedCity == "City") && ( item.booked_dates == null || item.booked_dates.dates[0] == selectedDate || item.booked_dates.dates[1] == selectedDate || selectedDate == "Available Date")) {
         lister.push(item);
-        console.log(lister, "trippeieirer");
+        // console.log(lister, "trippeieirer");
+        // console.log(item.booked_dates)
         setCars(lister);
-      } else {
+      } 
+      // else {
+      //   setCars([])
         
-        console.log(lister,"trying to sdo it")
-      }
+      //   console.log(lister,"trying to sdo it")
+      // }
     });
   }
 
@@ -134,12 +148,12 @@ export default function RentACar() {
         </div>
 
         <div className='col'>
-          <Form.Select className='col ' aria-label='Default select example'>
-            <option>Available Month</option>
-            <option value='1'>January</option>
-            <option value='2'>February</option>
-            <option value='3'>March</option>
-            <option value='3'>April</option>
+          <Form.Select className='col' id="date" onChange = {getDateValue} aria-label='Default select example'>
+            <option value="Available Date">Available Date</option>
+            <option value="2021/19/3">2021/19/3</option>
+            <option value='2020/10/1'>2020/10/1</option>
+            <option value='2013/31/1'>2013/31/1</option>
+            <option value='32011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
         <div className='col'>
