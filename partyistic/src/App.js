@@ -32,9 +32,17 @@ import SpecialParty from './components/InspirationSpecial';
 import GradParty from './components/InspirationGraduation';
 import { useAuth } from './Auth';
 
-export default function App() {
-  // const { user } = useAuth();
 
+
+
+export default function App() {
+  
+
+  
+  
+  
+  // const { user } = useAuth();
+  
   const PostLoading = PostLoadingComponent(Posts);
   const [appState, setAppState] = useState({
     loading: true,
@@ -67,15 +75,15 @@ export default function App() {
           <Route path="/Services" exact>
             <Services />
           </Route>
-          <Route path="/Services/planner" exact>
+          <Route path="/Services/planners" exact>
             <HirePlanner />
           </Route>
 
-          <Route path="/Services/musicBand" exact>
+          <Route path="/Services/musicbands" exact>
             <ChooseBand />
           </Route>
 
-          <Route path="/Services/photoSession" exact>
+          <Route path="/Services/photosessions" exact>
             <BookPhotoSession />
           </Route>
 
@@ -87,7 +95,7 @@ export default function App() {
             <RentACar />
           </Route>
 
-          <Route path="/Services/trip" exact>
+          <Route path="/Services/trips" exact>
             <BookATrip />
           </Route>
           <Route path="/Parties" exact>
@@ -113,7 +121,8 @@ export default function App() {
           </Route>
 
           <Route path="/Services/places" exact>
-            <ReservePlace />
+            <ReservePlace 
+            />
           </Route>
         </Switch>
         <Footer />
