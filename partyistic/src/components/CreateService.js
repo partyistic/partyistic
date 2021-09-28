@@ -396,9 +396,7 @@ export default function CreateService(props) {
                     />
                   </Form.Group>
                 </div>
-                <Button variant='secondary' onClick={props.handleClose}>
-                  Close
-                </Button>
+
                 <Button variant='primary' type='submit'>
                   Submit
                 </Button>
