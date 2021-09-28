@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
@@ -57,10 +59,10 @@ export default function Inspiration(props) {
           (item, key) =>
             key < 3 && (
               <Nav>
-                <Nav.Link href="/inspiration/weddingparties">
+                <Nav.Link href='/inspiration/weddingparties'>
                   {' '}
                   <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
@@ -73,10 +75,10 @@ export default function Inspiration(props) {
           (item, key) =>
             key < 3 && (
               <Nav>
-                <Nav.Link href="/inspiration/gradparties">
+                <Nav.Link href='/inspiration/gradparties'>
                   {' '}
                   <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
@@ -89,10 +91,10 @@ export default function Inspiration(props) {
           (item, key) =>
             key < 3 && (
               <Nav>
-                <Nav.Link href="/inspiration/birthdayparties">
+                <Nav.Link href='/inspiration/birthdayparties'>
                   {' '}
                   <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
@@ -105,10 +107,10 @@ export default function Inspiration(props) {
           (item, key) =>
             key < 3 && (
               <Nav>
-                <Nav.Link href="/inspiration/specialparties">
+                <Nav.Link href='/inspiration/specialparties'>
                   {' '}
                   <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>

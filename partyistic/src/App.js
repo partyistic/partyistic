@@ -35,9 +35,11 @@ import { useAuth } from './Auth';
 import { useContext } from "react";
 
 
+
 export default function App() {
   const authCtx = useContext(AuthContext);
   const { user } = useAuth();
+
   const PostLoading = PostLoadingComponent(Posts);
   const [appState, setAppState] = useState({
     loading: true,
@@ -73,13 +75,17 @@ export default function App() {
           <Route path="/Services" exact>
             <Services />
           </Route>
-          <Route path="/Services/planner" exact>
+          <Route path="/Services/planners" exact>
             <HirePlanner />
           </Route>
-          <Route path="/Services/musicBand" exact>
+
+
+          <Route path="/Services/musicbands" exact>
             <ChooseBand />
           </Route>
-          <Route path="/Services/photoSession" exact>
+
+          <Route path="/Services/photosessions" exact>
+
             <BookPhotoSession />
           </Route>
           <Route path="/Services/fashion" exact>
@@ -90,7 +96,7 @@ export default function App() {
             <RentACar />
           </Route>
 
-          <Route path="/Services/trip" exact>
+          <Route path="/Services/trips" exact>
             <BookATrip />
           </Route>
           <Route path="/Parties" exact>
@@ -115,7 +121,8 @@ export default function App() {
             <GradParty />
           </Route>
           <Route path="/Services/places" exact>
-            <ReservePlace />
+            <ReservePlace 
+            />
           </Route>
         </Switch>
         <Footer />
