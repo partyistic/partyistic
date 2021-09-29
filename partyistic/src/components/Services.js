@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import CreateService from './CreateService';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Place from '../allServices/Place';
 import Planner from '../allServices/Planner';
 import MusicBand from '../allServices/MusicBand';
@@ -20,9 +20,12 @@ import usePlaces from '../hook/useServicesPlaces';
 import useTrips from '../hook/useServicesTrips';
 import usePlanners from '../hook/useServicesPlanners';
 import usePhotosessions from '../hook/useServicesPhotosessions';
+import { useHistory } from 'react-router-dom';
 
 
 export default function Services(props) {
+  const history = useHistory();
+
   const cars = useCars().resources
   const fashion = useFashion().resources
   const planners = usePlanners().resources
@@ -34,6 +37,11 @@ export default function Services(props) {
 
   console.log(cars,fashion,planners,trips,photosessions,places,musicbands);
   
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
   
   
   

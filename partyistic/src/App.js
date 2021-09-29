@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,11 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Regester';
 import Login from './components/login';
 import Logout from './components/logout';
-import AuthContext from './components/login'
-import Posts from './components/posts';
-import PostLoadingComponent from './components/postLoading';
 import axiosInstance from './axios';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReservePlace from './service_pages/ReservePlace';
 import HirePlanner from './service_pages/HirePlanner';
@@ -30,28 +26,18 @@ import WeddingParty from './components/InspirationWedding';
 import BirthdayParty from './components/InspirationBirthday';
 import SpecialParty from './components/InspirationSpecial';
 import GradParty from './components/InspirationGraduation';
-import { useAuth } from './Auth';
-// import SignIn from './components/login'
-import { useContext } from "react";
-
-
+import { useHistory } from 'react-router-dom';
 
 export default function App() {
-  const authCtx = useContext(AuthContext);
-  const { user } = useAuth();
-
-  const PostLoading = PostLoadingComponent(Posts);
-  const [appState, setAppState] = useState({
-    loading: true,
-    posts: null,
-  });
+  const history = useHistory();
+  
+  
   useEffect(() => {
-    axiosInstance.get().then((res) => {
-      const allPosts = res.data;
-      setAppState({ loading: false, posts: allPosts });
-      console.log(res.data);
-    });
-  }, [setAppState]);
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
+
 
   return (
 
@@ -75,17 +61,13 @@ export default function App() {
           <Route path="/Services" exact>
             <Services />
           </Route>
-          <Route path="/Services/planners" exact>
+          <Route path="/Services/planner" exact>
             <HirePlanner />
           </Route>
-
-
-          <Route path="/Services/musicbands" exact>
+          <Route path="/Services/musicBand" exact>
             <ChooseBand />
           </Route>
-
-          <Route path="/Services/photosessions" exact>
-
+          <Route path="/Services/photoSession" exact>
             <BookPhotoSession />
           </Route>
           <Route path="/Services/fashion" exact>
@@ -96,7 +78,7 @@ export default function App() {
             <RentACar />
           </Route>
 
-          <Route path="/Services/trips" exact>
+          <Route path="/Services/trip" exact>
             <BookATrip />
           </Route>
           <Route path="/Parties" exact>
@@ -121,8 +103,7 @@ export default function App() {
             <GradParty />
           </Route>
           <Route path="/Services/places" exact>
-            <ReservePlace 
-            />
+            <ReservePlace />
           </Route>
         </Switch>
         <Footer />

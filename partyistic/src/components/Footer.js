@@ -1,5 +1,5 @@
 'use strict';
-import React from 'react';
+import React ,{useState,useEffect} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,7 +7,8 @@ import { FaGithub } from "react-icons/fa"
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
 
 export default function Footer()  {
-    
+
+
      return (
         <>
         <div>

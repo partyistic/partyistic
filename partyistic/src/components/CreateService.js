@@ -7,9 +7,15 @@ import { Col, Card } from 'react-bootstrap'
 import ImageBrowserForm from './ImageBrowserForm'
 import Services from './Services'
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 
 export default function CreateService(props) {
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
 
+    if (!get) { history.push('/login') }
+  },[])
  
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);

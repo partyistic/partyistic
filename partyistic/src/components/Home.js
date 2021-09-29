@@ -1,11 +1,18 @@
-import React from 'react';
+import React ,{useEffect, useState}from 'react';
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
-export default function Home(props) {
-   
+import { useHistory } from 'react-router-dom';
+
+export default function Home() {
+    const history = useHistory();
+    useEffect(() => {
+        let get = localStorage.getItem('access_token')
+    
+        if (!get) { history.push('/login') }
+      },[])
     return (
         <>
-      
+   
             <h1>  Partystic </h1>
             <div>
 
