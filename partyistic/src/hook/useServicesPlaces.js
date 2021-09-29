@@ -1,3 +1,5 @@
+/** @format */
+
 // import axios from 'axios';
 // import useSWR from 'swr';
 // import { useAuth } from '../Auth';
@@ -81,14 +83,15 @@ import axios from 'axios';
 import useSWR from 'swr';
 import { useAuth } from '../Auth';
 
-export const apiUrl =
-  'https://partyistic.herokuapp.com/api/v1/partyistic/places/';
+// export const apiUrl =
+//   'https://partyistic.herokuapp.com/api/v1/partyistic/places/';
 
 export default function usePlaces() {
-  const { logout } = useAuth();
-
-  const { data, error, mutate } = useSWR([apiUrl], fetchResource);
-
+  const { tokens, logout } = useAuth();
+  const { data, error, mutate } = useSWR(
+    ['https://partyistic.herokuapp.com/api/v1/partyistic/places/'],
+    fetchResource
+  );
   async function fetchResource(apiUrl) {
     try {
       const response = await axios.get(apiUrl);
@@ -98,17 +101,67 @@ export default function usePlaces() {
       handleError(error);
     }
   }
+  function handleError(error) {
+    console.error(error);
+    logout();
+  }
 
-  // async function createResource(info) {
+  async function createPlace(info) {
+    console.log('hello2');
 
-  //     try {
-  //         await axios.post(apiUrl, info, config());
-  //         mutate(); // mutate causes complete collection to be refetched
-  //     } catch (error) {
-  //         handleError(error);
-  //     }
+    try {
+      await axios.post(
+        'https://partyistic.herokuapp.com/api/v1/partyistic/places/',
+        info,
+        config()
+      );
+      mutate(); // mutate causes complete collection to be refetched
+    } catch (error) {
+      handleError(error);
+    }
+  }
+  function config() {
+    console.log('hello');
+    return {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+      },
+    };
+  }
+
+  // console.log('hi');
+  // const { tokens, logout } = useAuth();
+
+  // const { data, error, mutate } = useSWR([apiUrl], fetchResource);
+
+  // async function fetchResource(apiUrl) {
+  //   try {
+  //     const response = await axios.get(apiUrl);
+
+  //     return response.data;
+  //   } catch (error) {
+  //     handleError(error);
+  //   }
   // }
 
+  // async function createPlace(info) {
+  //   console.log('hello2');
+
+  //   try {
+  //     await axios.post(apiUrl, info, config());
+  //     mutate(); // mutate causes complete collection to be refetched
+  //   } catch (error) {
+  //     handleError(error);
+  //   }
+  // }
+  // function config() {
+  //   console.log('hello');
+  //   return {
+  //     headers: {
+  //       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+  //     },
+  //   };
+  // }
   // async function deleteResource(id) {
 
   //     try {
@@ -133,7 +186,7 @@ export default function usePlaces() {
   return {
     resources: data,
     error,
-    // createResource,
+    createResource: createPlace,
     // deleteResource,
     // updateResource,
   };
