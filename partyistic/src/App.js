@@ -41,7 +41,7 @@ export default function App() {
 
   return (
 
-    <div style={{ height: '100%' }}>
+    <div style={{ height: '100%', backgroundColor:"#221E1D" }}>
 
 
 
