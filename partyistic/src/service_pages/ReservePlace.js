@@ -44,7 +44,7 @@ export default function ReservePlace(props) {
 
     originalPlaces.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||

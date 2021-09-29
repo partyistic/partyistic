@@ -22,6 +22,8 @@ import GetFashion from './service_pages/GetFashion';
 import RentACar from './service_pages/RentACar';
 import BookATrip from './service_pages/BookATrip';
 
+
+
 import WeddingParty from './components/InspirationWedding';
 import BirthdayParty from './components/InspirationBirthday';
 import SpecialParty from './components/InspirationSpecial';
@@ -64,10 +66,10 @@ export default function App() {
           <Route path="/Services/planners" exact>
             <HirePlanner />
           </Route>
-          <Route path="/Services/musicBand" exact>
+          <Route path="/Services/musicbands" exact>
             <ChooseBand />
           </Route>
-          <Route path="/Services/photoSession" exact>
+          <Route path="/Services/photosessions" exact>
             <BookPhotoSession />
           </Route>
           <Route path="/Services/fashion" exact>
@@ -78,7 +80,7 @@ export default function App() {
             <RentACar />
           </Route>
 
-          <Route path="/Services/trip" exact>
+          <Route path="/Services/trips" exact>
             <BookATrip />
           </Route>
           <Route path="/Parties" exact>

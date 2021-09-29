@@ -1,5 +1,13 @@
 /** @format */
 
+
+
+
+
+
+import useTrips from "../hook/useServicesTrips";
+
+
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -22,7 +30,7 @@ export default function BookATrip() {
     let lister = [];
 
     originalTrips.map((item) => {
-      if (item.price <= price) {
+      if (item.price <= price || price=="") {
         lister.push(item);
         console.log(lister, 'trippeieirer');
         setTrips(lister);

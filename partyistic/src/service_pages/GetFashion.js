@@ -32,7 +32,7 @@ export default function GetFashion() {
 
     originalFashion.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City")
       ) {
         lister.push(item);
@@ -114,14 +114,23 @@ export default function GetFashion() {
           <br></br>
     <br></br>
       <div className='row row-cols-6'>
+
+    
+      
+    
+        
+       
+
         <div className='col'>
           <button 
            style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
            variant='primary' onClick={filtering}>
+
             {" "}
             SHOW ALL FASHION
           </button>
         </div>
+
         <br></br>
         <div className='col '>
           <Nav
@@ -135,6 +144,7 @@ export default function GetFashion() {
             </Nav.Item>
           </Nav>
         </div>
+
 
         <div className='col'>
           <Form.Select
