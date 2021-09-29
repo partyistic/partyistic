@@ -1,4 +1,3 @@
-
 /** @format */
 
 import React, { Component } from 'react';
@@ -8,22 +7,23 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Col, Card, Dropdown } from 'react-bootstrap';
 import ImageBrowserForm from './ImageBrowserForm';
-import Services from './Services'
+import Services from './Services';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 
 import axios from 'axios';
 
 export default function CreateService(props) {
-    const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
-    let get = localStorage.getItem('access_token')
+    let get = localStorage.getItem('access_token');
 
-    if (!get) { history.push('/login') }
-  },[])
-  
+    if (!get) {
+      history.push('/login');
+    }
+  }, []);
+
   async function createPlace(info) {
     await axios.post(
       'https://partyistic.herokuapp.com/api/v1/partyistic/places/',
@@ -37,7 +37,6 @@ export default function CreateService(props) {
       info
     );
   }
-
 
   async function createFashion(info) {
     await axios.post(
@@ -134,12 +133,18 @@ export default function CreateService(props) {
 
   return (
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Dialog>
+      <Modal 
+      size="lg"
+      show={props.show} onHide={props.handleClose}>
+        {/* <Modal.Dialog> */}
           <Modal.Header closeButton>
-            <Modal.Title>Create a service</Modal.Title>
+            <Modal.Title
+            style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+            >Create a service</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+           style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+          >
             <Form
               onSubmit={(event) => {
                 event.preventDefault();
@@ -294,16 +299,18 @@ export default function CreateService(props) {
 
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Control
-                  type='text'
+                  as='textarea'
                   onChange={getDescriptionChange}
-                  placeholder='Description'
+                  placeholder='Add Description'
                   required
                 />
               </Form.Group>
 
               <Form.Group as={Row} className='mb-3'>
-                <Col sm={{ span: 10, offset: 2 }}>
+                <Col >
                   <input
+
+                  style={{backgroundColor:"transparent", width:"100%"}}
                     type='button'
                     value='Add a Photo'
                     onClick={handleShow}
@@ -329,7 +336,7 @@ export default function CreateService(props) {
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
-                      type='text'
+                      type='textarea'
                       onChange={getLocationChange}
                       placeholder='Location Link'
                     />
@@ -372,19 +379,18 @@ export default function CreateService(props) {
 
               <br></br>
               <div className='row row-cols-3'>
-                {/* <div className='mb-3 col'>
+                <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
                       type='email'
                       id='email'
-                      pattern='.+@gmail\.com'
                       size='30'
                       required
                       onChange={getEmailChange}
                       placeholder='Email'
                     />
                   </Form.Group>
-                </div> */}
+                </div>
 
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
@@ -406,18 +412,23 @@ export default function CreateService(props) {
                       placeholder='Price'
                       required
                     />
+                    
                   </Form.Group>
                 </div>
-
-                <Button variant='primary' type='submit'>
+                    <br></br>
+                <button 
+                style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+                variant='primary' type='submit'>
+                  
+                  
                   Submit
-                </Button>
+                </button>
               </div>
             </Form>
           </Modal.Body>
 
-          <Modal.Footer></Modal.Footer>
-        </Modal.Dialog>
+         
+        {/* </Modal.Dialog> */}
 
         <ImageBrowserForm show={show} handleClose={handleClose} />
       </Modal>

@@ -3,15 +3,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Nav, Card, Form } from "react-bootstrap";
-import usePlaces from "../hook/useServicesPlaces";
 import { useState } from "react";
-
+import useResourceplaces from "../hook/useServicesPlaces";
 export default function ReservePlace(props) {
-  const originalPlaces = usePlaces().resources;
+  const originalPlaces = useResourceplaces().placeresources;
 
   const [places, setPlaces] = useState(originalPlaces);
   const App = () => {
-    setPlaces(usePlaces().resources);
+    setPlaces(useResourceplaces().placeresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -73,22 +72,35 @@ export default function ReservePlace(props) {
     if (showPlace) {
       return (
         <>
-          <Modal show={showPlace} onHide={handleClose} animation={false}>
+          <Modal 
+          size="lg"
+          show={showPlace} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{place.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+              
+              >{place.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Card style={{ width: "18rem" }}>
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+           
+            >
+              <Card style={{ width: '100%' }}>
                 <Card.Body>
                   {place.description}
                   {place.images && (
-                    <Carousel>
+                    <Carousel
+                    fade style={{borderRadius:"1%", width:"100%"}}
+                    
+                    >
                       {place.images.images &&
                         place.images.images.map((item) => {
                           return (
                             item && (
                               <Carousel.Item interval={3000}>
-                                <img src={item} alt={item} />
+                                <img 
+                                style={{width:"100%"}}
+                                src={item} alt={item} />
                               </Carousel.Item>
                             )
                           );
@@ -109,7 +121,7 @@ export default function ReservePlace(props) {
                   {place.booked_dates &&
                     place.booked_dates.dates.map((date) => (
                       <Card.Text>{date}</Card.Text>
-                    ))}
+                      ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
@@ -125,31 +137,40 @@ export default function ReservePlace(props) {
   };
   return (
     <>
+    <h1
+    style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    >Reserve A Place</h1>
+    <br></br>
+    <br></br>
       <div className='row row-cols-7'>
-        <div className='col'></div>
+        {/* <div className='col'></div> */}
 
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+          style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          variant='primary' onClick={filtering}>
             {" "}
             SHOW ALL PLACES
-          </Button>
+          </button>
         </div>
-
+        <br></br>
         <div className='col'>
           <Form.Select
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             className='col'
             id='type'
             onChange={getTypeValue}
             aria-label='Default select example'>
-            <option value='All'>All</option>
-            <option value='Hall'>Hall</option>
-            <option value='Restaurant'>Restaurant</option>
-            <option value='Farm'>Farm</option>
+            <option style={{color:"black"}} value='All'>All</option>
+            <option style={{color:"black"}} value='Hall'>Hall</option>
+            <option style={{color:"black"}} value='Restaurant'>Restaurant</option>
+            <option style={{color:"black"}} value='Farm'>Farm</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <Form.Select
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             id='city'
             className='col'
             onChange={getCityValue}
@@ -157,62 +178,71 @@ export default function ReservePlace(props) {
             <option value='City' selected>
               City
             </option>
-            <option value='Amman'>Amman</option>
-            <option value='Zarqa'>Zarqa</option>
-            <option value='Irbid'>Irbid</option>
-            <option value='Al-Mafraq'>Al-Mafraq</option>
-            <option value='Jarash'>Jarash</option>
-            <option value='Ajloun'>Ajloun</option>
-            <option value='As-Salt'>As-Salt</option>
-            <option value='Madaba'>Madaba</option>
-            <option value='karak'>karak</option>
-            <option value='Tafilah'>Tafilah</option>
-            <option value='Maan'>Maan</option>
-            <option value='Aqaba'>Aqaba</option>
+            <option style={{color:"black"}} value='Amman'>Amman</option>
+            <option style={{color:"black"}} value='Zarqa'>Zarqa</option>
+            <option style={{color:"black"}} value='Irbid'>Irbid</option>
+            <option style={{color:"black"}} value='Al-Mafraq'>Al-Mafraq</option>
+            <option style={{color:"black"}} value='Jarash'>Jarash</option>
+            <option style={{color:"black"}} value='Ajloun'>Ajloun</option>
+            <option style={{color:"black"}} value='As-Salt'>As-Salt</option>
+            <option style={{color:"black"}} value='Madaba'>Madaba</option>
+            <option style={{color:"black"}} value='karak'>karak</option>
+            <option style={{color:"black"}} value='Tafilah'>Tafilah</option>
+            <option style={{color:"black"}} value='Maan'>Maan</option>
+            <option style={{color:"black"}} value='Aqaba'>Aqaba</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <Form.Select
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             className='col'
             id='date'
             onChange={getDateValue}
             aria-label='Default select example'>
-            <option value='Available Date'>Available Date</option>
-            <option value='2021/19/3'>2021/19/3</option>
-            <option value='2020/10/1'>2020/10/1</option>
-            <option value='2013/31/1'>2013/31/1</option>
-            <option value='32011/24/4'>2011/24/4</option>
+            <option style={{color:"black"}} value='Available Date'>Available Date</option>
+            <option style={{color:"black"}} value='2021/19/3'>2021/19/3</option>
+            <option style={{color:"black"}} value='2020/10/1'>2020/10/1</option>
+            <option style={{color:"black"}} value='2013/31/1'>2013/31/1</option>
+            <option style={{color:"black"}} value='32011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <input
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
 
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+          
+          style={{  background:"transparent", color: "#fff", borderBlockColor:"black",fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          
+          variant='primary' onClick={filtering}>
             {" "}
             SEARCH
-          </Button>
+          </button>
         </div>
       </div>
 
-      <h1>Reserve A Place</h1>
-
+      <br></br>
+      <br></br>
       <div className='row row-cols-6'>
         {places &&
           places.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: "18rem" }}
+              style={{ height:"20rem", marginTop:"3%" }}
+               
                 onClick={() => {
                   handleShow(item);
                 }}>
-                <Card.Img variant='top' src={item.images.images[0]} />
+                <Card.Img 
+                style={{ height:"100%" }}
+                variant='top' src={item.images.images[0]} />
               </Card>
             </div>
           ))}
