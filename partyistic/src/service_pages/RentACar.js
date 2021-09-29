@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import useCars from "../hook/useServicesCars";
+import useResourceCar from "../hook/useServicesCars"; 
 import { useState } from "react";
 
 export default function RentACar() {
-  const originalCars = useCars().resources;
+  const originalCars = useResourceCar().carresources;
 
   const [cars, setCars] = useState(originalCars);
   const App = () => {
-    setCars(useCars().resources);
+    setCars(useResourceCar().carresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -38,7 +38,7 @@ export default function RentACar() {
 
     originalCars.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
@@ -65,22 +65,34 @@ export default function RentACar() {
     if (showCar) {
       return (
         <>
-          <Modal show={showCar} onHide={handleClose} animation={false}>
+          <Modal 
+           size="lg"
+          show={showCar} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{car.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+              
+              >{car.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Card style={{ width: "18rem" }}>
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+           
+            >
+              <Card style={{ width: '100%' }}>
                 <Card.Body>
                   {car.description}
                   {car.images && (
-                    <Carousel>
+                    <Carousel
+                    fade style={{borderRadius:"1%", width:"100%"}}
+                    >
                       {car.images.images &&
                         car.images.images.map((item) => {
                           return (
                             item && (
                               <Carousel.Item interval={3000}>
-                                <img src={item} alt={item} />
+                                <img 
+                                style={{width:"100%"}}
+                                src={item} alt={item} />
                               </Carousel.Item>
                             )
                           );
@@ -99,7 +111,7 @@ export default function RentACar() {
                   {car.booked_dates &&
                     car.booked_dates.dates.map((date) => (
                       <Card.Text>{date}</Card.Text>
-                    ))}
+                      ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
@@ -113,16 +125,26 @@ export default function RentACar() {
   };
   return (
     <>
+    <h1
+    style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    >Rent a Car</h1>
+
+<br></br>
+    <br></br>
       <div className='row row-cols-6'>
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+          style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          
+          variant='primary' onClick={filtering}>
             {" "}
             ShOW ALL CARS
-          </Button>
+          </button>
         </div>
-
+        <br></br>
         <div className='col'>
           <Form.Select
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             id='city'
             className='col '
             onChange={getCityValue}
@@ -130,62 +152,71 @@ export default function RentACar() {
             <option value='City' selected>
               City
             </option>
-            <option value='Amman'>Amman</option>
-            <option value='Zarqa'>Zarqa</option>
-            <option value='Irbid'>Irbid</option>
-            <option value='Al-Mafraq'>Al-Mafraq</option>
-            <option value='Jarash'>Jarash</option>
-            <option value='Ajloun'>Ajloun</option>
-            <option value='As-Salt'>As-Salt</option>
-            <option value='Madaba'>Madaba</option>
-            <option value='Karak'>Karak</option>
-            <option value='Tafilah'>Tafilah</option>
-            <option value='Maan'>Maan</option>
-            <option value='Aqaba'>Aqaba</option>
+            <option style={{color:"black"}} value='Amman'>Amman</option>
+            <option style={{color:"black"}} value='Zarqa'>Zarqa</option>
+            <option style={{color:"black"}} value='Irbid'>Irbid</option>
+            <option style={{color:"black"}} value='Al-Mafraq'>Al-Mafraq</option>
+            <option style={{color:"black"}} value='Jarash'>Jarash</option>
+            <option style={{color:"black"}} value='Ajloun'>Ajloun</option>
+            <option style={{color:"black"}} value='As-Salt'>As-Salt</option>
+            <option style={{color:"black"}} value='Madaba'>Madaba</option>
+            <option style={{color:"black"}} value='Karak'>Karak</option>
+            <option style={{color:"black"}} value='Tafilah'>Tafilah</option>
+            <option style={{color:"black"}} value='Maan'>Maan</option>
+            <option style={{color:"black"}} value='Aqaba'>Aqaba</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <Form.Select
+
+style={{backgroundColor:"transparent" , color:"#fff"}}
             className='col'
             id='date'
             onChange={getDateValue}
             aria-label='Default select example'>
-            <option value='Available Date'>Available Date</option>
-            <option value='2021/19/3'>2021/19/3</option>
-            <option value='2020/10/1'>2020/10/1</option>
-            <option value='2013/31/1'>2013/31/1</option>
-            <option value='32011/24/4'>2011/24/4</option>
+            <option style={{color:"black"}} value='Available Date'>Available Date</option>
+            <option style={{color:"black"}} value='2021/19/3'>2021/19/3</option>
+            <option style={{color:"black"}} value='2020/10/1'>2020/10/1</option>
+            <option style={{color:"black"}} value='2013/31/1'>2013/31/1</option>
+            <option style={{color:"black"}} value='32011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <input
+           style={{backgroundColor:"transparent" , color:"#fff"}}
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
 
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+            style={{  background:"transparent", color: "#fff", borderBlockColor:"black",fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          
+          variant='primary' onClick={filtering}>
             {" "}
             SEARCH
-          </Button>
+          </button>
         </div>
       </div>
 
-      <h1>Rent a Car</h1>
 
+      <br></br>
+      <br></br>
       <div className='row row-cols-6'>
         {cars &&
           cars.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: "18rem" }}
+               style={{ height:"20rem", marginTop:"3%" }}
                 onClick={() => {
                   handleShow(item);
                 }}>
-                <Card.Img variant='top' src={item.images.images[0]} />
+                <Card.Img 
+                 style={{ height:"100%" }}
+                variant='top' src={item.images.images[0]} />
               </Card>
             </div>
           ))}
