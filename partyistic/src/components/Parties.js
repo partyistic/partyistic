@@ -69,22 +69,34 @@ export default function Parties() {
     if (showParty) {
       return (
         <>
-          <Modal show={showParty} onHide={handleCloseDetail} animation={false}>
+          <Modal 
+          
+          size="lg"
+          show={showParty} onHide={handleCloseDetail} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{Party.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+              >{Party.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Card style={{ width: '18rem' }}>
+            <br></br>
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+            >
+              <Card style={{ width: '100%' }}>
                 <Card.Body>
                   {Party.description}
                   {Party.images && (
-                    <Carousel>
+                    <Carousel fade style={{borderRadius:"1%", width:"100%"}}
+                    >
                       {Party.images.images &&
                         Party.images.images.map((item) => {
                           return (
                             item && (
-                              <Carousel.Item interval={3000}>
-                                <img src={item} alt={item} />
+                              <Carousel.Item >
+                                <br></br>
+                                <img
+                                style={{width:"100%"}}
+                                src={item} alt={item} />
                               </Carousel.Item>
                             )
                           );
@@ -103,11 +115,6 @@ export default function Parties() {
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseDetail}>
-                Close
-              </Button>
-            </Modal.Footer>
           </Modal>
         </>
       );
@@ -123,105 +130,162 @@ export default function Parties() {
 
   return (
     <>
-      <h1>Parties</h1>
-      <h2>Invited Parties</h2>
-      <Carousel>
+      <Carousel
+      fade  style={{ height:"500px",borderRadius:"1%", width:"1200px", marginLeft:"15%" }}
+      >
         {privateParties &&
           privateParties.map((item) => {
             return (
               item.invited_people.people.includes(email) && (
-                <Carousel.Item interval={3000}>
+                <Carousel.Item >
+                  <Carousel.Caption 
+                  style={{color:"black", fontSize:"40px", fontFamily: "'Open Sans Condensed', sans-serif"}}
+                  >
+      <h1>Invited Parties</h1>
+     
+    </Carousel.Caption>
                   <Card
-                    style={{ width: '18rem' }}
+                    style={{ width: '100%', backgroundColor:"transparent" }}
                     onClick={() => {
                       handleShowDetail(item);
                     }}
                   >
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img 
+                     style={{width:"100%", borderRadius:"1%" }}
+                    variant="top" src={item.images.images[0]} />
                   </Card>
                 </Carousel.Item>
               )
             );
           })}
       </Carousel>
-      <Button variant="outline-secondary" onClick={handleShowCreate}>
+      <Button style={{marginTop:"3%", marginLeft:"15%",color:"#fff",fontSize:"30px" ,fontFamily: "'Open Sans Condensed', sans-serif", width:"1200px", height:"60px", marginTop:"20%"}} 
+      variant="outline-secondary" onClick={handleShowCreate}>
         Create Your Party
       </Button>
-      <h2>Explore Public Partie</h2>
-      <h3>Wedding Parties</h3>
-      <Carousel>
+      <h1
+       style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+      > Explore Public Parties </h1>
+      
+     
+      <Carousel
+      fade  style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+      >
         {wedding &&
           wedding.map((item) => {
             return (
               item.images.images[0] && (
-                <Carousel.Item interval={3000}>
+                <Carousel.Item
+               
+                >
+                        <Carousel.Caption
+                        style={{color:"black", fontSize:"40px", fontFamily: "'Open Sans Condensed', sans-serif"}}
+                        >
+                          <h1>Wedding Parties</h1>
+                          
+                        </Carousel.Caption>
                   <Card
-                    style={{ width: '18rem' }}
+                    style={{ width: '100%', backgroundColor:"transparent" }}
                     onClick={() => {
                       handleShowDetail(item);
                     }}
                   >
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img 
+                    style={{width:"100%", hight:"100%", borderRadius:"1%" }}
+                    variant="top" src={item.images.images[0]} />
                   </Card>
                 </Carousel.Item>
               )
             );
           })}
       </Carousel>
-      <h3>Graduation Parties</h3>
-      <Carousel>
+      <br></br>
+      <br></br>
+      <Carousel
+      fade  style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+      >
         {grad &&
           grad.map((item) => {
             return (
               item.images.images[0] && (
-                <Carousel.Item interval={3000}>
+                <Carousel.Item >
+                  <Carousel.Caption
+                  style={{color:"black", fontSize:"40px", fontFamily: "'Open Sans Condensed', sans-serif"}}
+                  >
+                  <h1>Graduation Parties</h1>
+                          
+                        </Carousel.Caption>
                   <Card
-                    style={{ width: '18rem' }}
+                     style={{ width: '100%', backgroundColor:"transparent" }}
                     onClick={() => {
                       handleShowDetail(item);
                     }}
                   >
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img 
+                    style={{width:"100%", borderRadius:"1%" }}
+                    variant="top" src={item.images.images[0]} />
                   </Card>
                 </Carousel.Item>
               )
             );
           })}
       </Carousel>
-      <h3>Birthday Parties</h3>
-      <Carousel>
+      <br></br>
+      <br></br>
+      <Carousel
+      fade style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+      >
         {birthday &&
           birthday.map((item) => {
             return (
               item.images.images[0] && (
-                <Carousel.Item interval={3000}>
+                <Carousel.Item >
+                    <Carousel.Caption
+                    style={{color:"black", fontSize:"40px", fontFamily: "'Open Sans Condensed', sans-serif"}}
+                    >
+                    <h1>Birthday Parties</h1>
+                          
+                        </Carousel.Caption>
                   <Card
-                    style={{ width: '18rem' }}
+                    style={{ width: '100%', backgroundColor:"transparent" }}
                     onClick={() => {
                       handleShowDetail(item);
                     }}
                   >
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img 
+                    style={{width:"100%", borderRadius:"1%" }}
+                    variant="top" src={item.images.images[0]} />
                   </Card>
                 </Carousel.Item>
               )
             );
           })}
       </Carousel>
-      <h3>Special Parties</h3>
-      <Carousel>
+      <br></br>
+      <br></br>
+      <Carousel
+      fade style={{borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+      >
         {special &&
           special.map((item) => {
             return (
               item.images.images[0] && (
-                <Carousel.Item interval={3000}>
+                <Carousel.Item >
+                   <Carousel.Caption
+                   style={{color:"black", fontSize:"40px", fontFamily: "'Open Sans Condensed', sans-serif"}}
+                   >
+                   <h1>Special Parties</h1>
+                          
+                        </Carousel.Caption>
                   <Card
-                    style={{ width: '18rem' }}
+                    style={{ width: '100%', backgroundColor:"transparent" }}
                     onClick={() => {
                       handleShowDetail(item);
                     }}
                   >
-                    <Card.Img variant="top" src={item.images.images[0]} />
+                    <Card.Img 
+                    style={{width:"100%", borderRadius:"1%" }}
+                    variant="top" src={item.images.images[0]} />
                   </Card>
                 </Carousel.Item>
               )
@@ -231,7 +295,8 @@ export default function Parties() {
 
       <Modal show={showCreateParty} onHide={handleCloseCreate}>
         <Modal.Header closeButton>
-          <Modal.Title>Create a Party</Modal.Title>
+          <Modal.Title
+           style={{fontFamily: "'Dancing Script', cursive", fontSize:"30px"}}>Create a Party</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit>
@@ -296,9 +361,13 @@ export default function Parties() {
             <Form.Group className="mb-3" controlId="email">
               <Form.Control type="email" placeholder="Invite People" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <button 
+            style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+            variant="primary" type="submit">
               Submit
-            </Button>
+            </button>
+{/* style={{background:"transperant" }} */}
+
           </Form>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
