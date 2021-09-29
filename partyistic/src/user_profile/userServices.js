@@ -7,14 +7,12 @@ import { Col } from 'react-bootstrap';
 import ImageBrowserForm from '../components/ImageBrowserForm';
 
 import { Carousel, Form, Modal, Button, Card } from 'react-bootstrap';
-import useResource from '../hook/useServicesCars';
 import { useState } from 'react';
-export default function UserServices() {
-  const { resources, loading } = useResource();
+export default function UserServices(props) {
   let userServices = [];
 
-  resources &&
-    resources.map((item) => {
+  props.allServices &&
+  props.allServices.map((item) => {
       userServices.push(item);
     });
   console.log(userServices);

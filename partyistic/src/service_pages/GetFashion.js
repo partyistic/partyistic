@@ -4,14 +4,15 @@ import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Col, Card, Form, Nav } from "react-bootstrap";
 import { useState } from "react";
-import useFashion from "../hook/useServicesFashions";
+import useResourceFash from "../hook/useServicesFashions";
+
 
 export default function GetFashion() {
-  const originalFashion = useFashion().resources;
+  const originalFashion = useResourceFash().fashresources;
 
   const [fashions, setFashions] = useState(originalFashion);
   const App = () => {
-    setFashions(useFashion().resources);
+    setFashions(useResourceFash().fashresources);
   };
 
   const [price, setPrice] = useState(200000000000000);

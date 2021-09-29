@@ -10,7 +10,6 @@ import Form from 'react-bootstrap/Form';
 import useResource from '../hook/uesParties';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import SignIn from './login';
 
 export default function Parties() {
   const { resources } = useResource();
@@ -59,8 +58,7 @@ export default function Parties() {
     return new Date(a.date) - new Date(b.date);
   });
 
-  console.log(SignIn.formData);
-  let email = 'SalemNaiem99@gmail.com';
+  let email = localStorage.getItem('email');
   console.log(wedding, grad, birthday, special, privateParties);
 
   const [showParty, setShowParty] = useState(false);

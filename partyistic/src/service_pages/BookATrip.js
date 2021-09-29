@@ -5,17 +5,17 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
-import useTrips from '../hook/useServicesTrips';
+import useResourcetrip from '../hook/useServicesTrips'; 
 import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
 export default function BookATrip() {
-  const originalTrips = useTrips().resources;
+  const originalTrips = useResourcetrip().tripresources;
 
   const [trips, setTrips] = useState(originalTrips);
   const App = () => {
-    setTrips(useTrips().resources);
+    setTrips(useResourcetrip().tripresources);
   };
 
   function filtering() {

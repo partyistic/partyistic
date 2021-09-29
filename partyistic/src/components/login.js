@@ -63,6 +63,7 @@ export default function SignIn(props) {
       .then((res) => {
         localStorage.setItem('access_token', res.data.access);
         localStorage.setItem('refresh_token', res.data.refresh);
+        localStorage.setItem('email',formData.email)
         axiosInstance.defaults.headers['Authorization'] =
           'JWT ' + localStorage.getItem('access_token');
 

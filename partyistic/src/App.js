@@ -61,7 +61,7 @@ export default function App() {
           <Route path="/Services" exact>
             <Services />
           </Route>
-          <Route path="/Services/planner" exact>
+          <Route path="/Services/planners" exact>
             <HirePlanner />
           </Route>
           <Route path="/Services/musicBand" exact>

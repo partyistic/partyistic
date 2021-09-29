@@ -5,15 +5,9 @@ import { Carousel, Form, Modal, Button, Card } from 'react-bootstrap';
 import useResource from '../hook/uesParties';
 import { useState } from 'react';
 
-export default function UserParties() {
-  const { resources, loading } = useResource();
-  let userParties = [];
+export default function UserParties(props) {
 
-  resources &&
-    resources.map((item) => {
-      item.privacy == 'Private' && userParties.push(item);
-    });
-  let email = 'yahiaqous@gmail.com';
+  const { resources, loading } = useResource();
 
   const [showParty, setshowParty] = useState(false);
   const handleCloseParty = () => setshowParty(false);
@@ -23,10 +17,9 @@ export default function UserParties() {
     <>
       <div className='row row-cols-6'>
         <Carousel>
-          {userParties &&
-            userParties.map((item) => {
+          {props.allParties &&
+            props.allParties.map((item) => {
               return (
-                item.invited_people.people.includes(email) && (
                   <Carousel.Item interval={3000}>
                     <Card
                       style={{ width: '18rem' }}
@@ -36,8 +29,7 @@ export default function UserParties() {
                       <Card.Img variant='top' src={item.images.images[0]} />
                     </Card>
                   </Carousel.Item>
-                )
-              );
+                );
             })}
         </Carousel>
 

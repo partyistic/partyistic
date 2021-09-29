@@ -3,14 +3,16 @@
 import React from 'react';
 
 import UserServices from '../user_profile/userServices';
-import UserFavorites from '../user_profile/userFavorites';
 import UserParties from '../user_profile/userParties';
-
+import useSWR from 'swr';
 import Row from 'react-bootstrap/Row';
 import { Card } from 'react-bootstrap';
 import updateServiceForm from './updateServiceForm';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 export default function Profile() {
   const history = useHistory();
@@ -21,13 +23,15 @@ export default function Profile() {
       history.push('/login');
     }
   }, []);
+ 
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  
+
 
   return (
     <>
+
+
       <h1>Personal Profile</h1>
       <img
         style={{ height: '10%', width: '10%' }}
@@ -37,14 +41,9 @@ export default function Profile() {
       <h4>Name</h4>
       <h6>email@gmail.com</h6>
 
-      <h2>Your Services</h2>
-      <UserServices />
+     
 
-      <h2>Your Favorites</h2>
-      <UserFavorites />
 
-      <h2>Your Parties</h2>
-      <UserParties />
     </>
   );
 }

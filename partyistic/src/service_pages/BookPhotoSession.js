@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import usePhotosessions from "../hook/useServicesPhotosessions";
+import useResourcephotosessions from "../hook/useServicesPhotosessions";
 import { useState } from "react";
 
 export default function BookPhotoSession() {
-  const originalPhotosessions = usePhotosessions().resources;
+  const originalPhotosessions = useResourcephotosessions().photoresources;
 
   const [photosessions, setPhotosessions] = useState(originalPhotosessions);
   const App = () => {
-    setPhotosession(usePhotosessions().resources);
+    setPhotosession(useResourcephotosessions().photoresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
