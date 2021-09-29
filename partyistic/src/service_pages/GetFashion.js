@@ -1,21 +1,52 @@
-/** @format */
-
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
-import { Col, Card, Form, Nav } from 'react-bootstrap';
-import { useState } from 'react';
-import useFashion from '../hook/useServicesFashions';
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+import { Col, Card, Form, Nav } from "react-bootstrap";
+import { useState } from "react";
+import useFashion from "../hook/useServicesFashions";
 
 export default function GetFashion() {
-  const fashions = useFashion().resources;
+  const originalFashion = useFashion().resources;
+
+  const [fashions, setFashions] = useState(originalFashion);
+  const App = () => {
+    setFashions(useFashion().resources);
+  };
+
+  const [price, setPrice] = useState(200000000000000);
+  const getPrice = (event) => {
+    setPrice(event.target.value);
+  };
+
+  let city = document.getElementById("city");
+  const [selectedCity, setCity] = useState("City");
+  const getCityValue = () => {
+    setCity(city.options[city.selectedIndex].value);
+  };
+  console.log(selectedCity);
+
+  function filtering() {
+    let lister = [];
+
+    originalFashion.map((item) => {
+      if (
+        (item.price <= price || item.price == "") &&
+        (item.city == selectedCity || selectedCity == "City")
+      ) {
+        lister.push(item);
+        setFashions(lister);
+      } else {
+        setFashions([]);
+      }
+    });
+  }
 
   const [showFashion, setShowFashion] = useState(false);
   const [fashion, setFashion] = useState(false);
   const handleClose = () => setShowFashion(false);
-  const handleShow = (trip) => {
-    setFashion(trip);
+  const handleShow = (fash) => {
+    setFashion(fash);
     setShowFashion(true);
   };
 
@@ -28,7 +59,7 @@ export default function GetFashion() {
               <Modal.Title>{fashion.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: "18rem" }}>
                 <Card.Body>
                   {fashion.description}
                   {fashion.images && (
@@ -47,21 +78,16 @@ export default function GetFashion() {
                   )}
                   <Card.Text>Price: {fashion.price}</Card.Text>
                   <Card.Text>City: {fashion.city}</Card.Text>
-                  <Card.Link href={fashion.location_link}>
-                    Location Link
-                  </Card.Link>
+                  <Card.Link href={fashion.location_link}>Location</Card.Link>
                   <Card.Text>Reviews:</Card.Text>
-                  {fashion.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {fashion.reviews &&
+                    fashion.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );
@@ -71,8 +97,14 @@ export default function GetFashion() {
   };
   return (
     <>
-      <div className='row row-cols-4'>
-        <div className='col'></div>
+      <div className='row row-cols-6'>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SHOW ALL FASHION
+          </Button>
+        </div>
+
         <div className='col '>
           <Nav
             activeKey='/home'
@@ -87,17 +119,40 @@ export default function GetFashion() {
         </div>
 
         <div className='col'>
-          <Form.Select className='col ' aria-label='Default select example'>
-            <option>City</option>
-            <option value='1'>Amman</option>
-            <option value='2'>Zarqa</option>
-            <option value='3'>Irbid</option>
-            <option value='3'>Jarash</option>
+          <Form.Select
+            id='city'
+            className='col'
+            onChange={getCityValue}
+            aria-label='Default select example'>
+            <option value='City' selected>
+              City
+            </option>
+            <option value='Amman'>Amman</option>
+            <option value='Zarqa'>Zarqa</option>
+            <option value='Irbid'>Irbid</option>
+            <option value='Al-Mafraq'>Al-Mafraq</option>
+            <option value='Jarash'>Jarash</option>
+            <option value='Ajloun'>Ajloun</option>
+            <option value='As-Salt'>As-Salt</option>
+            <option value='Madaba'>Madaba</option>
+            <option value='karak'>karak</option>
+            <option value='Tafilah'>Tafilah</option>
+            <option value='Maan'>Maan</option>
+            <option value='Aqaba'>Aqaba</option>
           </Form.Select>
         </div>
 
         <div className='col'>
-          <input type='text' placeholder='Maximum Price'></input>
+          <input
+            type='text'
+            onChange={getPrice}
+            placeholder='Maximum Price'></input>
+        </div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SEARCH
+          </Button>
         </div>
       </div>
 
@@ -107,7 +162,7 @@ export default function GetFashion() {
           fashions.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: '18rem' }}
+                style={{ width: "18rem" }}
                 onClick={() => {
                   handleShow(item);
                 }}>
