@@ -22,18 +22,23 @@ export default function UserParties() {
   return (
     <>
       <div className='row row-cols-6'>
-        <Carousel>
+        <Carousel
+        fade  style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+        >
           {userParties &&
             userParties.map((item) => {
               return (
                 item.invited_people.people.includes(email) && (
                   <Carousel.Item interval={3000}>
                     <Card
-                      style={{ width: '18rem' }}
+                      style={{ width: '100%', backgroundColor:"transparent" }}
+                    
                       onClick={() => {
                         handleShowParty(item);
                       }}>
-                      <Card.Img variant='top' src={item.images.images[0]} />
+                      <Card.Img 
+                      style={{width:"100%", height:"850px", borderRadius:"1%" }}
+                      variant='top' src={item.images.images[0]} />
                     </Card>
                   </Carousel.Item>
                 )
@@ -43,7 +48,7 @@ export default function UserParties() {
 
         <div className='col'></div>
       </div>
-      <Modal show={showParty} onHide={handleCloseParty}>
+      {/* <Modal show={showParty} onHide={handleCloseParty}>
         <Modal.Header closeButton>
           <Modal.Title>Create a Party</Modal.Title>
         </Modal.Header>
@@ -116,7 +121,7 @@ export default function UserParties() {
           </Form>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }
