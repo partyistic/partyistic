@@ -4,8 +4,17 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import { Card } from 'react-bootstrap';
 import updateServiceForm from './updateServiceForm';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 export default function Profile() {
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
+
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);

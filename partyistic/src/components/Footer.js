@@ -1,30 +1,4 @@
-// 'use strict';
-// import React from 'react';
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Navbar from 'react-bootstrap/Navbar';
-// import { FaGithub } from "react-icons/fa"
-// import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"
-// import './Footer.css'
-// export default function Footer()  {
-    
-//      return (
-//         <>
-//         <div>
-//         <section className="ingredientFooter"></section>
-//         <div className="main-footer">
-//           <div className="container2">
-//             <div className="row">
-//               <div className="col">
-//                 <ul className="list-unstyled">
-//                   <li>www.partystic.info.com</li>
-//                   <li>partyistic@Info.com</li>
-//                   <li>+962789875799</li>
-//                   <li>+962505558</li>
-//                 </ul>
-//               </div>
-//               <div className="col">
-                
+               
 //               </div>
 //               <div className="col">
 //                 <h4>Contact Us</h4>

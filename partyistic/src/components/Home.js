@@ -1,10 +1,18 @@
-import React from 'react';
+import React ,{useEffect, useState}from 'react';
 import Image from 'react-bootstrap/Image'
 import Nav from 'react-bootstrap/Nav'
+import { useHistory } from 'react-router-dom';
+
 import Carousel from 'react-bootstrap/Carousel';
 import "./Home.css";
 
 export default function Home(props) {
+  const history = useHistory();
+    useEffect(() => {
+        let get = localStorage.getItem('access_token')
+    
+        if (!get) { history.push('/login') }
+      },[])
    
     return (
         <>  
@@ -80,6 +88,7 @@ export default function Home(props) {
                         </Carousel.Item>
                       </Carousel>
                       </div>
+
 
 
             <div>

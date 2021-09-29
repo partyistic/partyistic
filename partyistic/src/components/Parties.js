@@ -3,16 +3,19 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import useResource from '../hook/uesParties';
-import { useAuth } from '../Auth';
+import { useHistory } from 'react-router-dom';
 
 export default function Parties() {
-  const { resources, loading } = useResource();
-  const { user } = useAuth();
+  const { resources } = useResource();
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
 
+    if (!get) { history.push('/login') }
+  },[])
   let wedding = [];
   let grad = [];
   let birthday = [];
