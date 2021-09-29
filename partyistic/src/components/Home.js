@@ -16,7 +16,7 @@ export default function Home(props) {
    
     return (
         <>  
-                <div >
+              <div >
                 <Carousel fade  style={{width:"96%", borderRadius:"1%" , marginLeft:"2%"}}>
                         <Carousel.Item interval={1000}>
                           <img
