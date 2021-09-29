@@ -8,7 +8,6 @@ export default function Place(props) {
     <>
     <h2 className="align-middle">Reserve a place</h2>
       <div className="row row-cols-6">
-
       <div className="col"></div>
 
         {props.places && props.places.map((item,key)=>key<4 && (

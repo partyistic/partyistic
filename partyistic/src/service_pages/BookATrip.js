@@ -6,13 +6,6 @@ import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
 import useTrips from "../hook/useServicesTrips";
 import { useState, useEffect } from "react";
-
-
-
-
-
-
-
 import axios from 'axios';
 
 
@@ -28,7 +21,7 @@ export default function BookATrip() {
     let lister = [];
 
     originalTrips.map((item) => {
-      if (item.price <= price) {
+      if (item.price <= price || price=="") {
         lister.push(item);
         console.log(lister, "trippeieirer");
         setTrips(lister);

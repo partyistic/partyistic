@@ -1,3 +1,5 @@
+/** @format */
+'use strict'
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -17,7 +19,7 @@ export default function HirePlanner() {
   let city = document.getElementById("city");
   const [selectedCity, setCity] = useState("city");
   const getCityValue = () => {
-    setCity(city.options[city.selectedIndex]);
+    setCity(city.options[city.selectedIndex].value);
   };
   console.log(selectedCity);
 
@@ -25,7 +27,7 @@ export default function HirePlanner() {
     let lister = [];
 
     originalPlanners.map((item) => {
-      if (item.price <= price) {
+      if (item.price <= price || price == "") {
         lister.push(item);
         console.log(lister, "trippeieirer");
         setPlanners(lister);
@@ -91,7 +93,6 @@ export default function HirePlanner() {
       return <> </>;
     }
   };
-
   return (
     <>
       <div className='row row-cols-5'>
@@ -100,20 +101,6 @@ export default function HirePlanner() {
             {" "}
             SHOW ALL PLANNERS
           </Button>
-        </div>
-
-        <div className='col'>
-          <Form.Select
-            id='city'
-            onChange={getCityValue}
-            className='col '
-            aria-label='Default select example'>
-            <option>All Cities</option>
-            <option value='1'>Amman</option>
-            <option value='2'>Zarqa</option>
-            <option value='3'>Irbid</option>
-            <option value='4'>Jarash</option>
-          </Form.Select>
         </div>
 
         <div className='col'>

@@ -26,20 +26,13 @@ export default function ChooseBand() {
   };
   console.log(selectedDate);
 
-  let city = document.getElementById("city");
-  const [selectedCity, setCity] = useState("City");
-  const getCityValue = () => {
-    setCity(city.options[city.selectedIndex].value);
-  };
-  console.log(selectedCity);
 
   function filtering() {
     let lister = [];
 
     originalMusicbands.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
-        (item.city == selectedCity || selectedCity == "City") &&
+        (item.price <= price || price == "") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
           item.booked_dates.dates[1] == selectedDate ||
@@ -121,29 +114,7 @@ export default function ChooseBand() {
           </Button>
         </div>
 
-        <div className='col'>
-          <Form.Select
-            id='city'
-            className='col '
-            onChange={getCityValue}
-            aria-label='Default select example'>
-            <option value='City' selected>
-              City
-            </option>
-            <option value='Amman'>Amman</option>
-            <option value='Zarqa'>Zarqa</option>
-            <option value='Irbid'>Irbid</option>
-            <option value='Al-Mafraq'>Al-Mafraq</option>
-            <option value='Jarash'>Jarash</option>
-            <option value='Ajloun'>Ajloun</option>
-            <option value='As-Salt'>As-Salt</option>
-            <option value='Madaba'>Madaba</option>
-            <option value='Karak'>Karak</option>
-            <option value='Tafilah'>Tafilah</option>
-            <option value='Maan'>Maan</option>
-            <option value='Aqaba'>Aqaba</option>
-          </Form.Select>
-        </div>
+
 
         <div className='col'>
           <Form.Select
@@ -155,7 +126,7 @@ export default function ChooseBand() {
             <option value='2021/19/3'>2021/19/3</option>
             <option value='2020/10/1'>2020/10/1</option>
             <option value='2013/31/1'>2013/31/1</option>
-            <option value='32011/24/4'>2011/24/4</option>
+            <option value='2011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
 

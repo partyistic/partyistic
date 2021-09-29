@@ -31,7 +31,7 @@ export default function GetFashion() {
 
     originalFashion.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City")
       ) {
         lister.push(item);
@@ -98,25 +98,17 @@ export default function GetFashion() {
   return (
     <>
       <div className='row row-cols-6'>
-        <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+      <div className='col '></div>  
+      
+      <div className='col'>
+        
+        <Button variant='primary' onClick={filtering}>
             {" "}
             SHOW ALL FASHION
           </Button>
         </div>
 
-        <div className='col '>
-          <Nav
-            activeKey='/home'
-            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
-            <Nav.Item>
-              <Nav.Link href='#'>Man</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey='link-1'>Woman</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </div>
+        
 
         <div className='col'>
           <Form.Select

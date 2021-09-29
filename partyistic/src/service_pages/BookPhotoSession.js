@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -18,6 +20,7 @@ export default function BookPhotoSession() {
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
+  console.log(price)
 
   let date = document.getElementById("date");
   const [selectedDate, setDate] = useState("Available Date");
@@ -38,11 +41,13 @@ export default function BookPhotoSession() {
 
     originalPhotosessions.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
-        (item.city == selectedCity || selectedCity == "City") &&
+        (item.price <= price || price == "") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
           item.booked_dates.dates[1] == selectedDate ||
+          item.booked_dates.dates[2] == selectedDate ||
+          item.booked_dates.dates[3] == selectedDate ||
+          item.booked_dates.dates[4] == selectedDate ||
           selectedDate == "Available Date")
       ) {
         lister.push(item);
@@ -118,30 +123,6 @@ export default function BookPhotoSession() {
             {" "}
             SHOW ALL PHOTOSESSIONS
           </Button>
-        </div>
-
-        <div className='col'>
-          <Form.Select
-            id='city'
-            className='col '
-            onChange={getCityValue}
-            aria-label='Default select example'>
-            <option value='City' selected>
-              City
-            </option>
-            <option value='Amman'>Amman</option>
-            <option value='Zarqa'>Zarqa</option>
-            <option value='Irbid'>Irbid</option>
-            <option value='Al-Mafraq'>Al-Mafraq</option>
-            <option value='Jarash'>Jarash</option>
-            <option value='Ajloun'>Ajloun</option>
-            <option value='As-Salt'>As-Salt</option>
-            <option value='Madaba'>Madaba</option>
-            <option value='Karak'>Karak</option>
-            <option value='Tafilah'>Tafilah</option>
-            <option value='Maan'>Maan</option>
-            <option value='Aqaba'>Aqaba</option>
-          </Form.Select>
         </div>
 
         <div className='col'>
