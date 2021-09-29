@@ -1,4 +1,3 @@
-/** @format */
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -8,26 +7,19 @@ import usePlanners from "../hook/useServicesPlanners";
 import { useState } from "react";
 
 export default function HirePlanner() {
-
   const originalPlanners = usePlanners().resources;
-
 
   const [planners, setPlanners] = useState(originalPlanners);
   const App = () => {
     setPlanners(usePlanners().resources);
   };
-  
 
-  
   let city = document.getElementById("city");
-    const [selectedCity, setCity] = useState("city")
-    const getCityValue = () => {
-      // let selectedCity = city.options[city.selectedIndex];
-      setCity(city.options[city.selectedIndex])
-    };
-    console.log(selectedCity);
-
-
+  const [selectedCity, setCity] = useState("city");
+  const getCityValue = () => {
+    setCity(city.options[city.selectedIndex]);
+  };
+  console.log(selectedCity);
 
   function filtering() {
     let lister = [];
@@ -38,7 +30,7 @@ export default function HirePlanner() {
         console.log(lister, "trippeieirer");
         setPlanners(lister);
       } else {
-        setPlanners(lister);
+        setPlanners([]);
       }
     });
   }
@@ -106,7 +98,12 @@ export default function HirePlanner() {
   return (
     <>
       <div className='row row-cols-5'>
-        <div className='col '></div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SHOW ALL PLANNERS
+          </Button>
+        </div>
 
         <div className='col'>
           <Form.Select
@@ -120,13 +117,6 @@ export default function HirePlanner() {
             <option value='3'>Irbid</option>
             <option value='4'>Jarash</option>
           </Form.Select>
-        </div>
-
-        <div className='col'>
-          <Button variant='primary' onClick={filtering}>
-            {" "}
-            ALL TRIPS
-          </Button>
         </div>
 
         <div className='col'>

@@ -1,4 +1,3 @@
-/** @format */
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -20,40 +19,37 @@ export default function RentACar() {
     setPrice(event.target.value);
   };
 
-
-  
   let date = document.getElementById("date");
-  const [selectedDate, setDate] = useState("Available Date")
+  const [selectedDate, setDate] = useState("Available Date");
   const getDateValue = () => {
-    // let selectedCity = city.options[city.selectedIndex];
-    setDate(date.options[date.selectedIndex].value)
+    setDate(date.options[date.selectedIndex].value);
   };
   console.log(selectedDate);
 
-
   let city = document.getElementById("city");
-  const [selectedCity, setCity] = useState("City")
+  const [selectedCity, setCity] = useState("City");
   const getCityValue = () => {
-    setCity(city.options[city.selectedIndex].value)
+    setCity(city.options[city.selectedIndex].value);
   };
   console.log(selectedCity);
-  
+
   function filtering() {
     let lister = [];
 
     originalCars.map((item) => {
-      // console.log(item)
-      if ((item.price <= price || item.price == '') && (item.city == selectedCity || selectedCity == "City") && ( item.booked_dates == null || item.booked_dates.dates[0] == selectedDate || item.booked_dates.dates[1] == selectedDate || selectedDate == "Available Date")) {
+      if (
+        (item.price <= price || item.price == "") &&
+        (item.city == selectedCity || selectedCity == "City") &&
+        (item.booked_dates == null ||
+          item.booked_dates.dates[0] == selectedDate ||
+          item.booked_dates.dates[1] == selectedDate ||
+          selectedDate == "Available Date")
+      ) {
         lister.push(item);
-        // console.log(lister, "trippeieirer");
-        // console.log(item.booked_dates)
         setCars(lister);
-      } 
-      // else {
-      //   setCars([])
-        
-      //   console.log(lister,"trying to sdo it")
-      // }
+      } else {
+        setCars([]);
+      }
     });
   }
 
@@ -120,15 +116,22 @@ export default function RentACar() {
   return (
     <>
       <div className='row row-cols-6'>
-        <div className='col '></div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            ShOW ALL CARS
+          </Button>
+        </div>
 
         <div className='col'>
           <Form.Select
-          id='city'
+            id='city'
             className='col '
             onChange={getCityValue}
             aria-label='Default select example'>
-            <option value="City" selected>City</option>
+            <option value='City' selected>
+              City
+            </option>
             <option value='Amman'>Amman</option>
             <option value='Zarqa'>Zarqa</option>
             <option value='Irbid'>Irbid</option>
@@ -141,33 +144,30 @@ export default function RentACar() {
             <option value='Tafilah'>Tafilah</option>
             <option value='Maan'>Maan</option>
             <option value='Aqaba'>Aqaba</option>
-
-
-            
           </Form.Select>
         </div>
 
         <div className='col'>
-          <Form.Select className='col' id="date" onChange = {getDateValue} aria-label='Default select example'>
-            <option value="Available Date">Available Date</option>
-            <option value="2021/19/3">2021/19/3</option>
+          <Form.Select
+            className='col'
+            id='date'
+            onChange={getDateValue}
+            aria-label='Default select example'>
+            <option value='Available Date'>Available Date</option>
+            <option value='2021/19/3'>2021/19/3</option>
             <option value='2020/10/1'>2020/10/1</option>
             <option value='2013/31/1'>2013/31/1</option>
             <option value='32011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
-        <div className='col'>
-          <Button variant='primary' onClick={filtering}>
-            {" "}
-            ALL TRIPS
-          </Button>
-        </div>
+
         <div className='col'>
           <input
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
+
         <div className='col'>
           <Button variant='primary' onClick={filtering}>
             {" "}
@@ -177,6 +177,7 @@ export default function RentACar() {
       </div>
 
       <h1>Rent a Car</h1>
+
       <div className='row row-cols-6'>
         {cars &&
           cars.map((item) => (

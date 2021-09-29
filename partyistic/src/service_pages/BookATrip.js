@@ -1,4 +1,3 @@
-/** @format */
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -24,7 +23,7 @@ export default function BookATrip() {
         console.log(lister, "trippeieirer");
         setTrips(lister);
       } else {
-        setTrips(lister);
+        setTrips([]);
       }
     });
   }
@@ -97,11 +96,12 @@ export default function BookATrip() {
   return (
     <>
       <div className='row row-cols-5'>
+
         <div className='col'></div>
         <div className='col'>
           <Button variant='primary' onClick={filtering}>
             {" "}
-            AVAILABLE TRIPS
+            SHOW ALL TRIPS
           </Button>
         </div>
 
@@ -111,12 +111,14 @@ export default function BookATrip() {
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
+
         <div>
           <Button variant='primary' onClick={filtering}>
             {" "}
             SEARCH TRIPS
           </Button>
         </div>
+         
       </div>
 
       <h1>Book a Trip</h1>

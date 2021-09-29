@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -24,7 +22,6 @@ export default function BookPhotoSession() {
   let date = document.getElementById("date");
   const [selectedDate, setDate] = useState("Available Date");
   const getDateValue = () => {
-    // let selectedCity = city.options[city.selectedIndex];
     setDate(date.options[date.selectedIndex].value);
   };
   console.log(selectedDate);
@@ -118,7 +115,12 @@ export default function BookPhotoSession() {
   return (
     <>
       <div className='row row-cols-6'>
-        <div className='col '></div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SHOW ALL PHOTOSESSIONS
+          </Button>
+        </div>
 
         <div className='col'>
           <Form.Select
@@ -157,15 +159,14 @@ export default function BookPhotoSession() {
             <option value='32011/24/4'>2011/24/4</option>
           </Form.Select>
         </div>
+
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
-            {" "}
-            ALL PHOTOSESSIONS
-          </Button>
+          <input
+            type='text'
+            onChange={getPrice}
+            placeholder='Maximum Price'></input>
         </div>
-        <div className='col'>
-          <input type='text' placeholder='Maximum Price'></input>
-        </div>
+
         <div className='col'>
           <Button variant='primary' onClick={filtering}>
             {" "}

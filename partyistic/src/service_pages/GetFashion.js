@@ -1,4 +1,3 @@
-/** @format */
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -37,9 +36,8 @@ export default function GetFashion() {
       ) {
         lister.push(item);
         setFashions(lister);
-      }
-      else{
-        setFashions([])
+      } else {
+        setFashions([]);
       }
     });
   }
@@ -105,7 +103,13 @@ export default function GetFashion() {
   return (
     <>
       <div className='row row-cols-6'>
-        <div className='col'></div>
+        <div className='col'>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SHOW ALL FASHION
+          </Button>
+        </div>
+
         <div className='col '>
           <Nav
             activeKey='/home'
@@ -144,23 +148,17 @@ export default function GetFashion() {
         </div>
 
         <div className='col'>
-        <Button variant='primary' onClick={filtering}>
-          {" "}
-          All Fashion
-        </Button>
-      </div>
-        <div className='col'>
           <input
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
         <div className='col'>
-        <Button variant='primary' onClick={filtering}>
-          {" "}
-          SEARCH
-        </Button>
-      </div>
+          <Button variant='primary' onClick={filtering}>
+            {" "}
+            SEARCH
+          </Button>
+        </div>
       </div>
 
       <h1>Get Fashion</h1>
