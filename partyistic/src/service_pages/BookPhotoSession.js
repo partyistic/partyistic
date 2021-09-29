@@ -92,21 +92,19 @@ export default function BookPhotoSession() {
                   )}
                   <Card.Text>Price: {photosession.price}</Card.Text>
                   <Card.Text>Reviews:</Card.Text>
-                  {photosession.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {photosession.reviews &&
+                    photosession.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                   <Card.Text>Booked Dates:</Card.Text>
-                  {photosession.booked_dates.dates.map((date) => (
-                    <Card.Text>{date}</Card.Text>
-                  ))}
+                  {photosession.booked_dates &&
+                    photosession.booked_dates.dates.map((date) => (
+                      <Card.Text>{date}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );

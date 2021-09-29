@@ -1,4 +1,6 @@
-import React from 'react';
+import React ,{useEffect}from 'react';
+import { useHistory } from 'react-router-dom';
+
 import {
   Card,
   Container,
@@ -19,6 +21,12 @@ import nora from './img/nora.png';
 import ruba from './img/ruba.jpg';
 
 export default function About() {
+    const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
   return (
     <div className="bodyDiv">
       <h3 className="h2class">Partyistic-Team</h3>
@@ -175,5 +183,6 @@ export default function About() {
     </div>
   );
 }
+
 
 

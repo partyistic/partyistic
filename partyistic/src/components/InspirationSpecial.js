@@ -33,12 +33,22 @@ export default function SpecialParty(props) {
     if (showSpe) {
       return (
         <>
-          <Modal show={showSpe} onHide={handleClose} animation={false}>
+          
+          <Modal 
+          size="lg"
+          show={showSpe} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{spe.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"40px"}}
+              >{spe.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <br></br>
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+            >
               {spe.description}
+              <br/>
+              
               {spe.images && (
                 <Carousel>
                   {spe.images.images &&
@@ -46,7 +56,10 @@ export default function SpecialParty(props) {
                       return (
                         item && (
                           <Carousel.Item interval={3000}>
-                            <img src={item} alt={item} />
+                            <br></br>
+                            <img 
+                            style={{width:"100%"}}
+                            src={item} alt={item} />
                           </Carousel.Item>
                         )
                       );
@@ -54,11 +67,8 @@ export default function SpecialParty(props) {
                 </Carousel>
               )}
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <br></br>
+          
           </Modal>
         </>
       );
@@ -67,21 +77,30 @@ export default function SpecialParty(props) {
     }
   };
   return (
-    <>
+    
+    <div  style={{height:"530px"}}>
+      <h1 style={{fontFamily: "'Dancing Script', cursive", fontSize:"40px", color:"#fff", marginLeft:"35%", marginTop:"5%"}}>
+         Weddings Insperation Ideas
+       </h1>
+     <div style={{ display:"flex", marginLeft:"5%", marginRight:"5%",paddingTop:"5%"}}>
       {special &&
-        special.map((spe, key) => (
+        special.map((item, key) => (
           <>
             <Card
-              style={{ width: '18rem' }}
+              style={{ width: '30rem' , marginLeft:"2%" }}
               onClick={() => {
-                handleShow(spe);
+                handleShow(item);
               }}
             >
-              <Card.Img variant="top" src={spe.images.images[0]} />
+              <Card.Img 
+              style={{ width: '100%', height:"100%"}}
+              variant="top" src={item.images.images[0]} />
             </Card>
+            
           </>
         ))}
       {modalshow()}
-    </>
+      </div>
+    </div>
   );
 }

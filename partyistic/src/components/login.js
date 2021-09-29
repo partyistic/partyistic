@@ -12,12 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-const AuthContext = React.createContext({
-	
-	isLoggedIn: false,	
-  });
-  
-
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		marginTop: theme.spacing(8),
@@ -38,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
+	
+
 	const history = useHistory();
 	const initialFormData = Object.freeze({
 		email: '',
@@ -54,7 +50,7 @@ export default function SignIn() {
 		});
 	};
 	
-	const [logged, setLogged] = useState(false);
+	
 	
 	const [incorect,setIncorect]=useState(false);
 	
@@ -67,20 +63,17 @@ export default function SignIn() {
 				password: formData.password,
 			})
 			.then((res) => {
+			
 				localStorage.setItem('access_token', res.data.access);
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
+			
 				history.push('/');
-				setLogged(true)
-			}).catch(error => {Promise.reject(error);} )
-			// setIncorect(true)
+			}).catch(error => setIncorect(true))
+			
 	};
-	const contextValue = {
-		
-		isLoggedIn:logged,
 
-	  };
 
 	const classes = useStyles();
 	
@@ -120,9 +113,9 @@ export default function SignIn() {
 						autoComplete="current-password"
 						onChange={handleChange}
 					/>
-					{/* {incorect&&
+					{incorect&&
 					<h5 style={{color: "red"}}> Email or Password is incorect! </h5>
-					} */}
+					}
 					<Button
 						type="submit"
 						fullWidth

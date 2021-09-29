@@ -1,0 +1,48 @@
+
+
+body{
+  background-color: 	#808080;
+}
+  .navbar {
+    background: 	#221E1D;
+    height: 80px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: honeydew;
+    
+  }
+
+  a{
+      width: fit-content;
+      justify-content: center;  
+    }
+
+
+  .logo {
+    margin-left: 50px;
+   /* width: 10%; */
+    height: 10%;
+  }
+
+  
+  a:hover {
+    border-bottom: 2px solid #fff;
+    width: fit-content;
+
+    text-decoration: none;
+   
+  }
+
+
+button{
+background-color: transparent;
+border-color: transparent;
+color: honeydew;
+}
+
+
+
+
+  
+ 
+  
