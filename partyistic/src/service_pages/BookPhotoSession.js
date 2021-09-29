@@ -29,19 +29,12 @@ export default function BookPhotoSession() {
   };
   console.log(selectedDate);
 
-  let city = document.getElementById("city");
-  const [selectedCity, setCity] = useState("City");
-  const getCityValue = () => {
-    setCity(city.options[city.selectedIndex].value);
-  };
-  console.log(selectedCity);
-
   function filtering() {
     let lister = [];
 
     originalPhotosessions.map((item) => {
       if (
-        (item.price <= price || price == "") &&
+        (item.price <= price || price == '') &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
           item.booked_dates.dates[1] == selectedDate ||
