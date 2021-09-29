@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import usePlanners from "../hook/useServicesPlanners";
+import useResourceplanners from "../hook/useServicesPlanners";
 import { useState } from "react";
 
 export default function HirePlanner() {
-  const originalPlanners = usePlanners().resources;
+  const originalPlanners = useResourceplanners().plannerresources;
 
   const [planners, setPlanners] = useState(originalPlanners);
   const App = () => {
-    setPlanners(usePlanners().resources);
+    setPlanners(useResourceplanners().plannerresources);
   };
 
   let city = document.getElementById("city");
@@ -103,6 +103,7 @@ export default function HirePlanner() {
       return <> </>;
     }
   };
+
   
   return (
     <>
@@ -112,6 +113,7 @@ export default function HirePlanner() {
   >Hire a Planner</h1>
   <br></br>
     <br></br>
+
       <div className='row row-cols-5'>
         <div className='col'>
           <button 

@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from 'axios';
 import useSWR from 'swr';
 import { useAuth } from '../Auth';

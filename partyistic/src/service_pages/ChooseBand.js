@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import useMusicBands from "../hook/useServicesMusicBands";
+import useResourcemusicbands from "../hook/useServicesMusicBands";
 import { useState } from "react";
 
 export default function ChooseBand() {
-  const originalMusicbands = useMusicBands().resources;
+  const originalMusicbands = useResourcemusicbands().musicresources;
 
   const [musicbands, setMusicBands] = useState(originalMusicbands);
   const App = () => {
-    setMusicBands(useMusicBands().resources);
+    setMusicBands(useResourcemusicbands().musicresources);
   };
 
   const [price, setPrice] = useState(200000000000000);

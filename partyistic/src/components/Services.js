@@ -12,6 +12,17 @@ import PhotoSession from '../allServices/PhotoSession';
 import RentCar from '../allServices/RentCar';
 import BookTrip from '../allServices/BookTrip';
 import Fashion from '../allServices/Fashion';
+
+import useResourcephotosessions from '../hook/useServicesPhotosessions';
+import useResourceCar from '../hook/useServicesCars';
+import useResourceFash from '../hook/useServicesFashions';
+import useResourcemusicbands from '../hook/useServicesMusicBands';
+import useResourceplaces from '../hook/useServicesPlaces';
+import useResourceplanners from '../hook/useServicesPlanners';
+import useResourcetrip from '../hook/useServicesTrips';
+
+
+
 import Button from 'react-bootstrap/Button';
 import './Services.css';
 import Link from '@material-ui/core/Link';
@@ -22,20 +33,21 @@ import usePlaces from '../hook/useServicesPlaces';
 import useTrips from '../hook/useServicesTrips';
 import usePlanners from '../hook/useServicesPlanners';
 import usePhotosessions from '../hook/useServicesPhotosessions';
+
 import { useHistory } from 'react-router-dom';
 
 
 export default function Services(props) {
   const history = useHistory();
 
-  const cars = useCars().resources
-  const fashion = useFashion().resources
-  const planners = usePlanners().resources
-  const trips = useTrips().resources
-  const photosessions = usePhotosessions().resources
-  const places = usePlaces().resources
+  const cars = useResourceCar().carresources
+  const fashion = useResourceFash().fashresources
+  const planners = useResourceplanners().plannerresources
+  const trips = useResourcetrip().tripresources
+  const photosessions = useResourcephotosessions().photoresources
+  const places = useResourceplaces().placeresources
   // console.log(places)
-  const musicbands  = useMusicBands().resources
+  const musicbands  = useResourcemusicbands().musicresources
 
   console.log(cars,fashion,planners,trips,photosessions,places,musicbands);
   
