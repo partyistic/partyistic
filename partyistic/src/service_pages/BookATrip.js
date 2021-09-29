@@ -49,22 +49,36 @@ export default function BookATrip() {
     if (showtrip) {
       return (
         <>
-          <Modal show={showtrip} onHide={handleClose} animation={false}>
+          <Modal 
+          size="lg"
+          show={showtrip} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{trip.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+              
+              >{trip.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Card style={{ width: '18rem' }}>
+
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+           
+            >
+              <Card style={{ width: "100%" }}>
+
                 <Card.Body>
                   {trip.description}
                   {trip.images && (
-                    <Carousel>
+                    <Carousel
+                    fade style={{borderRadius:"1%", width:"100%"}}
+                    >
                       {trip.images.images &&
                         trip.images.images.map((item) => {
                           return (
                             item && (
                               <Carousel.Item interval={3000}>
-                                <img src={item} alt={item} />
+                                <img 
+                                style={{width:"100%"}}
+                                src={item} alt={item} />
                               </Carousel.Item>
                             )
                           );
@@ -78,16 +92,10 @@ export default function BookATrip() {
                       <Card.Text>{review}</Card.Text>
                     ))}
                 </Card.Body>
-                {/* <Button
-                  variant='secondary'
-                  onClick={() => {
-                    addtoFavorite(trip);
-                  }}>
-                  Add to Favorite
-                </Button> */}
+
               </Card>
             </Modal.Body>
-            <Modal.Footer></Modal.Footer>
+           
           </Modal>
         </>
       );
@@ -100,45 +108,64 @@ export default function BookATrip() {
   const pricerRender = () => {
     setRenderer(true);
   };
-
+  
   return (
     <>
+    <h1
+    style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    >Book a Trip</h1>
+     <br></br>
+    <br></br>
       <div className='row row-cols-5'>
         <div className='col'></div>
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
-            {' '}
-            SHOW ALL TRIPS
-          </Button>
-        </div>
 
+          <button 
+           style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          
+          variant='primary' onClick={filtering}>
+            {" "}
+
+            SHOW ALL TRIPS
+          </button>
+        </div>
+<br></br>
         <div className='col'>
           <input
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
 
         <div>
-          <Button variant='primary' onClick={filtering}>
-            {' '}
+
+          <button 
+          style={{  background:"transparent", color: "#fff", borderBlockColor:"black",fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          variant='primary' onClick={filtering}>
+            {" "}
+
             SEARCH TRIPS
-          </Button>
+          </button>
         </div>
       </div>
-
-      <h1>Book a Trip</h1>
+      <br></br>
+      <br></br>
 
       <div className='row row-cols-6'>
         {trips &&
           trips.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: '18rem' }}
+
+                style={{ height:"20rem", marginTop:"3%" }}
+
                 onClick={() => {
                   handleShow(item);
                 }}>
-                <Card.Img variant='top' src={item.images.images[0]} />
+                <Card.Img 
+                style={{ height:"100%" }}
+                variant='top' src={item.images.images[0]} />
               </Card>
             </div>
           ))}

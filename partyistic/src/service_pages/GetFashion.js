@@ -55,22 +55,32 @@ export default function GetFashion() {
     if (showFashion) {
       return (
         <>
-          <Modal show={showFashion} onHide={handleClose} animation={false}>
+          <Modal 
+           size="lg"
+          show={showFashion} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
-              <Modal.Title>{fashion.name}</Modal.Title>
+              <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+              
+              >{fashion.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body
+            style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+            >
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
                   {fashion.description}
                   {fashion.images && (
-                    <Carousel>
+                    <Carousel
+                    fade style={{borderRadius:"1%", width:"100%"}}>
                       {fashion.images.images &&
                         fashion.images.images.map((item) => {
                           return (
                             item && (
                               <Carousel.Item interval={3000}>
-                                <img src={item} alt={item} />
+                                <img 
+                                style={{width:"100%"}}
+                                src={item} alt={item} />
                               </Carousel.Item>
                             )
                           );
@@ -98,20 +108,27 @@ export default function GetFashion() {
   };
   return (
     <>
+          <h1
+          style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+          >Get Fashion</h1>
+          <br></br>
+    <br></br>
       <div className='row row-cols-6'>
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+           style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+           variant='primary' onClick={filtering}>
             {" "}
             SHOW ALL FASHION
-          </Button>
+          </button>
         </div>
-
+        <br></br>
         <div className='col '>
           <Nav
             activeKey='/home'
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
             <Nav.Item>
-              <Nav.Link href='#'>Man</Nav.Link>
+              <Nav.Link  href='#'>Man</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey='link-1'>Woman</Nav.Link>
@@ -121,6 +138,7 @@ export default function GetFashion() {
 
         <div className='col'>
           <Form.Select
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             id='city'
             className='col'
             onChange={getCityValue}
@@ -128,46 +146,52 @@ export default function GetFashion() {
             <option value='City' selected>
               City
             </option>
-            <option value='Amman'>Amman</option>
-            <option value='Zarqa'>Zarqa</option>
-            <option value='Irbid'>Irbid</option>
-            <option value='Al-Mafraq'>Al-Mafraq</option>
-            <option value='Jarash'>Jarash</option>
-            <option value='Ajloun'>Ajloun</option>
-            <option value='As-Salt'>As-Salt</option>
-            <option value='Madaba'>Madaba</option>
-            <option value='karak'>karak</option>
-            <option value='Tafilah'>Tafilah</option>
-            <option value='Maan'>Maan</option>
-            <option value='Aqaba'>Aqaba</option>
+            <option style={{color:"black"}} value='Amman'>Amman</option>
+            <option style={{color:"black"}} value='Zarqa'>Zarqa</option>
+            <option style={{color:"black"}} value='Irbid'>Irbid</option>
+            <option style={{color:"black"}} value='Al-Mafraq'>Al-Mafraq</option>
+            <option style={{color:"black"}} value='Jarash'>Jarash</option>
+            <option style={{color:"black"}} value='Ajloun'>Ajloun</option>
+            <option style={{color:"black"}} value='As-Salt'>As-Salt</option>
+            <option style={{color:"black"}} value='Madaba'>Madaba</option>
+            <option style={{color:"black"}} value='karak'>karak</option>
+            <option style={{color:"black"}} value='Tafilah'>Tafilah</option>
+            <option style={{color:"black"}} value='Maan'>Maan</option>
+            <option style={{color:"black"}} value='Aqaba'>Aqaba</option>
           </Form.Select>
         </div>
 
         <div className='col'>
           <input
+          style={{backgroundColor:"transparent" , color:"#fff"}}
             type='text'
             onChange={getPrice}
             placeholder='Maximum Price'></input>
         </div>
         <div className='col'>
-          <Button variant='primary' onClick={filtering}>
+          <button 
+          style={{  background:"transparent", color: "#fff", borderBlockColor:"black",fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+          
+          variant='primary' onClick={filtering}>
             {" "}
             SEARCH
-          </Button>
+          </button>
         </div>
       </div>
-
-      <h1>Get Fashion</h1>
+      <br></br>
+      <br></br>
       <div className='row row-cols-6'>
         {fashions &&
           fashions.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: "18rem" }}
+                 style={{ height:"20rem", marginTop:"3%" }}
                 onClick={() => {
                   handleShow(item);
                 }}>
-                <Card.Img variant='top' src={item.images.images[0]} />
+                <Card.Img 
+                style={{ height:"100%" }}
+                variant='top' src={item.images.images[0]} />
               </Card>
             </div>
           ))}

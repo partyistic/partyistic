@@ -133,12 +133,18 @@ export default function CreateService(props) {
 
   return (
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Dialog>
+      <Modal 
+      size="lg"
+      show={props.show} onHide={props.handleClose}>
+        {/* <Modal.Dialog> */}
           <Modal.Header closeButton>
-            <Modal.Title>Create a service</Modal.Title>
+            <Modal.Title
+            style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+            >Create a service</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+           style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+          >
             <Form
               onSubmit={(event) => {
                 event.preventDefault();
@@ -301,8 +307,10 @@ export default function CreateService(props) {
               </Form.Group>
 
               <Form.Group as={Row} className='mb-3'>
-                <Col sm={{ span: 10, offset: 2 }}>
+                <Col >
                   <input
+
+                  style={{backgroundColor:"transparent", width:"100%"}}
                     type='button'
                     value='Add a Photo'
                     onClick={handleShow}
@@ -404,18 +412,23 @@ export default function CreateService(props) {
                       placeholder='Price'
                       required
                     />
+                    
                   </Form.Group>
                 </div>
-
-                <Button variant='primary' type='submit'>
+                    <br></br>
+                <button 
+                style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+                variant='primary' type='submit'>
+                  
+                  
                   Submit
-                </Button>
+                </button>
               </div>
             </Form>
           </Modal.Body>
 
-          <Modal.Footer></Modal.Footer>
-        </Modal.Dialog>
+         
+        {/* </Modal.Dialog> */}
 
         <ImageBrowserForm show={show} handleClose={handleClose} />
       </Modal>
