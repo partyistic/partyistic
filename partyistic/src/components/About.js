@@ -17,7 +17,7 @@ import laith2 from './img/laith2.jpg';
 import mahmood from './img/mahmood.jpg';
 import firas from './img/firas.jpg';
 import yahia from './img/yahia.jpg';
-import nora from './img/nora.png';
+import nora from './img/nora.jpeg';
 import ruba from './img/ruba.jpg';
 
 export default function About() {
@@ -29,7 +29,10 @@ export default function About() {
   },[])
   return (
     <div className="bodyDiv">
-      <h3 className="h2class">Partyistic-Team</h3>
+      <h1 
+      
+      style={{ marginTop:"1%", marginBottom:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+      className="h2class">Partyistic-Team</h1>
       <Container fluid="md">
         <Row className=" justify-content-center">
 
@@ -40,7 +43,7 @@ export default function About() {
               <Card.Body>
                 <Card.Title>Yahia Al-Qous</Card.Title>
                 <Card.Text>
-                  Architect attended to be a front-end developer
+                  Architect and Developer
                 </Card.Text>
                 <div className="aboutus-icon">
                   <a href="https://github.com/YAHIAQOUS">
@@ -60,20 +63,21 @@ export default function About() {
 
           <Col sm={6} lg={4}>
             <Card style={{ width: '18rem' }} className="cardAboutus">
-              <Card.Img src={laith2} alt="" className="cardimg" />
+              <Card.Img src={nora} alt="" className="cardimg" />
+
               <Card.Body>
-                <Card.Title>Laith Hussein</Card.Title>
+                <Card.Title>Nura Tabanjeh</Card.Title>
                 <Card.Text>
-                  Full stack web deveolper
+                Civil Engineer and Web Developer
                 </Card.Text>
                 <div className="aboutus-icon">
-                  <a href="https://github.com/laithfayizhussein">
+                  <a href="https://github.com/nuratabanjeh">
                     <img src={github} alt="" width="30px" height="30px" />
                   </a>
-                  <a href="https://www.linkedin.com/in/laith-hussien/">
+                  <a href="https://www.linkedin.com/in/nura-tabanjeh-0237391b9/">
                     <img src={linkedin} alt="" width="30px" height="30px" />
                   </a>
-                  <a href="laithalsanory9919@gmail.com">
+                  <a href="nuratabanjeh96@gmail.com">
                     <img src={mail} alt="" width="30px" height="30px" />
                   </a>
                 </div>
@@ -82,13 +86,15 @@ export default function About() {
           </Col>
 
 
+
+
           <Col sm={6} lg={4}>
             <Card style={{ width: '18rem' }} className="cardAboutus">
               <Card.Img src={mahmood} alt="" className="cardimg" />
               <Card.Body>
                 <Card.Title>Mahmoud Salameh</Card.Title>
                 <Card.Text>
-                  mmmmmmmmmmmmmmmmmmmmm
+                  Civil Engineer and Web Developer
                 </Card.Text>
                 <div className="aboutus-icon">
                   <a href="https://github.com/mahmoud-salameh">
@@ -111,7 +117,7 @@ export default function About() {
               <Card.Body>
                 <Card.Title>Firas Hasan</Card.Title>
                 <Card.Text>
-                  fffffffffffffffff
+                 Software Engineer and Developer
                 </Card.Text>
                 <div className="aboutus-icon">
                   <a href="https://github.com/FirasHasan">
@@ -129,30 +135,29 @@ export default function About() {
           </Col>
 
 
+
           <Col sm={6} lg={4}>
             <Card style={{ width: '18rem' }} className="cardAboutus">
-              <Card.Img src={nora} alt="" className="cardimg" />
-
+              <Card.Img src={laith2} alt="" className="cardimg" />
               <Card.Body>
-                <Card.Title>Nura Tabanjeh</Card.Title>
+                <Card.Title>Laith Hussein</Card.Title>
                 <Card.Text>
-                  nnnnnnnnnnnnnnnnnnnn
+                  Full Stack Web Deveolper
                 </Card.Text>
                 <div className="aboutus-icon">
-                  <a href="https://github.com/nuratabanjeh">
+                  <a href="https://github.com/laithfayizhussein">
                     <img src={github} alt="" width="30px" height="30px" />
                   </a>
-                  <a href="https://www.linkedin.com/in/nura-tabanjeh-0237391b9/">
+                  <a href="https://www.linkedin.com/in/laith-hussien/">
                     <img src={linkedin} alt="" width="30px" height="30px" />
                   </a>
-                  <a href="nuratabanjeh96@gmail.com">
+                  <a href="laithalsanory9919@gmail.com">
                     <img src={mail} alt="" width="30px" height="30px" />
                   </a>
                 </div>
               </Card.Body>
             </Card>
           </Col>
-
 
           <Col sm={6} lg={4}>
             <Card style={{ width: '18rem' }} className="cardAboutus">
@@ -161,7 +166,7 @@ export default function About() {
               <Card.Body>
                 <Card.Title>Ruba kanaan</Card.Title>
                 <Card.Text>
-                  rrrrrrrrrrrrrrrrrrrrr
+                  Full Stack Developer
                 </Card.Text>
                 <div className="aboutus-icon">
                   <a href="https://github.com/rubakanaan">

@@ -11,7 +11,7 @@ import { Card } from 'react-bootstrap';
 import updateServiceForm from './updateServiceForm';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import yahia from './img/yahia.jpg';
 export default function Profile() {
   const history = useHistory();
   useEffect(() => {
@@ -22,28 +22,38 @@ export default function Profile() {
     }
   }, []);
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
   return (
     <>
-      <h1>Personal Profile</h1>
+      <h1
+      style={{ marginTop:"3%", color:"white",marginLeft:"39%", fontFamily: "'Dancing Script', cursive"}}
+    
+      >Personal Profile</h1>
       <img
-        style={{ height: '10%', width: '10%' }}
-        src='https://images.unsplash.com/photo-1612532479617-71b3a8878565?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBvcnRhaXR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        style={{ height: '10%', width: '10%' , marginLeft:"40%", borderRadius:"5%" , display:"inline-block"}}
+        src={yahia}
         alt='profile pic'
       />
-      <h4>Name</h4>
-      <h6>email@gmail.com</h6>
+      <h4
+      style={{ marginLeft:"41%", color:"white" , fontFamily: "'Dancing Script', cursive"}}
+      >Yahia Al-Qous</h4>
+     
 
-      <h2>Your Services</h2>
+      <h2
+      style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    
+      >Your Services</h2>
       <UserServices />
 
-      <h2>Your Favorites</h2>
+      <h2
+      style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    
+      >Your Favorites</h2>
       <UserFavorites />
 
-      <h2>Your Parties</h2>
+      <h2
+      style={{ marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
+    
+      >Your Parties</h2>
       <UserParties />
     </>
   );
