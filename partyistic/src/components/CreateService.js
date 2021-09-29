@@ -1,4 +1,3 @@
-
 /** @format */
 
 import React, { Component } from 'react';
@@ -8,22 +7,23 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Col, Card, Dropdown } from 'react-bootstrap';
 import ImageBrowserForm from './ImageBrowserForm';
-import Services from './Services'
+import Services from './Services';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 
 import axios from 'axios';
 
 export default function CreateService(props) {
-    const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
-    let get = localStorage.getItem('access_token')
+    let get = localStorage.getItem('access_token');
 
-    if (!get) { history.push('/login') }
-  },[])
-  
+    if (!get) {
+      history.push('/login');
+    }
+  }, []);
+
   async function createPlace(info) {
     await axios.post(
       'https://partyistic.herokuapp.com/api/v1/partyistic/places/',
@@ -37,7 +37,6 @@ export default function CreateService(props) {
       info
     );
   }
-
 
   async function createFashion(info) {
     await axios.post(
@@ -294,9 +293,9 @@ export default function CreateService(props) {
 
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Control
-                  type='text'
+                  as='textarea'
                   onChange={getDescriptionChange}
-                  placeholder='Description'
+                  placeholder='Add Description'
                   required
                 />
               </Form.Group>
@@ -329,7 +328,7 @@ export default function CreateService(props) {
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
-                      type='text'
+                      type='textarea'
                       onChange={getLocationChange}
                       placeholder='Location Link'
                     />
@@ -372,19 +371,18 @@ export default function CreateService(props) {
 
               <br></br>
               <div className='row row-cols-3'>
-                {/* <div className='mb-3 col'>
+                <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
                       type='email'
                       id='email'
-                      pattern='.+@gmail\.com'
                       size='30'
                       required
                       onChange={getEmailChange}
                       placeholder='Email'
                     />
                   </Form.Group>
-                </div> */}
+                </div>
 
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>

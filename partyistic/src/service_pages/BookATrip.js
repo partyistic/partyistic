@@ -1,20 +1,14 @@
+/** @format */
 
-import React from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
-import { Card, Form } from "react-bootstrap";
-import useTrips from "../hook/useServicesTrips";
-import { useState, useEffect } from "react";
-
-
-
-
-
-
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
+import { Card, Form } from 'react-bootstrap';
+import useTrips from '../hook/useServicesTrips';
+import { useState, useEffect } from 'react';
 
 import axios from 'axios';
-
 
 export default function BookATrip() {
   const originalTrips = useTrips().resources;
@@ -30,27 +24,13 @@ export default function BookATrip() {
     originalTrips.map((item) => {
       if (item.price <= price) {
         lister.push(item);
-        console.log(lister, "trippeieirer");
+        console.log(lister, 'trippeieirer');
         setTrips(lister);
       } else {
         setTrips([]);
       }
     });
   }
-
-  const addtoFavorite = (item) => {
-    console.log(item);
-    console.log(item.id);
-
-    const access_token = localStorage.getItem('access_token');
-    console.log('access_token', access_token);
-
-    async function fetchFavorite() {
-      const response = await axios.get(
-        'https://partyistic.herokuapp.com/ ........ '
-      );
-    }
-  };
 
   const [showtrip, setShowtrip] = useState(false);
   const [trip, setBd] = useState(false);
@@ -74,7 +54,7 @@ export default function BookATrip() {
               <Modal.Title>{trip.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Card style={{ width: "18rem" }}>
+              <Card style={{ width: '18rem' }}>
                 <Card.Body>
                   {trip.description}
                   {trip.images && (
@@ -98,13 +78,13 @@ export default function BookATrip() {
                       <Card.Text>{review}</Card.Text>
                     ))}
                 </Card.Body>
-                <Button
+                {/* <Button
                   variant='secondary'
                   onClick={() => {
                     addtoFavorite(trip);
                   }}>
                   Add to Favorite
-                </Button>
+                </Button> */}
               </Card>
             </Modal.Body>
             <Modal.Footer></Modal.Footer>
@@ -124,11 +104,10 @@ export default function BookATrip() {
   return (
     <>
       <div className='row row-cols-5'>
-
         <div className='col'></div>
         <div className='col'>
           <Button variant='primary' onClick={filtering}>
-            {" "}
+            {' '}
             SHOW ALL TRIPS
           </Button>
         </div>
@@ -142,11 +121,10 @@ export default function BookATrip() {
 
         <div>
           <Button variant='primary' onClick={filtering}>
-            {" "}
+            {' '}
             SEARCH TRIPS
           </Button>
         </div>
-         
       </div>
 
       <h1>Book a Trip</h1>
@@ -156,7 +134,7 @@ export default function BookATrip() {
           trips.map((item) => (
             <div className='col'>
               <Card
-                style={{ width: "18rem" }}
+                style={{ width: '18rem' }}
                 onClick={() => {
                   handleShow(item);
                 }}>
