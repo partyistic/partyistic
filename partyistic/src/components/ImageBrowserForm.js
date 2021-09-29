@@ -37,13 +37,19 @@ export default function ImageBrowserForm(props) {
 
   return (
         <>
-      <Modal show = {props.show} onHide={props.handleClose} >
-      <Modal.Dialog>
+      <Modal 
+      size="lg"
+      show = {props.show} onHide={props.handleClose} >
+      {/* <Modal.Dialog> */}
         <Modal.Header closeButton>
-          <Modal.Title>Create a service</Modal.Title>
+          <Modal.Title
+          style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+          >Create a service</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body
+        style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+        >
           <Form >
             <div className="row row-cols-3">
 
@@ -75,12 +81,15 @@ export default function ImageBrowserForm(props) {
          
           </Modal.Body>
         <Modal.Footer>
-          <button variant="secondary" onClick={props.handleClose} >Close</button>
-          <button variant="primary" type="submit">
+          
+          <button 
+          style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+                
+          variant="primary" type="submit">
             Submit
           </button>
         </Modal.Footer>
-      </Modal.Dialog>
+      {/* </Modal.Dialog> */}
       </Modal>
 
     </>
