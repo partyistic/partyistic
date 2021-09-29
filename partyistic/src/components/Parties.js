@@ -1,7 +1,6 @@
 /** @format */
 
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
@@ -10,6 +9,12 @@ import Form from 'react-bootstrap/Form';
 import useResource from '../hook/uesParties';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+
+import SignIn from './login';
+import Row from 'react-bootstrap/Row';
+import { Col, Card, Dropdown } from 'react-bootstrap';
+import ImageBrowserForm from './ImageBrowserForm';
+
 
 export default function Parties() {
   const { resources } = useResource();
@@ -21,6 +26,7 @@ export default function Parties() {
       history.push('/login');
     }
   }, []);
+
   let wedding = [];
   let grad = [];
   let birthday = [];
@@ -89,11 +95,7 @@ export default function Parties() {
       type: event.target.partyType.value,
       description: event.target.description.value,
       images: {
-        images: [
-          'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80',
-          'https://media.istockphoto.com/photos/photo-of-wedding-cake-with-flowers-on-a-table-picture-id1241614042?b=1&k=20&m=1241614042&s=170667a&w=0&h=IwQjM259iEARHPusAiC-d_3alP7tAb-oWGwl755xIwk=',
-          'https://images.unsplash.com/photo-1627045568795-39372e1167a2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80',
-        ],
+        images: [imageUrl1, imageUrl2, imageUrl3],
       },
       location_link: event.target.location.value,
       city: event.target.city.value,
@@ -107,6 +109,16 @@ export default function Parties() {
     };
     createParty(data);
     handleCloseCreate();
+
+    setFile1('');
+    setImageUrl1('');
+    setPercentage1(0);
+    setFile2('');
+    setImageUrl2('');
+    setPercentage2(0);
+    setFile3('');
+    setImageUrl3('');
+    setPercentage3(0);
   };
 
   const partymodalshow = () => {
@@ -177,9 +189,146 @@ export default function Parties() {
     }
   };
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [showCreateParty, setshowCreateParty] = useState(false);
   const handleCloseCreate = () => setshowCreateParty(false);
   const handleShowCreate = () => setshowCreateParty(true);
+
+  // For uploading image to firebase
+  const [file1, setFile1] = useState('');
+  const [imageUrl1, setImageUrl1] = useState('');
+  const [percentage1, setPercentage1] = useState(0);
+
+  const handelUploadImage1 = () => {
+    if (file1) {
+      const fd = new FormData();
+      fd.append('image', file1, file1.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage1(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl1(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage1 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile1(e.target.files[0]);
+  };
+
+  const [file2, setFile2] = useState('');
+  const [imageUrl2, setImageUrl2] = useState('');
+  const [percentage2, setPercentage2] = useState(0);
+
+  const handelUploadImage2 = () => {
+    if (file2) {
+      const fd = new FormData();
+      fd.append('image', file2, file2.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage2(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl2(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage2 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile2(e.target.files[0]);
+  };
+
+  const [file3, setFile3] = useState('');
+  const [imageUrl3, setImageUrl3] = useState('');
+  const [percentage3, setPercentage3] = useState(0);
+
+  const handelUploadImage3 = () => {
+    if (file3) {
+      const fd = new FormData();
+      fd.append('image', file3, file3.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage3(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl3(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage3 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile3(e.target.files[0]);
+  };
+
+  useEffect(() => {
+    handelUploadImage1();
+  }, [file1]);
+
+  useEffect(() => {
+    handelUploadImage2();
+  }, [file2]);
+
+  useEffect(() => {
+    handelUploadImage3();
+  }, [file3]);
 
   return (
     <>
@@ -463,6 +612,29 @@ export default function Parties() {
               />
             </Form.Group>
 
+            <Form.Group as={Row} className='mb-3'>
+              <Col sm={{ span: 10, offset: 2 }}>
+                <input
+                  type='button'
+                  value='Add a Photo'
+                  onClick={handleShow}
+                  required
+                />
+              </Col>
+            </Form.Group>
+
+            <div className='row row-cols-3 '>
+              <div className='col'>
+                <Card.Img variant='' alt='First image' src='' />
+              </div>
+              <div className='col'>
+                <Card.Img alt='Second image' src='' />
+              </div>
+              <div className='col'>
+                <Card.Img variant='' alt='Third image' src='' />
+              </div>
+            </div>
+
             <Form.Group className='mb-3' controlId='location'>
               <Form.Control
                 required
@@ -521,6 +693,16 @@ export default function Parties() {
       </Modal>
 
       {partymodalshow()}
+      <ImageBrowserForm
+        show={show}
+        handleClose={handleClose}
+        handelUploadImage1={handelUploadImage1}
+        handelOnChangeImage1={handelOnChangeImage1}
+        handelUploadImage2={handelUploadImage2}
+        handelOnChangeImage2={handelOnChangeImage2}
+        handelUploadImage3={handelUploadImage3}
+        handelOnChangeImage3={handelOnChangeImage3}
+      />
     </>
   );
 }

@@ -131,6 +131,138 @@ export default function CreateService(props) {
     setPlaceTypeChange(event.target.value);
   };
 
+  const [file1, setFile1] = useState('');
+  const [imageUrl1, setImageUrl1] = useState('');
+  const [percentage1, setPercentage1] = useState(0);
+
+  const handelUploadImage1 = () => {
+    if (file1) {
+      const fd = new FormData();
+      fd.append('image', file1, file1.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage1(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl1(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage1 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile1(e.target.files[0]);
+  };
+
+  const [file2, setFile2] = useState('');
+  const [imageUrl2, setImageUrl2] = useState('');
+  const [percentage2, setPercentage2] = useState(0);
+
+  const handelUploadImage2 = () => {
+    if (file2) {
+      const fd = new FormData();
+      fd.append('image', file2, file2.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage2(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl2(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage2 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile2(e.target.files[0]);
+  };
+
+  const [file3, setFile3] = useState('');
+  const [imageUrl3, setImageUrl3] = useState('');
+  const [percentage3, setPercentage3] = useState(0);
+
+  const handelUploadImage3 = () => {
+    if (file3) {
+      const fd = new FormData();
+      fd.append('image', file3, file3.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage3(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl3(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage3 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile3(e.target.files[0]);
+  };
+
+  useEffect(() => {
+    handelUploadImage1();
+  }, [file1]);
+
+  useEffect(() => {
+    handelUploadImage2();
+  }, [file2]);
+
+  useEffect(() => {
+    handelUploadImage3();
+  }, [file3]);
+
   return (
     <>
       <Modal 
@@ -153,11 +285,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -172,11 +300,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -187,11 +311,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -203,11 +323,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -219,11 +335,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -236,11 +348,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -254,17 +362,22 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
                     // owner: 31,
                   });
                 props.handleClose();
+                setFile1('');
+                setImageUrl1('');
+                setPercentage1(0);
+                setFile2('');
+                setImageUrl2('');
+                setPercentage2(0);
+                setFile3('');
+                setImageUrl3('');
+                setPercentage3(0);
               }}>
               <div className='row row-cols-2'>
                 <div className='mb-3 col'>
@@ -430,7 +543,16 @@ export default function CreateService(props) {
          
         {/* </Modal.Dialog> */}
 
-        <ImageBrowserForm show={show} handleClose={handleClose} />
+        <ImageBrowserForm
+          show={show}
+          handleClose={handleClose}
+          handelUploadImage1={handelUploadImage1}
+          handelOnChangeImage1={handelOnChangeImage1}
+          handelUploadImage2={handelUploadImage2}
+          handelOnChangeImage2={handelOnChangeImage2}
+          handelUploadImage3={handelUploadImage3}
+          handelOnChangeImage3={handelOnChangeImage3}
+        />
       </Modal>
     </>
   );
