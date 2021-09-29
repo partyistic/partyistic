@@ -73,9 +73,7 @@ export default function UserServices(props) {
                   <Carousel.Item interval={3000}>
                     <Card
                       style={{ width: '18rem' }}
-                      onClick={() => {
-                        handleShow(item);
-                      }}>
+                     >
                       <Card.Img variant='top' src={item.images.images[0]} />
                     </Card>
                   </Carousel.Item>
