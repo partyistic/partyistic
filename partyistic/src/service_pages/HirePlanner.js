@@ -76,17 +76,14 @@ export default function HirePlanner() {
                   )}
                   <Card.Text>Price: {planner.price}</Card.Text>
                   <Card.Text>Reviews:</Card.Text>
-                  {planner.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {planner.reviews &&
+                    planner.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );

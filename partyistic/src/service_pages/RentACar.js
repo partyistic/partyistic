@@ -89,23 +89,21 @@ export default function RentACar() {
                   )}
                   <Card.Text>Price: {car.price}</Card.Text>
                   <Card.Text>City: {car.city}</Card.Text>
-                  <Card.Link href={car.location_link}>Location Link</Card.Link>
+                  <Card.Link href={car.location_link}>Location</Card.Link>
                   <Card.Text>Reviews:</Card.Text>
-                  {car.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {car.reviews &&
+                    car.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                   <Card.Text>Booked Dates:</Card.Text>
-                  {car.booked_dates.dates.map((date) => (
-                    <Card.Text>{date}</Card.Text>
-                  ))}
+                  {car.booked_dates &&
+                    car.booked_dates.dates.map((date) => (
+                      <Card.Text>{date}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );

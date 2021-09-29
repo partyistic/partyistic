@@ -78,21 +78,16 @@ export default function GetFashion() {
                   )}
                   <Card.Text>Price: {fashion.price}</Card.Text>
                   <Card.Text>City: {fashion.city}</Card.Text>
-                  <Card.Link href={fashion.location_link}>
-                    Location Link
-                  </Card.Link>
+                  <Card.Link href={fashion.location_link}>Location</Card.Link>
                   <Card.Text>Reviews:</Card.Text>
-                  {fashion.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {fashion.reviews &&
+                    fashion.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );

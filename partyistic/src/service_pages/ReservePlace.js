@@ -99,26 +99,23 @@ export default function ReservePlace(props) {
                   <Card.Text>Place Type: {place.place_type}</Card.Text>
                   <Card.Text>Price: {place.price}</Card.Text>
                   <Card.Text>City: {place.city}</Card.Text>
-                  <Card.Link href={place.location_link}>
-                    Location Link
-                  </Card.Link>
+                  <Card.Link href={place.location_link}>Location</Card.Link>
                   <Card.Text>Reviews:</Card.Text>
-                  {place.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {place.reviews &&
+                    place.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                   <Card.Text>Booked Dates:</Card.Text>
-                  {place.booked_dates.dates.map((date) => (
-                    <Card.Text>{date}</Card.Text>
-                  ))}
+                  {place.booked_dates &&
+                    place.booked_dates.dates.map((date) => (
+                      <Card.Text>{date}</Card.Text>
+                    ))}
                 </Card.Body>
               </Card>
             </Modal.Body>
 
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
+
           </Modal>
         </>
       );

@@ -1,3 +1,4 @@
+
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -5,6 +6,15 @@ import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
 import useTrips from "../hook/useServicesTrips";
 import { useState, useEffect } from "react";
+
+
+
+
+
+
+
+import axios from 'axios';
+
 
 export default function BookATrip() {
   const originalTrips = useTrips().resources;
@@ -27,6 +37,20 @@ export default function BookATrip() {
       }
     });
   }
+
+  const addtoFavorite = (item) => {
+    console.log(item);
+    console.log(item.id);
+
+    const access_token = localStorage.getItem('access_token');
+    console.log('access_token', access_token);
+
+    async function fetchFavorite() {
+      const response = await axios.get(
+        'https://partyistic.herokuapp.com/ ........ '
+      );
+    }
+  };
 
   const [showtrip, setShowtrip] = useState(false);
   const [trip, setBd] = useState(false);
@@ -69,17 +93,21 @@ export default function BookATrip() {
                   )}
                   <Card.Text>Price: {trip.price}</Card.Text>
                   <Card.Text>Reviews:</Card.Text>
-                  {trip.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {trip.reviews &&
+                    trip.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                 </Card.Body>
+                <Button
+                  variant='secondary'
+                  onClick={() => {
+                    addtoFavorite(trip);
+                  }}>
+                  Add to Favorite
+                </Button>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );

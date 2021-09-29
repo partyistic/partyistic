@@ -89,21 +89,21 @@ export default function ChooseBand() {
                   )}
                   <Card.Text>Price: {musicBand.price}</Card.Text>
                   <Card.Text>Reviews:</Card.Text>
-                  {musicBand.reviews.reviews.map((review) => (
-                    <Card.Text>{review}</Card.Text>
-                  ))}
+                  {musicBand.reviews &&
+                    musicBand.reviews.reviews.map((review) => (
+                      <Card.Text>{review}</Card.Text>
+                    ))}
                   <Card.Text>Booked Dates:</Card.Text>
-                  {musicBand.booked_dates.dates.map((date) => (
-                    <Card.Text>{date}</Card.Text>
-                  ))}
+
+                  {musicBand.booked_dates &&
+                    musicBand.booked_dates.dates.map((date) => (
+                      <Card.Text>{date}</Card.Text>
+                    ))}
+
                 </Card.Body>
               </Card>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
+            <Modal.Footer></Modal.Footer>
           </Modal>
         </>
       );
