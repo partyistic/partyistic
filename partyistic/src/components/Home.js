@@ -91,10 +91,10 @@ export default function Home(props) {
 
 
 
-            <div>
+            <div class="hover">
                 <Nav>
                     <Nav.Link href="/Inspiration"> <Image 
-                     style={{height:"500px" ,marginTop:"7%", borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1"}}
+                     style={{height:"500px" , borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1"}}
                      src="https://bubblegumballoons.com/images/large/e04e4ba0866dea99173ef7a517bd40ed.jpg" alt='get inspired!' /></Nav.Link>
                 </Nav>
 
@@ -105,10 +105,10 @@ export default function Home(props) {
                     Get Inspired
                 </p>
             
-            <div>
+            <div class="hover">
                 <Nav>
                     <Nav.Link href="/Services"> <Image
-                    style={{height:"500px" ,marginTop:"7%", borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1"}}
+                    style={{height:"500px" , borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1"}}
                      src="https://www.lux-review.com/wp-content/uploads/2021/05/Wedding-car.jpg" alt='explore services' /></Nav.Link>
                 </Nav>
 
@@ -117,10 +117,10 @@ export default function Home(props) {
                  style={{marginTop:"-7%" ,color:"rgb(79,121,66)",fontSize:"80px",  marginLeft:"58%", fontFamily: "'Fleur De Leah', cursive"}}>
                     Our Servises
                 </p>
-            <div>
+            <div class="hover">
                 <Nav>
                     <Nav.Link href="/Parties"> <Image 
-                     style={{height:"500px" ,marginTop:"7%", borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1"}}
+                     style={{height:"500px" , borderRadius:"1%", width:"1200px", marginLeft:"25%", zIndex:"-1", marginBottom:"2%"}}
                      src="https://cdn.shopify.com/s/files/1/0398/6145/2953/articles/1_b6d13b0b-ba1f-441a-85cd-79d8d0bf66ed_1280x.jpg?v=1592231674" alt='make a part' /></Nav.Link>
 
                 </Nav>
