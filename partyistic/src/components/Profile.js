@@ -2,10 +2,30 @@
 
 import React from 'react';
 
+
 import UserServices from '../user_profile/userServices';
 import UserFavorites from '../user_profile/userFavorites';
 import UserParties from '../user_profile/userParties';
 export default function Profile() {
+
+import Row from 'react-bootstrap/Row';
+import { Card } from 'react-bootstrap';
+import updateServiceForm from './updateServiceForm';
+import { useState,useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
+export default function Profile() {
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
+
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
   return (
     <>
       <h1>Personal Profile</h1>

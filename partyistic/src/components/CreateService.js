@@ -1,3 +1,4 @@
+
 /** @format */
 
 import React, { Component } from 'react';
@@ -7,12 +8,22 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Col, Card, Dropdown } from 'react-bootstrap';
 import ImageBrowserForm from './ImageBrowserForm';
+import Services from './Services'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
+
 
 import axios from 'axios';
 
 export default function CreateService(props) {
+    const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
+
+    if (!get) { history.push('/login') }
+  },[])
+  
   async function createPlace(info) {
     await axios.post(
       'https://partyistic.herokuapp.com/api/v1/partyistic/places/',
@@ -26,6 +37,7 @@ export default function CreateService(props) {
       info
     );
   }
+
 
   async function createFashion(info) {
     await axios.post(

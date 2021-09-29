@@ -1,16 +1,19 @@
-/** @format */
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import useResource from '../hook/useInspiration';
-import { useAuth } from '../Auth';
+import { useHistory } from 'react-router-dom';
 
 export default function Inspiration(props) {
-  const { resources, loading } = useResource();
-  const { user } = useAuth();
+  const history = useHistory();
+  useEffect(() => {
+    let get = localStorage.getItem('access_token')
 
+    if (!get) { history.push('/login') }
+  },[])
+
+  const { resources } = useResource();
   let wedding = [];
   let grad = [];
   let birthday = [];
@@ -35,8 +38,8 @@ export default function Inspiration(props) {
 
   return (
     <>
-      <h1>Get Inspired!</h1>
-      <Carousel>
+      {/* <h1>Get Inspired!</h1> */}
+      <Carousel fade  style={{width:"96%", borderRadius:"1%" , marginLeft:"2%"}} >
         {resources &&
           resources.map((item) => {
             return (
@@ -44,6 +47,7 @@ export default function Inspiration(props) {
                 <Carousel.Item interval={3000}>
                   {console.log(item.images.images[0])}
                   <img
+                   style={{width:"100%",height:"850px" , borderRadius:"1%" }}
                     src={item.images.images[0]}
                     alt={item.images.images[0]}
                   />
@@ -53,23 +57,33 @@ export default function Inspiration(props) {
           })}
       </Carousel>
 
-      <h1> Wedding parties </h1>
+      <h1
+       style={{ marginTop:"2%", color:"white",marginLeft:"45%", fontFamily: "'Fleur De Leah', cursive"}}
+      > Wedding parties </h1>
+      <div style={{ display:"flex", marginLeft:"8%"}}>
       {wedding &&
         wedding.map(
           (item, key) =>
             key < 3 && (
               <Nav>
-                <Nav.Link href='/inspiration/weddingparties'>
+                <Nav.Link  href='/inspiration/weddingparties'>
                   {' '}
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Img variant='top' src={item.images.images[0]} />
+                  <Card style={{ width: '30rem' }}>
+                    <Card.Img 
+                    style={{ width: '100%', height:"100%" }}
+                    variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
+
             )
         )}
+        </div>
 
-      <h1> Graduation Parties </h1>
+      <h1
+      style={{ marginTop:"2%", color:"white",marginLeft:"45%", fontFamily: "'Fleur De Leah', cursive"}}
+      > Graduation Parties </h1>
+      <div style={{ display:"flex" , marginLeft:"8%"}}>
       {grad &&
         grad.map(
           (item, key) =>
@@ -77,15 +91,21 @@ export default function Inspiration(props) {
               <Nav>
                 <Nav.Link href='/inspiration/gradparties'>
                   {' '}
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Img variant='top' src={item.images.images[0]} />
+                  <Card style={{ width: '30rem', height:"20rem" }}>
+                    <Card.Img 
+                    style={{ width: '100%', height:"100%" }}
+                    variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
             )
         )}
+        </div>
 
-      <h1> Birthday Parties </h1>
+      <h1
+      style={{ marginTop:"2%", color:"white",marginLeft:"45%", fontFamily: "'Fleur De Leah', cursive"}}
+      > Birthday Parties </h1>
+      <div style={{ display:"flex" , marginLeft:"8%"}}>
       {birthday &&
         birthday.map(
           (item, key) =>
@@ -93,15 +113,21 @@ export default function Inspiration(props) {
               <Nav>
                 <Nav.Link href='/inspiration/birthdayparties'>
                   {' '}
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Img variant='top' src={item.images.images[0]} />
+                  <Card style={{ width: '30rem', height:"20rem" }}>
+                    <Card.Img 
+                    style={{ width: '100%', height:"100%" }}
+                    variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
             )
         )}
+        </div>
 
-      <h1> Special Parties</h1>
+      <h1
+      style={{ marginTop:"2%", color:"white",marginLeft:"45%", fontFamily: "'Fleur De Leah', cursive"}}
+      > Special Parties</h1>
+      <div style={{ display:"flex" , marginLeft:"8%"}}>
       {special &&
         special.map(
           (item, key) =>
@@ -109,13 +135,16 @@ export default function Inspiration(props) {
               <Nav>
                 <Nav.Link href='/inspiration/specialparties'>
                   {' '}
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Img variant='top' src={item.images.images[0]} />
+                  <Card style={{ width: '30rem', height:"20rem" }}>
+                    <Card.Img 
+                    style={{ width: '100%', height:"100%" }}
+                    variant='top' src={item.images.images[0]} />
                   </Card>
                 </Nav.Link>
               </Nav>
             )
         )}
+        </div>
     </>
   );
 }
