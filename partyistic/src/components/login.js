@@ -63,7 +63,7 @@ export default function SignIn(props) {
       .then((res) => {
         localStorage.setItem('access_token', res.data.access);
         localStorage.setItem('refresh_token', res.data.refresh);
-        localStorage.setItem('email',formData.email)
+        localStorage.setItem('email', formData.email);
         axiosInstance.defaults.headers['Authorization'] =
           'JWT ' + localStorage.getItem('access_token');
 
@@ -74,65 +74,62 @@ export default function SignIn(props) {
 
   const classes = useStyles();
 
-
-		<Container style={{height:"543px"}} component="main" maxWidth="xs">
-			<CssBaseline />
-			<div className={classes.paper}>
-				<Avatar className={classes.avatar}></Avatar>
-				<Typography component="h1" variant="h5">
-					Sign in
-				</Typography>
-				<form className={classes.form} noValidate>
-					<TextField
-						variant="outlined"
-						margin="normal"
-						required
-						fullWidth
-						id="email"
-						label="Email Address"
-						name="email"
-						autoComplete="email"
-						autoFocus
-						onChange={handleChange}
-					/>
-					<TextField
-						variant="outlined"
-						margin="normal"
-						required
-						fullWidth
-						name="password"
-						label="Password"
-						type="password"
-						id="password"
-						autoComplete="current-password"
-						onChange={handleChange}
-					/>
-					{incorect&&
-					<h5 style={{color: "red"}}> Email or Password is incorect! </h5>
-					}
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-						onClick={handleSubmit}
-					>
-						Sign In
-					</Button>
-					<Grid container>
-						
-						<Grid item>
-							<Link href="/register" variant="body2">
-								{"Don't have an account? Sign Up"}
-							</Link>
-						</Grid>
-					</Grid>
-				</form>
-			</div>
-			
-		</Container>
-		</>
-	);
-	
-  
+  return (
+    <>
+      <Container style={{ height: '543px' }} component='main' maxWidth='xs'>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}></Avatar>
+          <Typography component='h1' variant='h5'>
+            Sign in
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
+              autoFocus
+              onChange={handleChange}
+            />
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
+              onChange={handleChange}
+            />
+            {incorect && (
+              <h5 style={{ color: 'red' }}> Email or Password is incorect! </h5>
+            )}
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='primary'
+              className={classes.submit}
+              onClick={handleSubmit}>
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link href='/register' variant='body2'>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      </Container>
+    </>
+  );
+}

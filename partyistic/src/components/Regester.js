@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from 'react';
 import axiosInstance from '../axios';
 import { useHistory } from 'react-router-dom';
@@ -62,74 +64,72 @@ export default function SignUp() {
       })
       .then((res) => {
         history.push('/login');
- 
       });
   };
 
   const classes = useStyles();
 
   return (
-    <Container style={{height:"543px"}} component="main" maxWidth="xs">
+    <Container style={{ height: '543px' }} component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}></Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
+                id='username'
+                label='Username'
+                name='username'
+                autoComplete='username'
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={handleChange}                
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
+                onChange={handleChange}
               />
             </Grid>
           </Grid>
-          
+
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
-            onClick={handleSubmit}
-          >
+            onClick={handleSubmit}>
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify='flex-end'>
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link href='/login' variant='body2'>
                 Already have an account? Sign in
               </Link>
             </Grid>
