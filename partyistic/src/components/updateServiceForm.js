@@ -77,10 +77,14 @@ console.log(priceChange)
       <Modal show = {props.show} onHide={props.handleClose}>
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Create a service</Modal.Title>
+          <Modal.Title
+          style={{fontFamily: "'Dancing Script', cursive", fontSize:"27px"}}
+          >Create a service</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body
+        style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+        >
           <Form >
             <div className="row row-cols-2">
 

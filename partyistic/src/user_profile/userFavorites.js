@@ -71,18 +71,25 @@ export default function UserFavorite() {
   return (
     <>
       <div className='row row-cols-6'>
-        <Carousel>
+        <Carousel
+        fade  style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+      
+        >
           {userFavorites &&
             userFavorites.map((item) => {
               return (
                 item && (
                   <Carousel.Item interval={3000}>
                     <Card
-                      style={{ width: '18rem' }}
+                      style={{ width: '100%', backgroundColor:"transparent" }}
+                   
                       onClick={() => {
                         handleShow(item);
                       }}>
-                      <Card.Img variant='top' src={item.images.images[0]} />
+                      <Card.Img
+                      style={{width:"100%", height:"850px", borderRadius:"1%" }}
+                    
+                      variant='top' src={item.images.images[0]} />
                     </Card>
                   </Carousel.Item>
                 )

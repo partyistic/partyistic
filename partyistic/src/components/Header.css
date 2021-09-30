@@ -10,34 +10,47 @@ body{
     text-decoration: none;
     color: honeydew;
     
+    
   }
 
-  a{
+  .a{
       width: fit-content;
-      justify-content: center;  
+      justify-content: center; 
+      font-family: 'Indie Flower', cursive;
+      font-size: 20px; 
+      
     }
 
 
   .logo {
-    margin-left: 50px;
-   /* width: 10%; */
-    height: 10%;
+   float: left;
+   width: 100px;
+   height:100px;
+   margin-left: 7%;
   }
 
   
-  a:hover {
-    border-bottom: 2px solid #fff;
-    width: fit-content;
-
-    text-decoration: none;
+  .a:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
    
   }
 
 
-button{
+.logout{
 background-color: transparent;
 border-color: transparent;
 color: honeydew;
+margin-left: 15%;
+margin-top: 0.5%;
+border-block-color:#fff;
+width: 10%;
+font-family: 'Indie Flower', cursive;
+font-size: 20px; 
+}
+.logout:hover{
+  transform: scale(1.2);
+  transition-duration: 0.5s;
 }
 
 

@@ -1,10 +1,12 @@
+/** @format */
+
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import CreateService from './CreateService';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Place from '../allServices/Place';
 import Planner from '../allServices/Planner';
 import MusicBand from '../allServices/MusicBand';
@@ -13,6 +15,17 @@ import RentCar from '../allServices/RentCar';
 import BookTrip from '../allServices/BookTrip';
 import Fashion from '../allServices/Fashion';
 
+import useResourcephotosessions from '../hook/useServicesPhotosessions';
+import useResourceCar from '../hook/useServicesCars';
+import useResourceFash from '../hook/useServicesFashions';
+import useResourcemusicbands from '../hook/useServicesMusicBands';
+import useResourceplaces from '../hook/useServicesPlaces';
+import useResourceplanners from '../hook/useServicesPlanners';
+import useResourcetrip from '../hook/useServicesTrips';
+
+import Button from 'react-bootstrap/Button';
+import './Services.css';
+import Link from '@material-ui/core/Link';
 import useCars from '../hook/useServicesCars';
 import useFashion from '../hook/useServicesFashions';
 import useMusicBands from '../hook/useServicesMusicBands';
@@ -20,199 +33,205 @@ import usePlaces from '../hook/useServicesPlaces';
 import useTrips from '../hook/useServicesTrips';
 import usePlanners from '../hook/useServicesPlanners';
 import usePhotosessions from '../hook/useServicesPhotosessions';
-import { useHistory } from 'react-router-dom';
 
+import { useHistory } from 'react-router-dom';
 
 export default function Services(props) {
   const history = useHistory();
 
-  const cars = useCars().resources
-  const fashion = useFashion().resources
-  const planners = usePlanners().resources
-  const trips = useTrips().resources
-  const photosessions = usePhotosessions().resources
-  const places = usePlaces().resources
+  const cars = useResourceCar().carresources;
+  const fashion = useResourceFash().fashresources;
+  const planners = useResourceplanners().plannerresources;
+  const trips = useResourcetrip().tripresources;
+  const photosessions = useResourcephotosessions().photoresources;
+  const places = useResourceplaces().placeresources;
   // console.log(places)
-  const musicbands  = useMusicBands().resources
+  const musicbands = useResourcemusicbands().musicresources;
 
-  console.log(cars,fashion,planners,trips,photosessions,places,musicbands);
-  
   useEffect(() => {
-    let get = localStorage.getItem('access_token')
+    let get = localStorage.getItem('access_token');
 
-    if (!get) { history.push('/login') }
-  },[])
-  
-  
-  
+    if (!get) {
+      history.push('/login');
+    }
+  }, []);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <>
-      <h1>Services</h1>
+      <div>
+        <Carousel
+          fade
+          style={{ borderRadius: '1%', width: '1200px', marginLeft: '15%' }}>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1505944357431-27579db47558?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80'
+              alt='First slide'
+            />
+          </Carousel.Item>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1524777313293-86d2ab467344?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
+              alt='Second slide'
+            />
+          </Carousel.Item>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1604654011460-018ae27016cc?ixid=MnwxMjA3fDB8MHxwaG90[…]GVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1597&q=80'
+              alt='Third slide'
+            />
+          </Carousel.Item>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/flagged/photo-1579890122633-1d9ec7cfb277?ixid=MnwxMjA3fDB8[…]GVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
+              alt='Third slide'
+            />
+          </Carousel.Item>
 
-      <Carousel>
-        <Carousel.Item interval={3000}>
-          <div className="row row-cols-3 ">
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png"
-                alt="First slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-          </div>
-        </Carousel.Item>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1606403444347-fdd6b74492d1?ixid=MnwxMjA3fDB8MHxwaG90[…]GVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
+              alt='Third slide'
+            />
+          </Carousel.Item>
 
-        <Carousel.Item interval={3000}>
-          <div className="row row-cols-3 ">
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png"
-                alt="First slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-          </div>
-        </Carousel.Item>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1571113908007-5d6aae13d73e?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+              alt='Third slide'
+            />
+          </Carousel.Item>
 
-        <Carousel.Item interval={3000}>
-          <div className="row row-cols-3 ">
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="https://d1qxviojg2h5lt.cloudfront.net/images/01ETTD1GWV2FZVP2SASMA1EYN2/FriendsRoutine.png"
-                alt="First slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-            <div className="col">
-              <img
-                className="d-block w-100"
-                src="http://images5.fanpop.com/image/photos/26500000/6x10-The-One-With-The-Routine-ross-and-monica-geller-26597202-512-384.jpg"
-                alt="Second slide"
-              />
-            </div>
-          </div>
-        </Carousel.Item>
-      </Carousel>
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://fusionzaffa.com/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-10-at-3.31.12-PM.jpeg'
+              alt='Third slide'
+            />
+          </Carousel.Item>
 
-      <Navbar bg="primary" variant="dark">
+          <Carousel.Item interval={1000}>
+            <img
+              style={{ width: '100%', height: '850px', borderRadius: '1%' }}
+              className='d-block w-100'
+              src='https://images.unsplash.com/photo-1624949216539-cd17ef0a1a5a?ixid=MnwxMjA3fDB8MHxwaG90[…]GVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
+              alt='Third slide'
+            />
+          </Carousel.Item>
+        </Carousel>
+      </div>
+
+      <Navbar
+        className='middleNav'
+        style={{
+          textDecoration: 'none',
+          marginTop: '5%',
+          backgroundColor: 'transparent',
+          color: '#fff',
+        }}>
         <Container>
-          <Nav className="me-auto">
-            <Nav.Link href="#reserve_a_place">Reserve a Place</Nav.Link>
-            <Nav.Link href="#hire_a_planner">Hire a Planner</Nav.Link>
-            <Nav.Link href="#choose_a_music_band">Choose a Music Band</Nav.Link>
-            <Nav.Link href="#photo_session">Book a photo session</Nav.Link>
-            <Nav.Link href="#get_fashion">Get Fashion</Nav.Link>
-            <Nav.Link href="#rent_car">Rent a Car</Nav.Link>
-            <Nav.Link href="#book_trip">Book a Trip</Nav.Link>
+          <Nav className='me-auto' style={{ color: '#fff' }}>
+            <Link class='aa' href='#reserve_a_place'>
+              Reserve a Place
+            </Link>
+            <Link class='aa' href='#hire_a_planner'>
+              Hire a Planner
+            </Link>
+            <Link class='aa' href='#choose_a_music_band'>
+              Choose a Music Band
+            </Link>
+            <Link class='aa' href='#photo_session'>
+              Book a photo session
+            </Link>
+            <Link class='aa' href='#get_fashion'>
+              Get Fashion
+            </Link>
+            <Link class='aa' href='#rent_car'>
+              Rent a Car
+            </Link>
+            <Link class='aa' href='#book_trip'>
+              Book a Trip
+            </Link>
           </Nav>
         </Container>
       </Navbar>
-      <button
-        type="button"
-        class="btn btn-primary btn-lg btn-block"
-        onClick={handleShow}
-      >
+      <Button
+        style={{
+          marginLeft: '15%',
+          color: '#fff',
+          fontSize: '30px',
+          fontFamily: "'Open Sans Condensed', sans-serif",
+          width: '1200px',
+          height: '60px',
+        }}
+        variant='outline-secondary'
+        type='button'
+        class='btn btn-primary btn-lg btn-block'
+        onClick={handleShow}>
         Create a Service
-      </button>
+      </Button>
 
-      <div id="reserve_a_place">
+      <div id='reserve_a_place'>
         {' '}
-        <Place 
-        places={places}
-        />{' '}
+        <Place places={places} />{' '}
       </div>
 
       <br></br>
       <br></br>
 
-      <div id="hire_a_planner">
+      <div id='hire_a_planner'>
         {' '}
-        <Planner 
-        planners={planners}
-        />{' '}
+        <Planner planners={planners} />{' '}
       </div>
       <br></br>
       <br></br>
 
-      <div id="choose_a_music_band">
+      <div id='choose_a_music_band'>
         {' '}
-        <MusicBand 
-        musicbands={musicbands}
-        />{' '}
+        <MusicBand musicbands={musicbands} />{' '}
       </div>
       <br></br>
       <br></br>
 
-      <div id="photo_session">
+      <div id='photo_session'>
         {' '}
-        <PhotoSession 
-        photosessions={photosessions}
-        />{' '}
+        <PhotoSession photosessions={photosessions} />{' '}
       </div>
       <br></br>
       <br></br>
 
-      <div id="get_fashion">
+      <div id='get_fashion'>
         {' '}
-        <Fashion 
-        fashion={fashion}
-        />{' '}
+        <Fashion fashion={fashion} />{' '}
       </div>
       <br></br>
       <br></br>
 
-      <div id="rent_car">
+      <div id='rent_car'>
         {' '}
-        <RentCar 
-        cars={cars}
-        />{' '}
+        <RentCar cars={cars} />{' '}
       </div>
       <br></br>
       <br></br>
 
-      <div name="book_trip" id="book_trip">
+      <div name='book_trip' id='book_trip'>
         {' '}
-        <BookTrip 
-        trips={trips}
-        />{' '}
+        <BookTrip trips={trips} />{' '}
       </div>
 
       <br></br>
@@ -222,3 +241,10 @@ export default function Services(props) {
     </>
   );
 }
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
+// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
