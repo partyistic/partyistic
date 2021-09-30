@@ -76,16 +76,12 @@ export default function ImageBrowserForm(props) {
                   </Form.Group>
                 </div>
               </div>
+              <button variant='primary' type='submit'>
+                Submit
+              </button>
             </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <button variant='secondary' onClick={props.handleClose}>
-              Close
-            </button>
-            <button variant='primary' type='submit'>
-              Submit
-            </button>
-          </Modal.Footer>
+          <Modal.Footer></Modal.Footer>
         </Modal.Dialog>
       </Modal>
     </>
