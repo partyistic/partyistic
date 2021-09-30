@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 
 export default function ImageBrowserForm(props) {
   // FIRST IMAGE
+
   // const [firstImageChange, setFirstImageChange] = useState('');
   // const getFirstImageChange = (event) => {
   //   setFirstImageChange(event.target.value);
@@ -36,7 +37,7 @@ export default function ImageBrowserForm(props) {
 
     <>
       <Modal  size="lg" show={props.show} onHide={props.handleClose}>
-        <Modal.Dialog>
+        
           <Modal.Header closeButton>
             <Modal.Title
           style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
@@ -95,7 +96,8 @@ export default function ImageBrowserForm(props) {
             Submit
           </button>
         
-      {/* </Modal.Dialog> */}
+     
+
 
 
       </Modal>
