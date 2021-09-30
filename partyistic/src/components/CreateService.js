@@ -1,4 +1,3 @@
-
 /** @format */
 
 import React, { Component } from 'react';
@@ -8,22 +7,23 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Col, Card, Dropdown } from 'react-bootstrap';
 import ImageBrowserForm from './ImageBrowserForm';
-import Services from './Services'
+import Services from './Services';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 
 import axios from 'axios';
 
 export default function CreateService(props) {
-    const history = useHistory();
+  const history = useHistory();
   useEffect(() => {
-    let get = localStorage.getItem('access_token')
+    let get = localStorage.getItem('access_token');
 
-    if (!get) { history.push('/login') }
-  },[])
-  
+    if (!get) {
+      history.push('/login');
+    }
+  }, []);
+
   async function createPlace(info) {
     await axios.post(
       'https://partyistic.herokuapp.com/api/v1/partyistic/places/',
@@ -37,7 +37,6 @@ export default function CreateService(props) {
       info
     );
   }
-
 
   async function createFashion(info) {
     await axios.post(
@@ -132,14 +131,152 @@ export default function CreateService(props) {
     setPlaceTypeChange(event.target.value);
   };
 
+  const [file1, setFile1] = useState('');
+  const [imageUrl1, setImageUrl1] = useState('');
+  const [percentage1, setPercentage1] = useState(0);
+
+  const handelUploadImage1 = () => {
+    if (file1) {
+      const fd = new FormData();
+      fd.append('image', file1, file1.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage1(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl1(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage1 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile1(e.target.files[0]);
+  };
+
+  const [file2, setFile2] = useState('');
+  const [imageUrl2, setImageUrl2] = useState('');
+  const [percentage2, setPercentage2] = useState(0);
+
+  const handelUploadImage2 = () => {
+    if (file2) {
+      const fd = new FormData();
+      fd.append('image', file2, file2.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage2(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl2(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage2 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile2(e.target.files[0]);
+  };
+
+  const [file3, setFile3] = useState('');
+  const [imageUrl3, setImageUrl3] = useState('');
+  const [percentage3, setPercentage3] = useState(0);
+
+  const handelUploadImage3 = () => {
+    if (file3) {
+      const fd = new FormData();
+      fd.append('image', file3, file3.name);
+      axios
+        .post(
+          'https://us-central1-graphite-cell-321207.cloudfunctions.net/uploadFile',
+          fd,
+          {
+            onUploadProgress: (ProgressEvent) => {
+              console.log(
+                'upload Progress : ' +
+                  Math.round(
+                    (ProgressEvent.loaded / ProgressEvent.total) * 100
+                  ) +
+                  '%'
+              );
+
+              setPercentage3(
+                Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
+              );
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data.url);
+          setImageUrl3(res.data.url);
+        });
+    }
+  };
+
+  const handelOnChangeImage3 = (e) => {
+    console.log('onchange', e.target.files[0]);
+    setFile3(e.target.files[0]);
+  };
+
+  useEffect(() => {
+    handelUploadImage1();
+  }, [file1]);
+
+  useEffect(() => {
+    handelUploadImage2();
+  }, [file2]);
+
+  useEffect(() => {
+    handelUploadImage3();
+  }, [file3]);
+
   return (
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Dialog>
+      <Modal 
+      size="lg"
+      show={props.show} onHide={props.handleClose}>
+        {/* <Modal.Dialog> */}
           <Modal.Header closeButton>
-            <Modal.Title>Create a service</Modal.Title>
+            <Modal.Title
+            style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+            >Create a service</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+           style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+          >
             <Form
               onSubmit={(event) => {
                 event.preventDefault();
@@ -148,11 +285,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -167,11 +300,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -182,11 +311,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -198,11 +323,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
@@ -214,11 +335,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -231,11 +348,7 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     location_link: serviceLocation,
                     city: serviceCity,
@@ -249,17 +362,22 @@ export default function CreateService(props) {
                     name: serviceName,
                     description: serviceDescription,
                     images: {
-                      images: [
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                        'https://s3-us-west-2.amazonaws.com/melingoimages/Images/69813.jpg',
-                      ],
+                      images: [imageUrl1, imageUrl2, imageUrl3],
                     },
                     price: servicePrice,
                     reviews: null,
                     // owner: 31,
                   });
                 props.handleClose();
+                setFile1('');
+                setImageUrl1('');
+                setPercentage1(0);
+                setFile2('');
+                setImageUrl2('');
+                setPercentage2(0);
+                setFile3('');
+                setImageUrl3('');
+                setPercentage3(0);
               }}>
               <div className='row row-cols-2'>
                 <div className='mb-3 col'>
@@ -294,16 +412,18 @@ export default function CreateService(props) {
 
               <Form.Group className='mb-3' controlId='formBasicEmail'>
                 <Form.Control
-                  type='text'
+                  as='textarea'
                   onChange={getDescriptionChange}
-                  placeholder='Description'
+                  placeholder='Add Description'
                   required
                 />
               </Form.Group>
 
               <Form.Group as={Row} className='mb-3'>
-                <Col sm={{ span: 10, offset: 2 }}>
+                <Col >
                   <input
+
+                  style={{backgroundColor:"transparent", width:"100%"}}
                     type='button'
                     value='Add a Photo'
                     onClick={handleShow}
@@ -329,7 +449,7 @@ export default function CreateService(props) {
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
-                      type='text'
+                      type='textarea'
                       onChange={getLocationChange}
                       placeholder='Location Link'
                     />
@@ -372,19 +492,18 @@ export default function CreateService(props) {
 
               <br></br>
               <div className='row row-cols-3'>
-                {/* <div className='mb-3 col'>
+                <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
                     <Form.Control
                       type='email'
                       id='email'
-                      pattern='.+@gmail\.com'
                       size='30'
                       required
                       onChange={getEmailChange}
                       placeholder='Email'
                     />
                   </Form.Group>
-                </div> */}
+                </div>
 
                 <div className='mb-3 col'>
                   <Form.Group controlId='formBasicEmail'>
@@ -406,20 +525,34 @@ export default function CreateService(props) {
                       placeholder='Price'
                       required
                     />
+                    
                   </Form.Group>
                 </div>
-
-                <Button variant='primary' type='submit'>
+                    <br></br>
+                <button 
+                style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+                variant='primary' type='submit'>
+                  
+                  
                   Submit
-                </Button>
+                </button>
               </div>
             </Form>
           </Modal.Body>
 
-          <Modal.Footer></Modal.Footer>
-        </Modal.Dialog>
+         
+        {/* </Modal.Dialog> */}
 
-        <ImageBrowserForm show={show} handleClose={handleClose} />
+        <ImageBrowserForm
+          show={show}
+          handleClose={handleClose}
+          handelUploadImage1={handelUploadImage1}
+          handelOnChangeImage1={handelOnChangeImage1}
+          handelUploadImage2={handelUploadImage2}
+          handelOnChangeImage2={handelOnChangeImage2}
+          handelUploadImage3={handelUploadImage3}
+          handelOnChangeImage3={handelOnChangeImage3}
+        />
       </Modal>
     </>
   );

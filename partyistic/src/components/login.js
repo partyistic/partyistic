@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from 'react';
 import axiosInstance from '../axios';
 import { useHistory } from 'react-router-dom';
@@ -13,75 +15,67 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
-	paper: {
-		marginTop: theme.spacing(8),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(1),
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function SignIn(props) {
-	
+  const history = useHistory();
+  const initialFormData = Object.freeze({
+    email: '',
+    password: '',
+  });
 
-	const history = useHistory();
-	const initialFormData = Object.freeze({
-		email: '',
-		password: '',
-	});
+  const [formData, updateFormData] = useState(initialFormData);
+  console.log('formData', formData);
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
 
-	const [formData, updateFormData] = useState(initialFormData);
+  const [incorect, setIncorect] = useState(false);
 
-	const handleChange = (e) => {
-		updateFormData({
-			...formData,
-			[e.target.name]: e.target.value.trim(),
-		});
-	};
-	
-	
-	
-	const [incorect,setIncorect]=useState(false);
-	
-	const handleSubmit = (e) => {
-		e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-		axiosInstance
-			.post(`token/`, {
-				email: formData.email,
-				password: formData.password,
-			})
-			.then((res) => {
-			
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
-				axiosInstance.defaults.headers['Authorization'] =
-					'JWT ' + localStorage.getItem('access_token');
-			
-				history.push('/');
-			}).catch(error => setIncorect(true))
-			
-	};
+    axiosInstance
+      .post(`token/`, {
+        email: formData.email,
+        password: formData.password,
+      })
+      .then((res) => {
+        localStorage.setItem('access_token', res.data.access);
+        localStorage.setItem('refresh_token', res.data.refresh);
+        localStorage.setItem('email',formData.email)
+        axiosInstance.defaults.headers['Authorization'] =
+          'JWT ' + localStorage.getItem('access_token');
+
+        history.push('/');
+      })
+      .catch((error) => setIncorect(true));
+  };
+
+  const classes = useStyles();
 
 
-	const classes = useStyles();
-	
-	return (
-
-		<>
-
-		<Container component="main" maxWidth="xs">
+		<Container style={{height:"543px"}} component="main" maxWidth="xs">
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}></Avatar>
@@ -141,5 +135,4 @@ export default function SignIn(props) {
 		</>
 	);
 	
-}
-
+  
