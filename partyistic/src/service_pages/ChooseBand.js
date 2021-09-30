@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import useMusicBands from "../hook/useServicesMusicBands";
+import useResourcemusicbands from "../hook/useServicesMusicBands";
 import { useState } from "react";
 
 export default function ChooseBand() {
-  const originalMusicbands = useMusicBands().resources;
+  const originalMusicbands = useResourcemusicbands().musicresources;
 
   const [musicbands, setMusicBands] = useState(originalMusicbands);
   const App = () => {
-    setMusicBands(useMusicBands().resources);
+    setMusicBands(useResourcemusicbands().musicresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -26,20 +26,13 @@ export default function ChooseBand() {
   };
   console.log(selectedDate);
 
-  let city = document.getElementById("city");
-  const [selectedCity, setCity] = useState("City");
-  const getCityValue = () => {
-    setCity(city.options[city.selectedIndex].value);
-  };
-  console.log(selectedCity);
 
   function filtering() {
     let lister = [];
 
     originalMusicbands.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
-        (item.city == selectedCity || selectedCity == "City") &&
+        (item.price <= price || price == "") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
           item.booked_dates.dates[1] == selectedDate ||
@@ -139,6 +132,7 @@ export default function ChooseBand() {
             SHOW ALL MUSIC BANDS
           </button>
         </div>
+
         <br></br>
         <div className='col'>
           <Form.Select
@@ -165,6 +159,7 @@ export default function ChooseBand() {
           </Form.Select>
         </div>
 
+
         <div className='col'>
           <Form.Select
 style={{backgroundColor:"transparent" , color:"#fff"}}
@@ -174,11 +169,14 @@ style={{backgroundColor:"transparent" , color:"#fff"}}
             id='date'
             onChange={getDateValue}
             aria-label='Default select example'>
+
+
             <option style={{color:"black"}} value='Available Date'>Available Date</option>
             <option style={{color:"black"}} value='2021/19/3'>2021/19/3</option>
             <option style={{color:"black"}} value='2020/10/1'>2020/10/1</option>
             <option style={{color:"black"}} value='2013/31/1'>2013/31/1</option>
             <option style={{color:"black"}} value='32011/24/4'>2011/24/4</option>
+
           </Form.Select>
         </div>
 

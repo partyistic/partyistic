@@ -4,14 +4,15 @@ import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Col, Card, Form, Nav } from "react-bootstrap";
 import { useState } from "react";
-import useFashion from "../hook/useServicesFashions";
+import useResourceFash from "../hook/useServicesFashions";
+
 
 export default function GetFashion() {
-  const originalFashion = useFashion().resources;
+  const originalFashion = useResourceFash().fashresources;
 
   const [fashions, setFashions] = useState(originalFashion);
   const App = () => {
-    setFashions(useFashion().resources);
+    setFashions(useResourceFash().fashresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -31,7 +32,7 @@ export default function GetFashion() {
 
     originalFashion.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City")
       ) {
         lister.push(item);
@@ -113,14 +114,23 @@ export default function GetFashion() {
           <br></br>
     <br></br>
       <div className='row row-cols-6'>
+
+    
+      
+    
+        
+       
+
         <div className='col'>
           <button 
            style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
            variant='primary' onClick={filtering}>
+
             {" "}
             SHOW ALL FASHION
           </button>
         </div>
+
         <br></br>
         <div className='col '>
           <Nav
@@ -134,6 +144,7 @@ export default function GetFashion() {
             </Nav.Item>
           </Nav>
         </div>
+
 
         <div className='col'>
           <Form.Select

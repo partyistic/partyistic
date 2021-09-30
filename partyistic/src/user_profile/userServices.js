@@ -7,14 +7,12 @@ import { Col } from 'react-bootstrap';
 import ImageBrowserForm from '../components/ImageBrowserForm';
 
 import { Carousel, Form, Modal, Button, Card } from 'react-bootstrap';
-import useResource from '../hook/useServicesCars';
 import { useState } from 'react';
-export default function UserServices() {
-  const { resources, loading } = useResource();
+export default function UserServices(props) {
   let userServices = [];
 
-  resources &&
-    resources.map((item) => {
+  props.allServices &&
+  props.allServices.map((item) => {
       userServices.push(item);
     });
   console.log(userServices);
@@ -76,6 +74,8 @@ export default function UserServices() {
                 item && (
                   <Carousel.Item interval={3000}>
                     <Card
+
+
                       style={{ width: '100%', backgroundColor:"transparent" }}
                     
                       onClick={() => {
@@ -84,6 +84,7 @@ export default function UserServices() {
                       <Card.Img 
                       style={{width:"100%",  height:"850px",borderRadius:"1%" }}
                       variant='top' src={item.images.images[0]} />
+
                     </Card>
                   </Carousel.Item>
                 )

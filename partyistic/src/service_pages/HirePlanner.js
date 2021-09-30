@@ -1,23 +1,25 @@
+/** @format */
+'use strict'
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import usePlanners from "../hook/useServicesPlanners";
+import useResourceplanners from "../hook/useServicesPlanners";
 import { useState } from "react";
 
 export default function HirePlanner() {
-  const originalPlanners = usePlanners().resources;
+  const originalPlanners = useResourceplanners().plannerresources;
 
   const [planners, setPlanners] = useState(originalPlanners);
   const App = () => {
-    setPlanners(usePlanners().resources);
+    setPlanners(useResourceplanners().plannerresources);
   };
 
   let city = document.getElementById("city");
   const [selectedCity, setCity] = useState("city");
   const getCityValue = () => {
-    setCity(city.options[city.selectedIndex]);
+    setCity(city.options[city.selectedIndex].value);
   };
   console.log(selectedCity);
 
@@ -25,7 +27,7 @@ export default function HirePlanner() {
     let lister = [];
 
     originalPlanners.map((item) => {
-      if (item.price <= price) {
+      if (item.price <= price || price == "") {
         lister.push(item);
         console.log(lister, "trippeieirer");
         setPlanners(lister);
@@ -103,7 +105,7 @@ export default function HirePlanner() {
       return <> </>;
     }
   };
-  
+
   return (
     <>
   <h1
@@ -112,6 +114,7 @@ export default function HirePlanner() {
   >Hire a Planner</h1>
   <br></br>
     <br></br>
+
       <div className='row row-cols-5'>
         <div className='col'>
           <button 
@@ -124,6 +127,7 @@ export default function HirePlanner() {
         </div>
         <br></br>
         <div className='col'>
+
           <Form.Select
           style={{backgroundColor:"transparent" , color:"#fff"}}
             id='city'
@@ -139,6 +143,7 @@ export default function HirePlanner() {
         </div>
 
         <div className='col'>
+
           <input
           style={{backgroundColor:"transparent" , color:"#fff"}}
             type='text'

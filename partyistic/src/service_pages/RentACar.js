@@ -3,15 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import useCars from "../hook/useServicesCars";
+import useResourceCar from "../hook/useServicesCars"; 
 import { useState } from "react";
 
 export default function RentACar() {
-  const originalCars = useCars().resources;
+  const originalCars = useResourceCar().carresources;
 
   const [cars, setCars] = useState(originalCars);
   const App = () => {
-    setCars(useCars().resources);
+    setCars(useResourceCar().carresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -38,7 +38,7 @@ export default function RentACar() {
 
     originalCars.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||

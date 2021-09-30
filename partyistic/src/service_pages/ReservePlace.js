@@ -3,15 +3,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Nav, Card, Form } from "react-bootstrap";
-import usePlaces from "../hook/useServicesPlaces";
 import { useState } from "react";
-
+import useResourceplaces from "../hook/useServicesPlaces";
 export default function ReservePlace(props) {
-  const originalPlaces = usePlaces().resources;
+  const originalPlaces = useResourceplaces().placeresources;
 
   const [places, setPlaces] = useState(originalPlaces);
   const App = () => {
-    setPlaces(usePlaces().resources);
+    setPlaces(useResourceplaces().placeresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
@@ -45,7 +44,7 @@ export default function ReservePlace(props) {
 
     originalPlaces.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
+        (item.price <= price || price == "") &&
         (item.city == selectedCity || selectedCity == "City") &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||

@@ -1,23 +1,26 @@
+/** @format */
+
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import { Card, Form } from "react-bootstrap";
-import usePhotosessions from "../hook/useServicesPhotosessions";
+import useResourcephotosessions from "../hook/useServicesPhotosessions";
 import { useState } from "react";
 
 export default function BookPhotoSession() {
-  const originalPhotosessions = usePhotosessions().resources;
+  const originalPhotosessions = useResourcephotosessions().photoresources;
 
   const [photosessions, setPhotosessions] = useState(originalPhotosessions);
   const App = () => {
-    setPhotosession(usePhotosessions().resources);
+    setPhotosession(useResourcephotosessions().photoresources);
   };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
+  console.log(price)
 
   let date = document.getElementById("date");
   const [selectedDate, setDate] = useState("Available Date");
@@ -26,23 +29,18 @@ export default function BookPhotoSession() {
   };
   console.log(selectedDate);
 
-  let city = document.getElementById("city");
-  const [selectedCity, setCity] = useState("City");
-  const getCityValue = () => {
-    setCity(city.options[city.selectedIndex].value);
-  };
-  console.log(selectedCity);
-
   function filtering() {
     let lister = [];
 
     originalPhotosessions.map((item) => {
       if (
-        (item.price <= price || item.price == "") &&
-        (item.city == selectedCity || selectedCity == "City") &&
+        (item.price <= price || price == '') &&
         (item.booked_dates == null ||
           item.booked_dates.dates[0] == selectedDate ||
           item.booked_dates.dates[1] == selectedDate ||
+          item.booked_dates.dates[2] == selectedDate ||
+          item.booked_dates.dates[3] == selectedDate ||
+          item.booked_dates.dates[4] == selectedDate ||
           selectedDate == "Available Date")
       ) {
         lister.push(item);
@@ -142,6 +140,7 @@ export default function BookPhotoSession() {
         <br></br>
         <div className='col'>
           <Form.Select
+
           style={{backgroundColor:"transparent" , color:"#fff"}}
             id='city'
             className='col '
@@ -168,6 +167,7 @@ export default function BookPhotoSession() {
         <div className='col'>
           <Form.Select
            style={{backgroundColor:"transparent" , color:"#fff"}}
+
             className='col'
             id='date'
             onChange={getDateValue}

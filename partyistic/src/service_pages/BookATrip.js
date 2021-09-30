@@ -1,56 +1,44 @@
+/** @format */
 
-import React from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
-import { Card, Form } from "react-bootstrap";
+
+
+
+
+
 import useTrips from "../hook/useServicesTrips";
-import { useState, useEffect } from "react";
 
 
-
-
-
-
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
+import { Card, Form } from 'react-bootstrap';
+import useResourcetrip from '../hook/useServicesTrips'; 
+import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
-
 export default function BookATrip() {
-  const originalTrips = useTrips().resources;
+  const originalTrips = useResourcetrip().tripresources;
 
   const [trips, setTrips] = useState(originalTrips);
   const App = () => {
-    setTrips(useTrips().resources);
+    setTrips(useResourcetrip().tripresources);
   };
 
   function filtering() {
     let lister = [];
 
     originalTrips.map((item) => {
-      if (item.price <= price) {
+      if (item.price <= price || price=="") {
         lister.push(item);
-        console.log(lister, "trippeieirer");
+        console.log(lister, 'trippeieirer');
         setTrips(lister);
       } else {
         setTrips([]);
       }
     });
   }
-
-  const addtoFavorite = (item) => {
-    console.log(item);
-    console.log(item.id);
-
-    const access_token = localStorage.getItem('access_token');
-    console.log('access_token', access_token);
-
-    async function fetchFavorite() {
-      const response = await axios.get(
-        'https://partyistic.herokuapp.com/ ........ '
-      );
-    }
-  };
 
   const [showtrip, setShowtrip] = useState(false);
   const [trip, setBd] = useState(false);
@@ -78,11 +66,13 @@ export default function BookATrip() {
               
               >{trip.name}</Modal.Title>
             </Modal.Header>
+
             <Modal.Body
             style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
            
             >
               <Card style={{ width: "100%" }}>
+
                 <Card.Body>
                   {trip.description}
                   {trip.images && (
@@ -110,13 +100,7 @@ export default function BookATrip() {
                       <Card.Text>{review}</Card.Text>
                     ))}
                 </Card.Body>
-                {/* <button
-                  variant='secondary'
-                  onClick={() => {
-                    addtoFavorite(trip);
-                  }}>
-                  Add to Favorite
-                </button> */}
+
               </Card>
             </Modal.Body>
            
@@ -141,14 +125,15 @@ export default function BookATrip() {
      <br></br>
     <br></br>
       <div className='row row-cols-5'>
-
         <div className='col'></div>
         <div className='col'>
+
           <button 
            style={{  background:"transparent", color: "#fff", borderBlockColor:"black" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
           
           variant='primary' onClick={filtering}>
             {" "}
+
             SHOW ALL TRIPS
           </button>
         </div>
@@ -162,14 +147,15 @@ export default function BookATrip() {
         </div>
 
         <div>
+
           <button 
           style={{  background:"transparent", color: "#fff", borderBlockColor:"black",fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
           variant='primary' onClick={filtering}>
             {" "}
+
             SEARCH TRIPS
           </button>
         </div>
-         
       </div>
       <br></br>
       <br></br>
@@ -179,7 +165,9 @@ export default function BookATrip() {
           trips.map((item) => (
             <div className='col'>
               <Card
+
                 style={{ height:"20rem", marginTop:"3%" }}
+
                 onClick={() => {
                   handleShow(item);
                 }}>

@@ -6,6 +6,7 @@ export default function Place(props) {
 
   return (
     <>
+
     <h1 
     style={{marginTop:"3%", color:"white",marginLeft:"40%", fontFamily: "'Dancing Script', cursive"}}
     className="align-middle">Reserve a place</h1>
@@ -14,6 +15,7 @@ export default function Place(props) {
       className="row row-cols-6">
 {/* 
       <div className="col"></div> */}
+
 
         {props.places && props.places.map((item,key)=>key<4 && (
 
