@@ -33,14 +33,19 @@ export default function ImageBrowserForm(props) {
   // console.log(thirdImageChange);
 
   return (
+
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
+      <Modal  size="lg" show={props.show} onHide={props.handleClose}>
         <Modal.Dialog>
           <Modal.Header closeButton>
-            <Modal.Title>Attach Images</Modal.Title>
+            <Modal.Title
+          style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+          >Attach Images</Modal.Title>
           </Modal.Header>
 
-          <Modal.Body>
+            <Modal.Body
+        style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+        >
             <Form>
               <div className='row row-cols-3'>
                 <div className='col'>
@@ -76,13 +81,23 @@ export default function ImageBrowserForm(props) {
                   </Form.Group>
                 </div>
               </div>
-              <button variant='primary' type='submit'>
-                Submit
-              </button>
+
+
             </Form>
           </Modal.Body>
-          <Modal.Footer></Modal.Footer>
-        </Modal.Dialog>
+
+        
+          
+          <button 
+          style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+                
+          variant="primary" type="submit">
+            Submit
+          </button>
+        
+      {/* </Modal.Dialog> */}
+
+
       </Modal>
     </>
   );
