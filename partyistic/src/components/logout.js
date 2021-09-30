@@ -13,6 +13,7 @@ export default function SignUp(props) {
 		
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('refresh_token');
+		localStorage.removeItem('email')
 		axiosInstance.defaults.headers['Authorization'] = null;
 		history.push('/login');
 		

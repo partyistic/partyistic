@@ -7,14 +7,12 @@ import { Col } from 'react-bootstrap';
 import ImageBrowserForm from '../components/ImageBrowserForm';
 
 import { Carousel, Form, Modal, Button, Card } from 'react-bootstrap';
-import useResource from '../hook/useServicesCars';
 import { useState } from 'react';
-export default function UserServices() {
-  const { resources, loading } = useResource();
+export default function UserServices(props) {
   let userServices = [];
 
-  resources &&
-    resources.map((item) => {
+  props.allServices &&
+  props.allServices.map((item) => {
       userServices.push(item);
     });
   console.log(userServices);
@@ -67,18 +65,26 @@ export default function UserServices() {
   return (
     <>
       <div className='row row-cols-6'>
-        <Carousel>
+        <Carousel
+        fade  style={{ borderRadius:"1%", width:"1200px", marginLeft:"15%" , marginTop:"3%"}}
+        >
           {userServices &&
             userServices.map((item) => {
               return (
                 item && (
                   <Carousel.Item interval={3000}>
                     <Card
-                      style={{ width: '18rem' }}
+
+
+                      style={{ width: '100%', backgroundColor:"transparent" }}
+                    
                       onClick={() => {
                         handleShow(item);
                       }}>
-                      <Card.Img variant='top' src={item.images.images[0]} />
+                      <Card.Img 
+                      style={{width:"100%",  height:"850px",borderRadius:"1%" }}
+                      variant='top' src={item.images.images[0]} />
+
                     </Card>
                   </Carousel.Item>
                 )
@@ -88,13 +94,19 @@ export default function UserServices() {
 
         <div className='col'></div>
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Dialog>
+      <Modal 
+      size="lg"
+      show={show} onHide={handleClose}>
+        {/* <Modal.Dialog> */}
           <Modal.Header closeButton>
-            <Modal.Title>Create a service</Modal.Title>
+            <Modal.Title
+              style={{fontFamily: "'Dancing Script', cursive", fontSize:"37px"}}
+              >Create a service</Modal.Title>
           </Modal.Header>
 
-          <Modal.Body>
+          <Modal.Body
+          style={{fontFamily: "'Open Sans Condensed', sans-serif", fontSize:"25px"}}
+          >
             <Form>
               <div className='row row-cols-2'>
                 <div className='mb-3 col'>
@@ -131,6 +143,8 @@ export default function UserServices() {
               <Form.Group as={Row} className='mb-3'>
                 <Col sm={{ span: 10, offset: 2 }}>
                   <input
+                  style={{backgroundColor:"transparent", width:"100%", marginRight:"5%"}}
+                   
                     type='button'
                     value='Add a Photo'
                     onClick={handleShow}
@@ -209,15 +223,15 @@ export default function UserServices() {
             </Form>
           </Modal.Body>
 
-          <Modal.Footer>
-            <Button variant='secondary' onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant='primary' type='submit'>
+          
+            
+            <button 
+             style={{background:"transparent", color: "black", borderBlockColor:"black", width:"100%" ,fontFamily: "'Dancing Script', cursive",fontSize:"30px"}}
+             variant='primary' type='submit'>
               Submit
-            </Button>
-          </Modal.Footer>
-        </Modal.Dialog>
+            </button>
+          
+        {/* </Modal.Dialog> */}
 
         <ImageBrowserForm show={show} handleClose={handleClose} />
       </Modal>
