@@ -82,6 +82,7 @@ export default function ImageBrowserForm(props) {
                 </div>
               </div>
 
+
             </Form>
           </Modal.Body>
 
@@ -95,6 +96,7 @@ export default function ImageBrowserForm(props) {
           </button>
         
       {/* </Modal.Dialog> */}
+
 
       </Modal>
     </>
