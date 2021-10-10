@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 
 import './Header.css';
-import logo from './pics/logo.png';
+import logo from '../images/logo.png';
 
 export default function Header() {
   const [isAuth, setAuth] = useState(false);
@@ -100,7 +100,7 @@ export default function Header() {
               color='primary'
               variant='outlined'
               component={NavLink}
-              to='/logout'>
+              to='/Logout'>
               Logout
             </Button>
           )}

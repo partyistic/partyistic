@@ -1,122 +1,111 @@
+/** @format */
+
 import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './components/Home';
-import Inspiration from './components/Inspiration';
-import Parties from './components/Parties';
-import Profile from './components/Profile';
-import Services from './components/Services';
-import About from './components/About';
+import Home from './pages/Home';
+import Inspiration from './pages/Inspiration';
+import Parties from './pages/Parties';
+import Profile from './pages/Profile';
+import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Register from './components/Regester';
-import Login from './components/login';
-import Logout from './components/logout';
+import Register from './components/Register';
+import Login from './components/Login';
+import Logout from './components/Logout';
 import axiosInstance from './axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ReservePlace from './service_pages/ReservePlace';
-import HirePlanner from './service_pages/HirePlanner';
-import ChooseBand from './service_pages/ChooseBand';
-import BookPhotoSession from './service_pages/BookPhotoSession';
-import GetFashion from './service_pages/GetFashion';
-import RentACar from './service_pages/RentACar';
-import BookATrip from './service_pages/BookATrip';
 
+import ReservePlace from './pages/services-sub-pages/ReservePlace';
+import HirePlanner from './pages/services-sub-pages/HirePlanner';
+import ChooseBand from './pages/services-sub-pages/ChooseBand';
+import BookPhotoSession from './pages/services-sub-pages/BookPhotoSession';
+import GetFashion from './pages/services-sub-pages/GetFashion';
+import RentACar from './pages/services-sub-pages/RentACar';
+import BookATrip from './pages/services-sub-pages/BookATrip';
 
-
-import WeddingParty from './components/InspirationWedding';
-import BirthdayParty from './components/InspirationBirthday';
-import SpecialParty from './components/InspirationSpecial';
-import GradParty from './components/InspirationGraduation';
+import WeddingParty from './pages/inspiration-sub-pages/InspirationWedding';
+import BirthdayParty from './pages/inspiration-sub-pages/InspirationBirthday';
+import SpecialParty from './pages/inspiration-sub-pages/InspirationSpecial';
+import GradParty from './pages/inspiration-sub-pages/InspirationGraduation';
 import { useHistory } from 'react-router-dom';
 
 export default function App() {
   const history = useHistory();
-  
-  
+
   useEffect(() => {
-    let get = localStorage.getItem('access_token')
+    let get = localStorage.getItem('access_token');
 
-    if (!get) { history.push('/login') }
-  },[])
-
+    if (!get) {
+      history.push('/Login');
+    }
+  }, []);
 
   return (
-
-    <div style={{ height: '100%', backgroundColor:"#221E1D" }}>
-
-
-
+    <div style={{ height: '100%', backgroundColor: '#221E1D' }}>
       <Router>
         <Header />
         <Switch>
-
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/" exact>
+          <Route path='/register' component={Register} />
+          <Route path='/Login' component={Login} />
+          <Route path='/Logout' component={Logout} />
+          <Route path='/' exact>
             <Home />
           </Route>
-          <Route path="/Inspiration" exact>
+          <Route path='/Inspiration' exact>
             <Inspiration />
           </Route>
-          <Route path="/Services" exact>
+          <Route path='/Services' exact>
             <Services />
           </Route>
-          <Route path="/Services/planners" exact>
+          <Route path='/Services/planners' exact>
             <HirePlanner />
           </Route>
-          <Route path="/Services/musicbands" exact>
+          <Route path='/Services/musicbands' exact>
             <ChooseBand />
           </Route>
-          <Route path="/Services/photosessions" exact>
+          <Route path='/Services/photosessions' exact>
             <BookPhotoSession />
           </Route>
-          <Route path="/Services/fashion" exact>
+          <Route path='/Services/fashion' exact>
             <GetFashion />
           </Route>
 
-          <Route path="/Services/cars" exact>
+          <Route path='/Services/cars' exact>
             <RentACar />
           </Route>
 
-          <Route path="/Services/trips" exact>
+          <Route path='/Services/trips' exact>
             <BookATrip />
           </Route>
-          <Route path="/Parties" exact>
+          <Route path='/Parties' exact>
             <Parties />
           </Route>
-          <Route path="/Profile" exact>
+          <Route path='/Profile' exact>
             <Profile />
           </Route>
-          <Route path="/About" exact>
-            <About />
+          <Route path='/AboutUs' exact>
+            <AboutUs />
           </Route>
-          <Route path="/inspiration/weddingparties" exact>
+          <Route path='/inspiration/weddingparties' exact>
             <WeddingParty />
           </Route>
-          <Route path="/inspiration/birthdayparties" exact>
+          <Route path='/inspiration/birthdayparties' exact>
             <BirthdayParty />
           </Route>
-          <Route path="/inspiration/specialparties" exact>
+          <Route path='/inspiration/specialparties' exact>
             <SpecialParty />
           </Route>
-          <Route path="/inspiration/gradparties" exact>
+          <Route path='/inspiration/gradparties' exact>
             <GradParty />
           </Route>
-          <Route path="/Services/places" exact>
+          <Route path='/Services/places' exact>
             <ReservePlace />
           </Route>
         </Switch>
         <Footer />
       </Router>
-
-
-
-
-
-
-
     </div>
   );
 }
