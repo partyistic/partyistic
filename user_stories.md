@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # User Stories
 
 ### #1
@@ -18,9 +20,7 @@ As a User I want to have the ability to filter the services within my budget.
 
 - Ensure that the services displayed below or equal the budget.
 
-
-----------------
-
+---
 
 ### #2
 
@@ -37,14 +37,11 @@ As a user, I want to see some feedback before book a service.
 - Each service has feedback from users.
 - Users can add their feedbacks to services.
 
-
 ### Acceptance Tests
 
 - Make sure that the feedbacks displayed are related to the service.
 
-
-----------------
-
+---
 
 ### #3
 
@@ -65,9 +62,7 @@ As a user, I want to have the ability to make my own party.
 
 - Ensure the event displayed after creation.
 
-
-----------------
-
+---
 
 ### #4
 
@@ -87,9 +82,7 @@ As a user, I want to have the ability to invite friends to my party event.
 
 - Ensure that invitation is received.
 
-
-----------------
-
+---
 
 ### #5
 

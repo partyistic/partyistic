@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Project Name
 
 **Partyistic**
@@ -36,19 +38,19 @@ The project aims to make party planning much faster and easier than the ordinary
 
 <https://wireframepro.mockflow.com/space/M1SwZyI53h>
 
-![Wireframes](pictures/readme/Wireframes.png)
+![Wireframes](pictures/Wireframes.png)
 
 &nbsp;
 
 ## Domain Modeling
 
-![Domain-Modeling](pictures/readme/Domain-Modeling.jpg)
+![Domain-Modeling](pictures/Domain-Modeling.jpg)
 
 &nbsp;
 
 ## DataBase Modeling
 
-![DataBase-Modeling](pictures/readme/DataBase-Modeling.jpg)
+![DataBase-Modeling](pictures/DataBase-Modeling.jpg)
 
 &nbsp;
 

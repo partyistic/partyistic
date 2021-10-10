@@ -1,13 +1,15 @@
+/** @format */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import reportWebVitals from './reportWebVitals';
+import ReportWebVitals from './ReportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './Auth';
 
-reportWebVitals();
+ReportWebVitals();
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,4 +19,4 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-reportWebVitals();
+ReportWebVitals();

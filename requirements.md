@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Software Requirements
 
 ## Vision
@@ -55,7 +57,6 @@ Why should we care about your product?
 - The user starts with creating an account, gets inspired, makes a favorite list, explores our services, and creates a party event. The user has the ability to edit his/her information.
 
 &nbsp;
-
 
 ## Non-Functional Requirements
 
