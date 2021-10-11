@@ -1,18 +1,19 @@
 /** @format */
 
-'use strict';
 import React from 'react';
-import { Col, Card, Form } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 export default function Place(props) {
   return (
     <>
       <h1
         style={{
-          marginTop: '3%',
+          marginTop: '3.5%',
+          display:'flex',
+          justifyContent:'center',
           color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize:'60px',
         }}
         className='align-middle'>
         Reserve a place
@@ -34,8 +35,6 @@ export default function Place(props) {
                 </div>
               )
           )}
-
-        {/* <div className="col"></div> */}
       </div>
     </>
   );

@@ -1,22 +1,22 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import useResource from '../../hook/UseInspiration';
 import Carousel from 'react-bootstrap/Carousel';
 
 import { useState } from 'react';
 
 export default function SpecialParty(props) {
-  const { resources, loading } = useResource();
+  const { resources } = useResource();
 
   let special = [];
 
   resources &&
     resources.map((item) => {
-      item.type == 'Special' && special.push(item);
+      item.type === 'Special' && special.push(item);
     });
 
   special = special.reverse();
@@ -93,16 +93,15 @@ export default function SpecialParty(props) {
           fontFamily: "'Dancing Script', cursive",
           fontSize: '40px',
           color: '#fff',
-          marginLeft: '35%',
           marginTop: '5%',
+          textAlign:'center',
         }}>
-        Weddings Insperation Ideas
+        Special Parties Ideas
       </h1>
       <div
         style={{
           display: 'flex',
-          marginLeft: '5%',
-          marginRight: '5%',
+          justifyContent:'center',
           paddingTop: '5%',
         }}>
         {special &&

@@ -1,30 +1,21 @@
+/* eslint-disable array-callback-return */
 /** @format */
-
-import useTrips from '../../hook/UseServicesTrips';
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import { Card, Form } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import useResourcetrip from '../../hook/UseServicesTrips';
-import { useState, useEffect } from 'react';
-
-import axios from 'axios';
+import { useState } from 'react';
 
 export default function BookATrip() {
   const originalTrips = useResourcetrip().tripresources;
-
   const [trips, setTrips] = useState(originalTrips);
-  const App = () => {
-    setTrips(useResourcetrip().tripresources);
-  };
 
   function filtering() {
     let lister = [];
-
     originalTrips.map((item) => {
-      if (item.price <= price || price == '') {
+      if (item.price <= price || price === '') {
         lister.push(item);
         console.log(lister, 'trippeieirer');
         setTrips(lister);
@@ -111,19 +102,15 @@ export default function BookATrip() {
     }
   };
 
-  const [renderer, setRenderer] = useState(false);
-  const pricerRender = () => {
-    setRenderer(true);
-  };
-
   return (
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Book a Trip
       </h1>
@@ -142,7 +129,6 @@ export default function BookATrip() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL TRIPS
           </button>
         </div>
@@ -166,7 +152,6 @@ export default function BookATrip() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH TRIPS
           </button>
         </div>

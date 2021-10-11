@@ -1,21 +1,21 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import useResource from '../../hook/UseInspiration';
 import Carousel from 'react-bootstrap/Carousel';
 
 import { useState } from 'react';
 
 export default function BirthdayParty(props) {
-  const { resources, loading } = useResource();
+  const { resources } = useResource();
   let birthday = [];
 
   resources &&
     resources.map((item) => {
-      item.type == 'Birthday' && birthday.push(item);
+      item.type === 'Birthday' && birthday.push(item);
     });
 
   birthday = birthday.reverse();
@@ -85,16 +85,16 @@ export default function BirthdayParty(props) {
           fontFamily: "'Dancing Script', cursive",
           fontSize: '40px',
           color: '#fff',
-          marginLeft: '35%',
           marginTop: '5%',
+          textAlign:'center',
         }}>
-        Birthdays Insperation Ideas
+        Birthday Parties Ideas
       </h1>
+
       <div
         style={{
           display: 'flex',
-          marginLeft: '5%',
-          marginRight: '5%',
+          justifyContent:'center',
           paddingTop: '5%',
         }}>
         {birthday &&
