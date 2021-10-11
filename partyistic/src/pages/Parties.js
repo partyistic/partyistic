@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
@@ -10,9 +11,8 @@ import useResource from '../hook/UseParties';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import SignIn from '../components/Login';
 import Row from 'react-bootstrap/Row';
-import { Col, Card, Dropdown } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import ImageBrowserForm from '../components/forms/ImageBrowserForm';
 
 export default function Parties() {
@@ -24,7 +24,7 @@ export default function Parties() {
     if (!get) {
       history.push('/Login');
     }
-  }, []);
+  });
 
   let wedding = [];
   let grad = [];
@@ -34,17 +34,17 @@ export default function Parties() {
 
   resources &&
     resources.map((item) => {
-      item.type == 'Wedding' && item.privacy == 'Public' && wedding.push(item);
+      item.type === 'Wedding' && item.privacy === 'Public' && wedding.push(item);
 
-      item.type == 'Graduation' && item.privacy == 'Public' && grad.push(item);
+      item.type === 'Graduation' && item.privacy === 'Public' && grad.push(item);
 
-      item.type == 'Birthday' &&
-        item.privacy == 'Public' &&
+      item.type === 'Birthday' &&
+        item.privacy === 'Public' &&
         birthday.push(item);
 
-      item.type == 'Special' && item.privacy == 'Public' && special.push(item);
+      item.type === 'Special' && item.privacy === 'Public' && special.push(item);
 
-      item.privacy == 'Private' && privateParties.push(item);
+      item.privacy === 'Private' && privateParties.push(item);
     });
 
   wedding = wedding.sort(function (a, b) {
@@ -199,7 +199,7 @@ export default function Parties() {
   // For uploading image to firebase
   const [file1, setFile1] = useState('');
   const [imageUrl1, setImageUrl1] = useState('');
-  const [percentage1, setPercentage1] = useState(0);
+  const [setPercentage1] = useState(0);
 
   const handelUploadImage1 = () => {
     if (file1) {
@@ -239,7 +239,7 @@ export default function Parties() {
 
   const [file2, setFile2] = useState('');
   const [imageUrl2, setImageUrl2] = useState('');
-  const [percentage2, setPercentage2] = useState(0);
+  const [setPercentage2] = useState(0);
 
   const handelUploadImage2 = () => {
     if (file2) {
@@ -258,7 +258,6 @@ export default function Parties() {
                   ) +
                   '%'
               );
-
               setPercentage2(
                 Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100)
               );
@@ -279,7 +278,7 @@ export default function Parties() {
 
   const [file3, setFile3] = useState('');
   const [imageUrl3, setImageUrl3] = useState('');
-  const [percentage3, setPercentage3] = useState(0);
+  const [setPercentage3] = useState(0);
 
   const handelUploadImage3 = () => {
     if (file3) {
@@ -319,22 +318,22 @@ export default function Parties() {
 
   useEffect(() => {
     handelUploadImage1();
-  }, [file1]);
+  });
 
   useEffect(() => {
     handelUploadImage2();
-  }, [file2]);
+  });
 
   useEffect(() => {
     handelUploadImage3();
-  }, [file3]);
+  });
 
   return (
     <>
       <Carousel
         fade
         style={{
-          height: '500px',
+          // height: '500px',
           borderRadius: '1%',
           width: '1200px',
           marginLeft: '15%',
@@ -369,16 +368,26 @@ export default function Parties() {
             );
           })}
       </Carousel>
+
+      <h1 style={{
+          color:'white',
+          margin:'5%' ,
+          textAlign:'center',
+          fontSize:'40px',
+          fontFamily:"'Indie Flower',cursive"
+        }}
+      >Create and Explore Services!</h1>
+
       <Button
         style={{
-          marginTop: '3%',
-          marginLeft: '15%',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           color: '#fff',
           fontSize: '30px',
           fontFamily: "'Open Sans Condensed', sans-serif",
           width: '1200px',
           height: '60px',
-          marginTop: '20%',
         }}
         variant='outline-secondary'
         onClick={handleShowCreate}>
@@ -386,13 +395,14 @@ export default function Parties() {
       </Button>
       <h1
         style={{
-          marginTop: '3%',
+          marginTop: '12.5%',
+          display:'flex',
+          justifyContent:'center',
           color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize:'60px',
         }}>
-        {' '}
-        Explore Public Parties{' '}
+        Explore Public Parties
       </h1>
 
       <Carousel
@@ -401,7 +411,7 @@ export default function Parties() {
           borderRadius: '1%',
           width: '1200px',
           marginLeft: '15%',
-          marginTop: '3%',
+          marginTop: '2%',
         }}>
         {wedding &&
           wedding.map((item) => {

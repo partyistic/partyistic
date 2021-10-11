@@ -1,10 +1,9 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import { useHistory } from 'react-router-dom';
-
 import Carousel from 'react-bootstrap/Carousel';
 import './Home.css';
 
@@ -16,11 +15,20 @@ export default function Home(props) {
     if (!get) {
       history.push('/Login');
     }
-  }, []);
+  });
 
   return (
     <>
       <div>
+        <h1 style={{
+          color:'white',
+          margin:'40px' ,
+          textAlign:'center',
+          fontSize:'80px',
+          fontFamily:"'Indie Flower',cursive"
+        }}
+          >Art of Making Parties</h1>
+
         <Carousel
           fade
           style={{ width: '96%', borderRadius: '1%', marginLeft: '2%' }}>
@@ -108,7 +116,7 @@ export default function Home(props) {
                 zIndex: '-1',
               }}
               src='https://bubblegumballoons.com/images/large/e04e4ba0866dea99173ef7a517bd40ed.jpg'
-              alt='get inspired!'
+              alt='Get Inspired!'
             />
           </Nav.Link>
         </Nav>
@@ -138,7 +146,7 @@ export default function Home(props) {
                 zIndex: '-1',
               }}
               src='https://www.lux-review.com/wp-content/uploads/2021/05/Wedding-car.jpg'
-              alt='explore services'
+              alt='Explore Services'
             />
           </Nav.Link>
         </Nav>
@@ -151,7 +159,7 @@ export default function Home(props) {
           marginLeft: '58%',
           fontFamily: "'Fleur De Leah', cursive",
         }}>
-        Our Servises
+        Explore Services
       </p>
       <div class='hover'>
         <Nav>
@@ -180,7 +188,7 @@ export default function Home(props) {
           marginLeft: '58%',
           fontFamily: "'Fleur De Leah', cursive",
         }}>
-        Create Party
+        Create a Party
       </p>
     </>
   );

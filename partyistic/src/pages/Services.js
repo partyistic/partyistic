@@ -27,13 +27,6 @@ import useResourcetrip from '../hook/UseServicesTrips';
 import Button from 'react-bootstrap/Button';
 import './Services.css';
 import Link from '@material-ui/core/Link';
-import useCars from '../hook/UseServicesCars';
-import useFashion from '../hook/UseServicesFashions';
-import useMusicBands from '../hook/UseServicesMusicBands';
-import usePlaces from '../hook/UseServicesPlaces';
-import useTrips from '../hook/UseServicesTrips';
-import usePlanners from '../hook/UseServicesPlanners';
-import usePhotosessions from '../hook/UseServicesPhotosessions';
 
 import { useHistory } from 'react-router-dom';
 
@@ -55,7 +48,7 @@ export default function Services(props) {
     if (!get) {
       history.push('/Login');
     }
-  }, []);
+  });
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -137,16 +130,44 @@ export default function Services(props) {
         </Carousel>
       </div>
 
+      <h1 style={{
+          color:'white',
+          margin:'5%' ,
+          textAlign:'center',
+          fontSize:'40px',
+          fontFamily:"'Indie Flower',cursive"
+        }}
+      >Create and Explore Services!</h1>
+
+      <Button
+        style={{
+          position: 'absolute',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: '#fff',
+          fontSize: '30px',
+          fontFamily: "'Open Sans Condensed', sans-serif",
+          width: '1200px',
+          height: '60px',
+        }}
+        variant='outline-secondary'
+        type='button'
+        class='btn btn-primary btn-lg btn-block'
+        onClick={handleShow}>
+        Create a Service
+      </Button>
+
       <Navbar
         className='middleNav'
         style={{
           textDecoration: 'none',
-          marginTop: '5%',
+          marginTop: '10%',
           backgroundColor: 'transparent',
           color: '#fff',
         }}>
         <Container>
-          <Nav className='me-auto' style={{ color: '#fff' }}>
+          <Nav className='me-auto' style={{ color: '#fff'}}>
+
             <Link class='aa' href='#reserve_a_place'>
               Reserve a Place
             </Link>
@@ -168,84 +189,60 @@ export default function Services(props) {
             <Link class='aa' href='#book_trip'>
               Book a Trip
             </Link>
+
           </Nav>
         </Container>
       </Navbar>
-      <Button
-        style={{
-          marginLeft: '15%',
-          color: '#fff',
-          fontSize: '30px',
-          fontFamily: "'Open Sans Condensed', sans-serif",
-          width: '1200px',
-          height: '60px',
-        }}
-        variant='outline-secondary'
-        type='button'
-        class='btn btn-primary btn-lg btn-block'
-        onClick={handleShow}>
-        Create a Service
-      </Button>
+
+
 
       <div id='reserve_a_place'>
-        {' '}
-        <Place places={places} />{' '}
+        <Place places={places} />
       </div>
 
       <br></br>
       <br></br>
 
       <div id='hire_a_planner'>
-        {' '}
-        <Planner planners={planners} />{' '}
+        <Planner planners={planners} />
       </div>
+
       <br></br>
       <br></br>
 
       <div id='choose_a_music_band'>
-        {' '}
-        <MusicBand musicbands={musicbands} />{' '}
+        <MusicBand musicbands={musicbands} />
       </div>
+
       <br></br>
       <br></br>
 
       <div id='photo_session'>
-        {' '}
-        <PhotoSession photosessions={photosessions} />{' '}
+        <PhotoSession photosessions={photosessions} />
       </div>
+
       <br></br>
       <br></br>
 
       <div id='get_fashion'>
-        {' '}
-        <Fashion fashion={fashion} />{' '}
+        <Fashion fashion={fashion} />
       </div>
+
       <br></br>
       <br></br>
 
       <div id='rent_car'>
-        {' '}
-        <RentCar cars={cars} />{' '}
+        <RentCar cars={cars} />
       </div>
+
       <br></br>
       <br></br>
 
       <div name='book_trip' id='book_trip'>
-        {' '}
-        <BookTrip trips={trips} />{' '}
+        <BookTrip trips={trips} />
       </div>
-
-      <br></br>
-      <br></br>
 
       <CreateService show={show} handleClose={handleClose} />
     </>
   );
 }
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}
-// style={{color:"#fff" , fontSize:"20px"  , textAlign:"center"}}

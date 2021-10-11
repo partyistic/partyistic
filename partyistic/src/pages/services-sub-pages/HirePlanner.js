@@ -1,8 +1,8 @@
+/* eslint-disable array-callback-return */
 /** @format */
-'use strict';
+
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
 import useResourceplanners from '../../hook/UseServicesPlanners';
@@ -10,11 +10,7 @@ import { useState } from 'react';
 
 export default function HirePlanner() {
   const originalPlanners = useResourceplanners().plannerresources;
-
   const [planners, setPlanners] = useState(originalPlanners);
-  const App = () => {
-    setPlanners(useResourceplanners().plannerresources);
-  };
 
   let city = document.getElementById('city');
   const [selectedCity, setCity] = useState('city');
@@ -27,7 +23,7 @@ export default function HirePlanner() {
     let lister = [];
 
     originalPlanners.map((item) => {
-      if (item.price <= price || price == '') {
+      if (item.price <= price || price === '') {
         lister.push(item);
         console.log(lister, 'trippeieirer');
         setPlanners(lister);
@@ -118,10 +114,11 @@ export default function HirePlanner() {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Hire a Planner
       </h1>
@@ -140,7 +137,6 @@ export default function HirePlanner() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL PLANNERS
           </button>
         </div>
@@ -187,7 +183,6 @@ export default function HirePlanner() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>

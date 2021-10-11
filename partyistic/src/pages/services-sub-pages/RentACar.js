@@ -1,8 +1,8 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
 import useResourceCar from '../../hook/UseServicesCars';
@@ -10,11 +10,7 @@ import { useState } from 'react';
 
 export default function RentACar() {
   const originalCars = useResourceCar().carresources;
-
   const [cars, setCars] = useState(originalCars);
-  const App = () => {
-    setCars(useResourceCar().carresources);
-  };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
@@ -40,12 +36,12 @@ export default function RentACar() {
 
     originalCars.map((item) => {
       if (
-        (item.price <= price || price == '') &&
-        (item.city == selectedCity || selectedCity == 'City') &&
-        (item.booked_dates == null ||
-          item.booked_dates.dates[0] == selectedDate ||
-          item.booked_dates.dates[1] == selectedDate ||
-          selectedDate == 'Available Date')
+        (item.price <= price || price === '') &&
+        (item.city === selectedCity || selectedCity === 'City') &&
+        (item.booked_dates === null ||
+          item.booked_dates.dates[0] === selectedDate ||
+          item.booked_dates.dates[1] === selectedDate ||
+          selectedDate === 'Available Date')
       ) {
         lister.push(item);
         setCars(lister);
@@ -137,10 +133,11 @@ export default function RentACar() {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Rent a Car
       </h1>
@@ -159,7 +156,6 @@ export default function RentACar() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             ShOW ALL CARS
           </button>
         </div>
@@ -257,7 +253,6 @@ export default function RentACar() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>
