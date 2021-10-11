@@ -1,20 +1,16 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import { Nav, Card, Form } from 'react-bootstrap';
+import { Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import useResourceplaces from '../../hook/UseServicesPlaces';
 
 export default function ReservePlace(props) {
   const originalPlaces = useResourceplaces().placeresources;
-
   const [places, setPlaces] = useState(originalPlaces);
-  const App = () => {
-    setPlaces(useResourceplaces().placeresources);
-  };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
@@ -47,13 +43,13 @@ export default function ReservePlace(props) {
 
     originalPlaces.map((item) => {
       if (
-        (item.price <= price || price == '') &&
-        (item.city == selectedCity || selectedCity == 'City') &&
-        (item.booked_dates == null ||
-          item.booked_dates.dates[0] == selectedDate ||
-          item.booked_dates.dates[1] == selectedDate ||
-          selectedDate == 'Available Date') &&
-        (item.place_type == selectedType || selectedType == 'All')
+        (item.price <= price || price === '') &&
+        (item.city === selectedCity || selectedCity === 'City') &&
+        (item.booked_dates === null ||
+          item.booked_dates.dates[0] === selectedDate ||
+          item.booked_dates.dates[1] === selectedDate ||
+          selectedDate === 'Available Date') &&
+        (item.place_type === selectedType || selectedType === 'All')
       ) {
         lister.push(item);
         setPlaces(lister);
@@ -148,10 +144,11 @@ export default function ReservePlace(props) {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Reserve A Place
       </h1>
@@ -171,7 +168,6 @@ export default function ReservePlace(props) {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL PLACES
           </button>
         </div>
@@ -291,7 +287,6 @@ export default function ReservePlace(props) {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>

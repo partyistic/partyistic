@@ -1,8 +1,8 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
 import useResourcemusicbands from '../../hook/UseServicesMusicBands';
@@ -10,11 +10,7 @@ import { useState } from 'react';
 
 export default function ChooseBand() {
   const originalMusicbands = useResourcemusicbands().musicresources;
-
   const [musicbands, setMusicBands] = useState(originalMusicbands);
-  const App = () => {
-    setMusicBands(useResourcemusicbands().musicresources);
-  };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
@@ -33,11 +29,11 @@ export default function ChooseBand() {
 
     originalMusicbands.map((item) => {
       if (
-        (item.price <= price || price == '') &&
-        (item.booked_dates == null ||
-          item.booked_dates.dates[0] == selectedDate ||
-          item.booked_dates.dates[1] == selectedDate ||
-          selectedDate == 'Available Date')
+        (item.price <= price || price === '') &&
+        (item.booked_dates === null ||
+          item.booked_dates.dates[0] === selectedDate ||
+          item.booked_dates.dates[1] === selectedDate ||
+          selectedDate === 'Available Date')
       ) {
         lister.push(item);
         setMusicBands(lister);
@@ -128,10 +124,11 @@ export default function ChooseBand() {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Choose a Music Band
       </h1>
@@ -149,7 +146,6 @@ export default function ChooseBand() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL MUSIC BANDS
           </button>
         </div>
@@ -200,7 +196,6 @@ export default function ChooseBand() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>

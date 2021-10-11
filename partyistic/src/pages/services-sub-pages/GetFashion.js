@@ -1,20 +1,16 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import { Col, Card, Form, Nav } from 'react-bootstrap';
+import { Card, Form, Nav } from 'react-bootstrap';
 import { useState } from 'react';
 import useResourceFash from '../../hook/UseServicesFashions';
 
 export default function GetFashion() {
   const originalFashion = useResourceFash().fashresources;
-
   const [fashions, setFashions] = useState(originalFashion);
-  const App = () => {
-    setFashions(useResourceFash().fashresources);
-  };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
@@ -33,8 +29,8 @@ export default function GetFashion() {
 
     originalFashion.map((item) => {
       if (
-        (item.price <= price || price == '') &&
-        (item.city == selectedCity || selectedCity == 'City')
+        (item.price <= price || price === '') &&
+        (item.city === selectedCity || selectedCity === 'City')
       ) {
         lister.push(item);
         setFashions(lister);
@@ -121,10 +117,11 @@ export default function GetFashion() {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Get Fashion
       </h1>
@@ -142,7 +139,6 @@ export default function GetFashion() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL FASHION
           </button>
         </div>
@@ -228,7 +224,6 @@ export default function GetFashion() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>

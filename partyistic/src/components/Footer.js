@@ -1,29 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /** @format */
 
-//               </div>
-//               <div className="col">
-//                 <h4>Contact Us</h4>
-//                 <ul className="list-unstyled">
-//                   <li><FaFacebook /> Facebook</li>
-//                   <li><FaTwitter /> Twitter</li>
-//                   <li><FaInstagram/> Instegram</li>
-//                   <li><FaGithub /> Github</li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//           <div>&copy; {new Date().getFullYear} Partyistic INC.| All right reserved | Terms OF Service | Privacy </div>
-
-//         </div>
-//       </div>
-
-//         </>
-//       );
-
-//   }
-
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
 import './Footer.css';
 export class Footer extends Component {
   render() {

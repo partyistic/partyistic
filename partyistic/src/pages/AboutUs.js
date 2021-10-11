@@ -24,7 +24,7 @@ export default function About() {
     if (!get) {
       history.push('/Login');
     }
-  }, []);
+  });
   return (
     <div className='bodyDiv'>
       <h1

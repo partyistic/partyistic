@@ -1,8 +1,8 @@
+/* eslint-disable array-callback-return */
 /** @format */
 
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
 import useResourcephotosessions from '../../hook/UseServicesPhotosessions';
@@ -10,11 +10,7 @@ import { useState } from 'react';
 
 export default function BookPhotoSession() {
   const originalPhotosessions = useResourcephotosessions().photoresources;
-
   const [photosessions, setPhotosessions] = useState(originalPhotosessions);
-  const App = () => {
-    setPhotosession(useResourcephotosessions().photoresources);
-  };
 
   const [price, setPrice] = useState(200000000000000);
   const getPrice = (event) => {
@@ -34,14 +30,14 @@ export default function BookPhotoSession() {
 
     originalPhotosessions.map((item) => {
       if (
-        (item.price <= price || price == '') &&
-        (item.booked_dates == null ||
-          item.booked_dates.dates[0] == selectedDate ||
-          item.booked_dates.dates[1] == selectedDate ||
-          item.booked_dates.dates[2] == selectedDate ||
-          item.booked_dates.dates[3] == selectedDate ||
-          item.booked_dates.dates[4] == selectedDate ||
-          selectedDate == 'Available Date')
+        (item.price <= price || price === '') &&
+        (item.booked_dates === null ||
+          item.booked_dates.dates[0] === selectedDate ||
+          item.booked_dates.dates[1] === selectedDate ||
+          item.booked_dates.dates[2] === selectedDate ||
+          item.booked_dates.dates[3] === selectedDate ||
+          item.booked_dates.dates[4] === selectedDate ||
+          selectedDate === 'Available Date')
       ) {
         lister.push(item);
         setPhotosessions(lister);
@@ -132,10 +128,11 @@ export default function BookPhotoSession() {
     <>
       <h1
         style={{
-          marginTop: '3%',
-          color: 'white',
-          marginLeft: '40%',
           fontFamily: "'Dancing Script', cursive",
+          fontSize: '40px',
+          color: '#fff',
+          marginTop: '5%',
+          textAlign:'center',
         }}>
         Book a Photo Session
       </h1>
@@ -153,7 +150,6 @@ export default function BookPhotoSession() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SHOW ALL PHOTOSESSIONS
           </button>
         </div>
@@ -203,12 +199,10 @@ export default function BookPhotoSession() {
             }}
             variant='primary'
             onClick={filtering}>
-            {' '}
             SEARCH
           </button>
         </div>
       </div>
-
       <br></br>
       <br></br>
 
