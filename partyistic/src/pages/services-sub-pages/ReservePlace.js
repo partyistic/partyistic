@@ -1,21 +1,31 @@
 /* eslint-disable array-callback-return */
 /** @format */
-
+import axios from 'axios';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, Form } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import useResourceplaces from '../../hook/UseServicesPlaces';
 
 export default function ReservePlace(props) {
   const originalPlaces = useResourceplaces().placeresources;
-  const [places, setPlaces] = useState(originalPlaces);
+  const [places,setPlaces] = useState([])
 
-  const [price, setPrice] = useState(200000000000000);
+  useEffect(() => {
+      getData()
+  },[])
+
+  const getData = async () => {
+    const data = await axios.get("https://partyistic.herokuapp.com/api/v1/partyistic/places/")
+    setPlaces(data.data);
+  };
+
+  const [price, setPrice] = useState('');
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
+  console.log(price);
 
   let date = document.getElementById('date');
   const [selectedDate, setDate] = useState('Available Date');
@@ -38,26 +48,28 @@ export default function ReservePlace(props) {
   };
   console.log(selectedType);
 
+
+
+
   function filtering() {
     let lister = [];
-
-    originalPlaces.map((item) => {
+    originalPlaces.map((item) => {      
       if (
-        (item.price <= price || price === '') &&
+        (item.price <= price || price==='')&&
         (item.city === selectedCity || selectedCity === 'City') &&
-        (item.booked_dates === null ||
-          item.booked_dates.dates[0] === selectedDate ||
-          item.booked_dates.dates[1] === selectedDate ||
+        (item.booked_dates === null || item.booked_dates.dates === null || 
+          item.booked_dates.dates.toString().includes(selectedDate)||
           selectedDate === 'Available Date') &&
         (item.place_type === selectedType || selectedType === 'All')
       ) {
         lister.push(item);
-        setPlaces(lister);
-      } else {
-        setPlaces([]);
       }
     });
+    setPlaces(lister);
   }
+
+
+
 
   const [showPlace, setShowPlace] = useState(false);
   const [place, sePlace] = useState(false);
@@ -140,6 +152,8 @@ export default function ReservePlace(props) {
       return <> </>;
     }
   };
+
+  
   return (
     <>
       <h1
@@ -152,26 +166,11 @@ export default function ReservePlace(props) {
         }}>
         Reserve A Place
       </h1>
-      <br></br>
-      <br></br>
+      {/* <br></br>
+      <br></br> */}
       <div className='row row-cols-7'>
-        {/* <div className='col'></div> */}
 
-        <div className='col'>
-          <button
-            style={{
-              background: 'transparent',
-              color: '#fff',
-              borderBlockColor: 'black',
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '30px',
-            }}
-            variant='primary'
-            onClick={filtering}>
-            SHOW ALL PLACES
-          </button>
-        </div>
-        <br></br>
+
         <div className='col'>
           <Form.Select
             style={{ backgroundColor: 'transparent', color: '#fff' }}
@@ -229,7 +228,7 @@ export default function ReservePlace(props) {
               Madaba
             </option>
             <option style={{ color: 'black' }} value='karak'>
-              karak
+              Karak
             </option>
             <option style={{ color: 'black' }} value='Tafilah'>
               Tafilah
@@ -253,17 +252,41 @@ export default function ReservePlace(props) {
             <option style={{ color: 'black' }} value='Available Date'>
               Available Date
             </option>
-            <option style={{ color: 'black' }} value='2021/19/3'>
-              2021/19/3
+            <option style={{ color: 'black' }} value='Jan'>
+              Jan
             </option>
-            <option style={{ color: 'black' }} value='2020/10/1'>
-              2020/10/1
+            <option style={{ color: 'black' }} value='Feb'>
+              Feb
             </option>
-            <option style={{ color: 'black' }} value='2013/31/1'>
-              2013/31/1
+            <option style={{ color: 'black' }} value='Mar'>
+              Mar
             </option>
-            <option style={{ color: 'black' }} value='32011/24/4'>
-              2011/24/4
+            <option style={{ color: 'black' }} value='Apr'>
+              Apr
+            </option>
+            <option style={{ color: 'black' }} value='May'>
+              May
+            </option>
+            <option style={{ color: 'black' }} value='Jun'>
+              Jun
+            </option>
+            <option style={{ color: 'black' }} value='Jul'>
+              Jul
+            </option>
+            <option style={{ color: 'black' }} value='Aug'>
+              Aug
+            </option>
+            <option style={{ color: 'black' }} value='Sep'>
+              Sep
+            </option>
+            <option style={{ color: 'black' }} value='Oct'>
+              Oct
+            </option>
+            <option style={{ color: 'black' }} value='Nov'>
+              Nov
+            </option>
+            <option style={{ color: 'black' }} value='Dec'>
+              Dec
             </option>
           </Form.Select>
         </div>
@@ -286,14 +309,15 @@ export default function ReservePlace(props) {
               fontSize: '30px',
             }}
             variant='primary'
-            onClick={filtering}>
+            onClick={filtering}
+            >
             SEARCH
           </button>
         </div>
       </div>
 
-      <br></br>
-      <br></br>
+      {/* <br></br>
+      <br></br> */}
       <div className='row row-cols-6'>
         {places &&
           places.map((item) => (
