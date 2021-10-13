@@ -1,18 +1,32 @@
-/* eslint-disable array-callback-return */
 /** @format */
 
+import axios from 'axios';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
-import { Card, Form, Nav } from 'react-bootstrap';
-import { useState } from 'react';
+import { Card } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 import useResourceFash from '../../hook/UseServicesFashions';
+import PriceFilter from '../../components/filtering/PriceFilter';
+import CityFilter from '../../components/filtering/CityFilter';
+import SearchButton from '../../components/filtering/SearchButton';
 
 export default function GetFashion() {
-  const originalFashion = useResourceFash().fashresources;
-  const [fashions, setFashions] = useState(originalFashion);
+  const originalData = useResourceFash().fashresources;
+  const [renderedData, setRenderedData] = useState([]);
 
-  const [price, setPrice] = useState(200000000000000);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const data = await axios.get(
+      'https://partyistic.herokuapp.com/api/v1/partyistic/fashion/'
+    );
+    setRenderedData(data.data);
+  };
+
+  const [price, setPrice] = useState('');
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
@@ -22,97 +36,28 @@ export default function GetFashion() {
   const getCityValue = () => {
     setCity(city.options[city.selectedIndex].value);
   };
-  console.log(selectedCity);
 
   function filtering() {
     let lister = [];
-
-    originalFashion.map((item) => {
+    originalData.map((item) => {
       if (
         (item.price <= price || price === '') &&
         (item.city === selectedCity || selectedCity === 'City')
       ) {
         lister.push(item);
-        setFashions(lister);
-      } else {
-        setFashions([]);
       }
     });
+    setRenderedData(lister);
   }
 
-  const [showFashion, setShowFashion] = useState(false);
-  const [fashion, setFashion] = useState(false);
-  const handleClose = () => setShowFashion(false);
-  const handleShow = (fash) => {
-    setFashion(fash);
-    setShowFashion(true);
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setmodalData] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = (item) => {
+    setmodalData(item);
+    setShowModal(true);
   };
 
-  const modalshow = () => {
-    if (showFashion) {
-      return (
-        <>
-          <Modal
-            size='lg'
-            show={showFashion}
-            onHide={handleClose}
-            animation={false}>
-            <Modal.Header closeButton>
-              <Modal.Title
-                style={{
-                  fontFamily: "'Dancing Script', cursive",
-                  fontSize: '27px',
-                }}>
-                {fashion.name}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body
-              style={{
-                fontFamily: "'Open Sans Condensed', sans-serif",
-                fontSize: '25px',
-              }}>
-              <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                  {fashion.description}
-                  {fashion.images && (
-                    <Carousel
-                      fade
-                      style={{ borderRadius: '1%', width: '100%' }}>
-                      {fashion.images.images &&
-                        fashion.images.images.map((item) => {
-                          return (
-                            item && (
-                              <Carousel.Item interval={3000}>
-                                <img
-                                  style={{ width: '100%' }}
-                                  src={item}
-                                  alt={item}
-                                />
-                              </Carousel.Item>
-                            )
-                          );
-                        })}
-                    </Carousel>
-                  )}
-                  <Card.Text>Price: {fashion.price}</Card.Text>
-                  <Card.Text>City: {fashion.city}</Card.Text>
-                  <Card.Link href={fashion.location_link}>Location</Card.Link>
-                  <Card.Text>Reviews:</Card.Text>
-                  {fashion.reviews &&
-                    fashion.reviews.reviews.map((review) => (
-                      <Card.Text>{review}</Card.Text>
-                    ))}
-                </Card.Body>
-              </Card>
-            </Modal.Body>
-            <Modal.Footer></Modal.Footer>
-          </Modal>
-        </>
-      );
-    } else {
-      return <> </>;
-    }
-  };
   return (
     <>
       <h1
@@ -121,118 +66,21 @@ export default function GetFashion() {
           fontSize: '40px',
           color: '#fff',
           marginTop: '5%',
-          textAlign:'center',
+          textAlign: 'center',
         }}>
         Get Fashion
       </h1>
-      <br></br>
-      <br></br>
-      <div className='row row-cols-6'>
-        <div className='col'>
-          <button
-            style={{
-              background: 'transparent',
-              color: '#fff',
-              borderBlockColor: 'black',
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '30px',
-            }}
-            variant='primary'
-            onClick={filtering}>
-            SHOW ALL FASHION
-          </button>
-        </div>
+      <div className='row row-cols-7'>
+        <CityFilter getCityValue={getCityValue} />
 
-        <br></br>
-        <div className='col '>
-          <Nav
-            activeKey='/home'
-            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
-            <Nav.Item>
-              <Nav.Link href='#'>Man</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey='link-1'>Woman</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </div>
+        <PriceFilter getPrice={getPrice} />
 
-        <div className='col'>
-          <Form.Select
-            style={{ backgroundColor: 'transparent', color: '#fff' }}
-            id='city'
-            className='col'
-            onChange={getCityValue}
-            aria-label='Default select example'>
-            <option value='City' selected>
-              City
-            </option>
-            <option style={{ color: 'black' }} value='Amman'>
-              Amman
-            </option>
-            <option style={{ color: 'black' }} value='Zarqa'>
-              Zarqa
-            </option>
-            <option style={{ color: 'black' }} value='Irbid'>
-              Irbid
-            </option>
-            <option style={{ color: 'black' }} value='Al-Mafraq'>
-              Al-Mafraq
-            </option>
-            <option style={{ color: 'black' }} value='Jarash'>
-              Jarash
-            </option>
-            <option style={{ color: 'black' }} value='Ajloun'>
-              Ajloun
-            </option>
-            <option style={{ color: 'black' }} value='As-Salt'>
-              As-Salt
-            </option>
-            <option style={{ color: 'black' }} value='Madaba'>
-              Madaba
-            </option>
-            <option style={{ color: 'black' }} value='karak'>
-              karak
-            </option>
-            <option style={{ color: 'black' }} value='Tafilah'>
-              Tafilah
-            </option>
-            <option style={{ color: 'black' }} value='Maan'>
-              Maan
-            </option>
-            <option style={{ color: 'black' }} value='Aqaba'>
-              Aqaba
-            </option>
-          </Form.Select>
-        </div>
-
-        <div className='col'>
-          <input
-            style={{ backgroundColor: 'transparent', color: '#fff' }}
-            type='text'
-            onChange={getPrice}
-            placeholder='Maximum Price'></input>
-        </div>
-        <div className='col'>
-          <button
-            style={{
-              background: 'transparent',
-              color: '#fff',
-              borderBlockColor: 'black',
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '30px',
-            }}
-            variant='primary'
-            onClick={filtering}>
-            SEARCH
-          </button>
-        </div>
+        <SearchButton filtering={filtering} />
       </div>
-      <br></br>
-      <br></br>
+
       <div className='row row-cols-6'>
-        {fashions &&
-          fashions.map((item) => (
+        {renderedData &&
+          renderedData.map((item) => (
             <div className='col'>
               <Card
                 style={{ height: '20rem', marginTop: '3%' }}
@@ -248,7 +96,58 @@ export default function GetFashion() {
             </div>
           ))}
       </div>
-      {modalshow()}
+
+      <Modal size='lg' show={showModal} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title
+            style={{
+              fontFamily: "'Dancing Script', cursive",
+              fontSize: '27px',
+            }}>
+            {modalData.name}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            fontFamily: "'Open Sans Condensed', sans-serif",
+            fontSize: '25px',
+          }}>
+          <Card style={{ width: '100%' }}>
+            <Card.Body>
+              {modalData.description}
+              {modalData.images && (
+                <Carousel fade style={{ borderRadius: '1%', width: '100%' }}>
+                  {modalData.images.images &&
+                    modalData.images.images.map((item) => {
+                      return (
+                        item && (
+                          <Carousel.Item interval={3000}>
+                            <img
+                              style={{ width: '100%' }}
+                              src={item}
+                              alt={item}
+                            />
+                          </Carousel.Item>
+                        )
+                      );
+                    })}
+                </Carousel>
+              )}
+
+              <Card.Text>Price: {modalData.price}</Card.Text>
+              <Card.Text>City: {modalData.city}</Card.Text>
+              <Card.Link href={modalData.location_link}>Location</Card.Link>
+              <Card.Text>Reviews:</Card.Text>
+              {modalData.reviews &&
+                modalData.reviews.reviews.map((review) => (
+                  <Card.Text>{review}</Card.Text>
+                ))}
+            </Card.Body>
+          </Card>
+        </Modal.Body>
+
+        <Modal.Footer></Modal.Footer>
+      </Modal>
     </>
   );
 }
