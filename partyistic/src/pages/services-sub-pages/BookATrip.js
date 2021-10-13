@@ -1,105 +1,51 @@
-/* eslint-disable array-callback-return */
 /** @format */
 
+import axios from 'axios';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 import useResourcetrip from '../../hook/UseServicesTrips';
-import { useState } from 'react';
+import PriceFilter from '../../components/filtering/PriceFilter';
+import SearchButton from '../../components/filtering/SearchButton';
 
 export default function BookATrip() {
-  const originalTrips = useResourcetrip().tripresources;
-  const [trips, setTrips] = useState(originalTrips);
+  const originalData = useResourcetrip().tripresources;
+  const [renderedData, setRenderedData] = useState([]);
 
-  function filtering() {
-    let lister = [];
-    originalTrips.map((item) => {
-      if (item.price <= price || price === '') {
-        lister.push(item);
-        console.log(lister, 'trippeieirer');
-        setTrips(lister);
-      } else {
-        setTrips([]);
-      }
-    });
-  }
+  useEffect(() => {
+    getData();
+  }, []);
 
-  const [showtrip, setShowtrip] = useState(false);
-  const [trip, setBd] = useState(false);
-  const handleClose = () => setShowtrip(false);
-  const handleShow = (trip) => {
-    setBd(trip);
-    setShowtrip(true);
+  const getData = async () => {
+    const data = await axios.get(
+      'https://partyistic.herokuapp.com/api/v1/partyistic/trips/'
+    );
+    setRenderedData(data.data);
   };
 
-  const [price, setPrice] = useState(200000000);
+  const [price, setPrice] = useState('');
   const getPrice = (event) => {
     setPrice(event.target.value);
   };
 
-  const modalshow = () => {
-    if (showtrip) {
-      return (
-        <>
-          <Modal
-            size='lg'
-            show={showtrip}
-            onHide={handleClose}
-            animation={false}>
-            <Modal.Header closeButton>
-              <Modal.Title
-                style={{
-                  fontFamily: "'Dancing Script', cursive",
-                  fontSize: '27px',
-                }}>
-                {trip.name}
-              </Modal.Title>
-            </Modal.Header>
+  function filtering() {
+    let lister = [];
+    originalData.map((item) => {
+      if (item.price <= price || price === '') {
+        lister.push(item);
+      }
+    });
+    setRenderedData(lister);
+  }
 
-            <Modal.Body
-              style={{
-                fontFamily: "'Open Sans Condensed', sans-serif",
-                fontSize: '25px',
-              }}>
-              <Card style={{ width: '100%' }}>
-                <Card.Body>
-                  {trip.description}
-                  {trip.images && (
-                    <Carousel
-                      fade
-                      style={{ borderRadius: '1%', width: '100%' }}>
-                      {trip.images.images &&
-                        trip.images.images.map((item) => {
-                          return (
-                            item && (
-                              <Carousel.Item interval={3000}>
-                                <img
-                                  style={{ width: '100%' }}
-                                  src={item}
-                                  alt={item}
-                                />
-                              </Carousel.Item>
-                            )
-                          );
-                        })}
-                    </Carousel>
-                  )}
-                  <Card.Text>Price: {trip.price}</Card.Text>
-                  <Card.Text>Reviews:</Card.Text>
-                  {trip.reviews &&
-                    trip.reviews.reviews.map((review) => (
-                      <Card.Text>{review}</Card.Text>
-                    ))}
-                </Card.Body>
-              </Card>
-            </Modal.Body>
-          </Modal>
-        </>
-      );
-    } else {
-      return <> </>;
-    }
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setmodalData] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = (item) => {
+    setmodalData(item);
+    setShowModal(true);
   };
 
   return (
@@ -110,58 +56,19 @@ export default function BookATrip() {
           fontSize: '40px',
           color: '#fff',
           marginTop: '5%',
-          textAlign:'center',
+          textAlign: 'center',
         }}>
         Book a Trip
       </h1>
-      <br></br>
-      <br></br>
-      <div className='row row-cols-5'>
-        <div className='col'></div>
-        <div className='col'>
-          <button
-            style={{
-              background: 'transparent',
-              color: '#fff',
-              borderBlockColor: 'black',
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '30px',
-            }}
-            variant='primary'
-            onClick={filtering}>
-            SHOW ALL TRIPS
-          </button>
-        </div>
-        <br></br>
-        <div className='col'>
-          <input
-            style={{ backgroundColor: 'transparent', color: '#fff' }}
-            type='text'
-            onChange={getPrice}
-            placeholder='Maximum Price'></input>
-        </div>
+      <div className='row row-cols-7'>
+        <PriceFilter getPrice={getPrice} />
 
-        <div>
-          <button
-            style={{
-              background: 'transparent',
-              color: '#fff',
-              borderBlockColor: 'black',
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '30px',
-            }}
-            variant='primary'
-            onClick={filtering}>
-            SEARCH TRIPS
-          </button>
-        </div>
+        <SearchButton filtering={filtering} />
       </div>
-      <br></br>
-      <br></br>
 
       <div className='row row-cols-6'>
-        {trips &&
-          trips.map((item) => (
+        {renderedData &&
+          renderedData.map((item) => (
             <div className='col'>
               <Card
                 style={{ height: '20rem', marginTop: '3%' }}
@@ -177,7 +84,57 @@ export default function BookATrip() {
             </div>
           ))}
       </div>
-      {modalshow()}
+
+      <Modal size='lg' show={showModal} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title
+            style={{
+              fontFamily: "'Dancing Script', cursive",
+              fontSize: '27px',
+            }}>
+            {modalData.name}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            fontFamily: "'Open Sans Condensed', sans-serif",
+            fontSize: '25px',
+          }}>
+          <Card style={{ width: '100%' }}>
+            <Card.Body>
+              {modalData.description}
+              {modalData.images && (
+                <Carousel fade style={{ borderRadius: '1%', width: '100%' }}>
+                  {modalData.images.images &&
+                    modalData.images.images.map((item) => {
+                      return (
+                        item && (
+                          <Carousel.Item interval={3000}>
+                            <img
+                              style={{ width: '100%' }}
+                              src={item}
+                              alt={item}
+                            />
+                          </Carousel.Item>
+                        )
+                      );
+                    })}
+                </Carousel>
+              )}
+
+              <Card.Text>Price: {modalData.price}</Card.Text>
+              <Card.Text>City: {modalData.city}</Card.Text>
+              <Card.Text>Reviews:</Card.Text>
+              {modalData.reviews &&
+                modalData.reviews.reviews.map((review) => (
+                  <Card.Text>{review}</Card.Text>
+                ))}
+            </Card.Body>
+          </Card>
+        </Modal.Body>
+
+        <Modal.Footer></Modal.Footer>
+      </Modal>
     </>
   );
 }
