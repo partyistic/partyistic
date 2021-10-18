@@ -87,7 +87,7 @@ export default function Header() {
                 color: '#fff',
                 paddingLeft: '20%',
               }}
-              href='/About'>
+              href='/AboutUs'>
               AboutUs
             </Link>
             <nav></nav>

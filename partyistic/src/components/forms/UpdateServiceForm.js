@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Col, Card } from 'react-bootstrap';
-import ImageBrowserForm from './ImageBrowserForm';
 import Services from '../../pages/Services';
 import { useEffect, useState } from 'react';
 
@@ -199,8 +198,6 @@ export default function CreateService(props) {
             </Button>
           </Modal.Footer>
         </Modal.Dialog>
-
-        <ImageBrowserForm show={show} handleClose={handleClose} />
       </Modal>
     </>
   );
