@@ -14,7 +14,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import axiosInstance from './axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ReservePlace from './pages/services-sub-pages/ReservePlace';
@@ -40,7 +39,7 @@ export default function App() {
     if (!get) {
       history.push('/Login');
     }
-  }, []);
+  });
 
   return (
     <div style={{ height: '100%', backgroundColor: '#221E1D' }}>
