@@ -4,7 +4,6 @@ import React from 'react';
 
 import Row from 'react-bootstrap/Row';
 import { Col } from 'react-bootstrap';
-import ImageBrowserForm from '../forms/ImageBrowserForm';
 
 import { Carousel, Form, Modal, Button, Card } from 'react-bootstrap';
 import { useState } from 'react';
@@ -252,8 +251,6 @@ export default function UserServices(props) {
         </button>
 
         {/* </Modal.Dialog> */}
-
-        <ImageBrowserForm show={show} handleClose={handleClose} />
       </Modal>
     </>
   );
