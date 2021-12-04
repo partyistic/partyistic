@@ -69,3 +69,7 @@ The project aims to make party planning much faster and easier than the ordinary
 ## Backend Repo
 
 <https://github.com/partyistic/partyistic-backend>
+
+## Website Link
+
+<https://partyistic.netlify.app>
