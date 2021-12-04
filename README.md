@@ -70,6 +70,8 @@ The project aims to make party planning much faster and easier than the ordinary
 
 <https://github.com/partyistic/partyistic-backend>
 
-## Website Link
+## Deployment 
 
-<https://partyistic.netlify.app>
+- Netlify: <https://partyistic.netlify.app>
+- Heroku API: <https://partyistic.herokuapp.com/api/v1/partyistic>
+- ElephantSQL: <https://api.elephantsql.com/console/17f05a8c-9532-4068-b2aa-1e41f9475799/browser>
