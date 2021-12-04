@@ -28,6 +28,20 @@ The project aims to make party planning much faster and easier than the ordinary
 
 &nbsp;
 
+## Deployment 
+
+- Netlify: <https://partyistic.netlify.app>
+- Heroku API: <https://partyistic.herokuapp.com/api/v1/partyistic>
+- ElephantSQL: <https://api.elephantsql.com/console/17f05a8c-9532-4068-b2aa-1e41f9475799/browser>
+
+&nbsp;
+
+## Backend Repo
+
+<https://github.com/partyistic/partyistic-backend>
+
+&nbsp;
+
 ## Project Management Tool
 
 <https://trello.com/b/AjJxQRxS/partyistic>
@@ -51,27 +65,3 @@ The project aims to make party planning much faster and easier than the ordinary
 ## DataBase Modeling
 
 ![DataBase-Modeling](pictures/DataBase-Modeling.jpg)
-
-&nbsp;
-
-## How To Use
-
-### #1
-
-### #2
-
-### #3
-
-### #4
-
-&nbsp;
-
-## Backend Repo
-
-<https://github.com/partyistic/partyistic-backend>
-
-## Deployment 
-
-- Netlify: <https://partyistic.netlify.app>
-- Heroku API: <https://partyistic.herokuapp.com/api/v1/partyistic>
-- ElephantSQL: <https://api.elephantsql.com/console/17f05a8c-9532-4068-b2aa-1e41f9475799/browser>
